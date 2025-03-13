@@ -502,9 +502,9 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         const seriesName = urlParams.get('series');
-
+    
         if (seriesName) {
-            fetch(`./json/${seriesName}.json`)
+            fetch(`https://thefarawaydev.github.io/better-anime/watch/series/json/${seriesName}.json`)
                 .then(response => response.json())
                 .then(data => {
                     document.title = data.title;
