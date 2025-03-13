@@ -355,9 +355,7 @@
             isIntroPlaying = false;
             
             // Extract the part after /_v7/
-            const baseUrl = 'https://54d8e.infinity-loop-21.biz'; // Replace with your desired base URL
-            const urlParts = videoUrl.split('/c3/');
-            const newVideoUrl = baseUrl + '/c3/' + urlParts[1];
+            const newVideoUrl = videoUrl;
         
             player.src({ type: getVideoType(newVideoUrl), src: newVideoUrl });
             const savedTime = loadProgress(newVideoUrl);
