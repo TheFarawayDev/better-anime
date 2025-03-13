@@ -4,14 +4,14 @@ let ASSETS_TO_CACHE = [
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
   'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap',
-  'https://thefarawaydev.github.io/home/index.css',
-  'https://raw.githubusercontent.com/thefarawaydev/Watch/refs/heads/main/other/BA.png',
-  'https://thefarawaydev.github.io/home/poster.png',
-  'https://thefarawaydev.github.io/home/manifest.json',
-  './anime-search-results.json',
-  './results',
-  'https://thefarawaydev.github.io/watch/series/player',
-  'https://thefarawaydev.github.io/home/continue-watching'
+  'https://thefarawaydev.github.io/better-anime/home/index.css',
+  'https://thefarawaydev.github.io/better-anime/watch/other/BA.png',
+  'https://thefarawaydev.github.io/better-anime/home/poster.png',
+  'https://thefarawaydev.github.io/better-anime/home/manifest.json',
+  'https://thefarawaydev.github.io/better-anime/home/anime-search-results.json',
+  'https://thefarawaydev.github.io/better-anime/home/results',
+  'https://thefarawaydev.github.io/better-anime/watch/series/player',
+  'https://thefarawaydev.github.io/better-anime/home/continue-watching'
 ];
 
 // Install event - caching assets
@@ -61,7 +61,7 @@ self.addEventListener('fetch', event => {
       }).catch(() => {
         // Fallback response if both cache & network fail
         if (event.request.headers.get('accept').includes('text/html')) {
-          return caches.match('../home'); // Serve a fallback HTML page
+          return caches.match('https://thefarawaydev.github.io/better-anime/home'); // Serve a fallback HTML page
         }
       });
     })

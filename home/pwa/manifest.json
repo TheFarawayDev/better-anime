@@ -1,19 +1,19 @@
 {
     "name": "Better Anime",
-    "short_name": "BA",
-    "start_url": "https://thefarawaydev.github.io/home/",
+    "short_name": "BA+",
+    "start_url": "https://thefarawaydev.github.io/better-anime/home/",
     "display": "standalone",
     "background_color": "#000",
     "theme_color": "#000",
     "description": "A modern anime web app featuring curated anime recommendations and upcoming releases.",
     "icons": [
         {
-            "src": "https://raw.githubusercontent.com/thefarawaydev/Watch/refs/heads/main/other/BA.png",
+            "src": "https://raw.githubusercontent.com/thefarawaydev/better-anime/refs/heads/main/watch/other/BA.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "https://raw.githubusercontent.com/thefarawaydev/Watch/refs/heads/main/other/BA.png",
+            "src": "https://raw.githubusercontent.com/thefarawaydev/better-anime/refs/heads/main/watch/other/BA.png",
             "sizes": "512x512",
             "type": "image/png"
         }
