@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Page Not Ready</title>
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/thefarawaydev/Watch/refs/heads/main/other/BA.png">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a1a;
+            overflow: hidden; /* Disable scrolling */
+        }
+        .container {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+        }
+        .image-container {
+            width: 100%;
+            height: 100vh; /* Reduce height to accommodate text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Add the following lines to allow overlap */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .image-container img {
+            max-width: 85%;
+            max-height: 85%;
+            object-fit: contain;
+            border: 5px solid rgba(41, 41, 41, 0.5); /* Lighter border */
+        }
+        .error-text {
+            width: 100%; /* Take full width */
+            font-size: 2.8vw; /* Responsive font size */
+            text-align: center;
+            /* Add the following lines to allow overlap */
+            position: absolute;
+            top: 48%;
+            left: 65%;
+            transform: translate(-50%, -50%);
+            z-index: 1; /* Ensure text is on top of the image */
+            color: #ffffff;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            text-shadow: 2px 2px 4px #000000; /* Add a text shadow for better visibility */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="https://thefarawaydev.github.io/home/poster.png" alt="Anime Not Found">
+            <div class="error-text">
+                <h1>Page Not Ready</h1>
+                <p>Error Code: 404</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

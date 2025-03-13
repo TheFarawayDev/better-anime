@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series Formatter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Important for width: 100% to work correctly */
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        #jsonOutput {
+            width: 100%;
+            height: 500px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px;
+            font-family: monospace;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <form id="formatterForm">
+        <label for="seriesName">Series Name:</label>
+        <input type="text" id="seriesName" name="seriesName" placeholder="Enter series name (without quotes)">
+
+        <label for="episodeData">Complex Episode Data:</label>
+        <textarea id="episodeData" name="episodeData" rows="20" placeholder="Complex episode data"></textarea>
+
+        <button type="button" onclick="formatJSON()">Format JSON</button>
+    </form>
+
+    <textarea id="jsonOutput" readonly></textarea>
+
+    <script>
+        function formatJSON() {
+            const seriesName = document.getElementById('seriesName').value;
+            const episodeData = document.getElementById('episodeData').value;
+            const jsonOutput = document.getElementById('jsonOutput');
+
+            const seriesData = { sub: {}, dub: {} };
+            let currentLanguage = null;
+            let currentSeason = null;
+
+            const lines = episodeData.split('\n').map(line => line.trim());
+
+            lines.forEach(line => {
+                if (line.startsWith('sub:')) {
+                    currentLanguage = 'sub';
+                } else if (line.startsWith('dub:')) {
+                    currentLanguage = 'dub';
+                } else if (line.includes('season')) {
+                    // Extract the season number and format the key
+                    const seasonNumber = line.match(/season(\d+)/)[1];
+                    currentSeason = `season${seasonNumber}`;
+                    seriesData[currentLanguage][currentSeason] = [];
+                } else if (line.startsWith('{ title:')) {
+                    const titleMatch = line.match(/title: "(.*?)"/);
+                    const urlMatch = line.match(/url: "(.*?)"/);
+
+                    if (titleMatch && urlMatch) {
+                        const title = titleMatch[1];
+                        const url = urlMatch[1];
+                        seriesData[currentLanguage][currentSeason].push({ title, url });
+                    }
+                }
+            });
+
+            const jsonObject = {
+                "title": seriesName.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase()),
+                "seasons": Object.keys(seriesData.sub).length > 0 ? Object.keys(seriesData.sub).length : Object.keys(seriesData.dub).length,
+                "series": seriesData
+            };
+
+            jsonOutput.value = JSON.stringify(jsonObject, null, 4);
+        }
+    </script>
+</body>
+</html>

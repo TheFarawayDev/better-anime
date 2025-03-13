@@ -1,0 +1,402 @@
+{
+    "title": "Fire Force",
+    "seasons": 2,
+    "series": {
+        "sub": {
+            "season1": [
+                {
+                    "title": "Episode 1",
+                    "url": "https://wf1.jonextugundu.net/_v7/405f0ec95e645a382ca7f5e9d909d9734ac34fdc21a34d4c6a4b1cfd9b9a71517c8e4537aab1bdd39d94e0149e638d1ef7395206b42fcd3412c6196e5da4c125b801d09e1270c14d1318c235a69367330dda35cf68987198b7816e336eb8ec478eed51ea84ad74ac65021ae9f089062b1d9fadcad3e53451cc387b44f6b08b0c/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 2",
+                    "url": "https://mmd.jonextugundu.net/_v7/1ab72572744c97d5514445ff32c33608c3826906e22dcf42428310cd0901c09dda21f29bec791cbba58417f92c945143dd27edba10941a5f55de469fdcf250175afe0998b1299d3be70660a02956ffb63189c86b8b2791608763b7089d5526b1c8308fd7c0aad2104757250ab95f9352fd80369540efb36a128c7897c9b0c47c/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 3",
+                    "url": "https://tt57.jonextugundu.net/_v7/8868cd3c93e7df09f41372acf17958139c6526e89be1780736e262ff851cfd989379f497388062231dca0a348b0d2dbe2e5132ed196d364d34e99c74d18a902f47f26f5c274888924e774895e33d49fbd1ce7b10d08e46803aec8f1508681e234bf193c9893105b730f8e7dd335bf24fd400f57c9dfcdc0022464eea89ee3c5a/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 4",
+                    "url": "https://fds.jonextugundu.net/_v7/765ab8c6879c33113ca73e3e52cd288995dfa4882731ca3bf804b4ffceee0ebf6be8861f4415c51e5e50f6c2cd846841d202148faf7791c37b3a2f66ac48a9f36c054e5da923682cec2b5499f9cc8402a570c4bb0411a2cd2d1ad16b3e488090e41b74405e069726b8cd3478fbe49c7e13696bad738ce860622aaae68ddb29f3/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 5",
+                    "url": "https://fgh5.jonextugundu.net/_v7/39a5d237e4737798a8796f1cf7e7d91c147439238221deeae3fab6673b667325ac8dba89c6151f04e8d985afdc2c533c245e39749a4da23dad965d25d5e1143b7c9645c2136b2171861b5c4002be3ea4bfd18d99743112eaf50622b225f547defab9c1ae79b34e1a9c0d41777f2f86cb389bc5fe1623aef60d28e733a77cc2e1/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 6",
+                    "url": "https://tt57.jonextugundu.net/_v7/882ef708b87ce10f5bb43172897ec5ca3d819aacb279e2c88b7ddddd31e4db261f1271c3c8e3dea7fcd04bdabe73c051a9549909c604a037da5b6fee6153c7c6c4414ccd87034015844b421d63e78e13a68b6e50821fb55e70fe0fdd4a28d977a9c23f749c4e2ea50ff181e7f2a5b068078a6cafc5c1bc256680f85c025bdb1c/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 7",
+                    "url": "https://wf1.jonextugundu.net/_v7/b483e628dc8eba8eba2e687f8713c388191ba027aa325b60c743eaa7e012dcfd84d97de12aba9ea97494c1cd7964593802edcaad12811802707de75326755d1e45ae299850c643c0a633b12e7938a0ab49d2df3230e0b9178b3fab91ef2eb454cbf1b9f789b06effc7b10a476cb2f9a6fc14bde4b5d2c0f74e7a3b8b2b849fd5/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 8",
+                    "url": "https://fds.jonextugundu.net/_v7/8ae6583791d241e7cc9574bf19f18b78fd96051d944b9e1e2aedd3a9999d0c5752b33bc2c02887b431a14a9adac05220641239f1b1d679f03ec6060f7872e5ae524e1ea117e66913321d019484d4856ce3131b8a6bbc708873093215c63015caa4165979e6c63fe3d6357b6686dd367b8d13283a251cbd9f37f32a705f26919f/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 9",
+                    "url": "https://wf1.jonextugundu.net/_v7/9c61b311270fa2f69f9ffc0b7c00c5bdee1f5fcf37eff76936d8cb7a16221dd71f8b890abd37efb417416b5f3feebc083725760692f46ae3a98cd1bc80ce042b00123f46ea04b0f6b47fdb5ebd806f30f12916b359fcc330d59ea31a6bff473643eea4c6f8df61cab58bd216bb4bb0f1d2abac0a30477d7e227b75a7ddedec47/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 10",
+                    "url": "https://fds.jonextugundu.net/_v7/5ed0b87027bfb1c94fa05294f1b3759af3fe1721901fa07e7a79eab1c68b9eb9c279eecf230e16c0db66298022755a1b061713f497fa9ac87b8088bf08e243b6e4d771c68af4467109095ff2e201b6a9a5a71c78e23405a60ac12a8686f350aac52671f8441b481485dc0e579c178154badf88199684f47695ecce60f34333c0/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 11",
+                    "url": "https://tt57.jonextugundu.net/_v7/27b4fcdf0c5d7477965504076ba42723eeb47a0b714882413413105ba3126554a63784b8b2b672e3060938a643e989d847dac314837ded9d37d3f5f73a7294235c83e89ee4a510899d90f968e7153f1bc6bde1db55ac32b4badf120c369b4a7f9419385c448d1a78e1568ee8286dfb7e912ed465c534e9c36e99813ea40c585d/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 12",
+                    "url": "https://tt57.jonextugundu.net/_v7/712bf250ecefba9c4f35930c42b92cac069ab5cb45b37799f4c846772350354ef6d7faa0129dfbfe58cefa4b9c919800ab4462d064e53562b1bd37e6e30c136c05c4ffc2ebc86277fd9a62f6352394500a9a64e294dc0b50dba1efe6d6036efc4747e77644085ac22ecee4bcb18ee47edb18cef8aa50f35d2e7c83284c7f1e34/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 13",
+                    "url": "https://fgh5.jonextugundu.net/_v7/43d9a92baf7a0c6546b17daad4005e20ae3b5c21e6e326ccad67e21e1cdfc406760e1fbe12972f2e5931d5169148f7b516fb96e1cba4eb1f980e94899000919b920fd4fc0b6960c7a4c3963f1edd0e9b2f6f300836038ea876a266ab669e43b54cc6602b25d541e0790b0a430d7818b247d01e14da6a69e2ccfac5c8b3d9741f/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 14",
+                    "url": "https://tt57.jonextugundu.net/_v7/1a916a74015972eb46293bf31a7187160ff43c1c7c7cb82a452f67c75b2d4dfce374693bc1b1a1e6e1e43daa74edc750d31f15d79402ea48737992612ee93e562f161f3e98e8da687cf852e18da2cb711aa0a502a6c686f75dc286c963a9d2decbaac081317610559b4890eb04218a78e03b45bcfa5e2891140d9e0dee78d6ab/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 15",
+                    "url": "https://wf1.jonextugundu.net/_v7/19dbc4b3c91d3fbaa38e7f360dd82641d0334282f6358cb445d53db6b9e16fae6a2967d769e658a2e46d6abd828c41c7ae14cde832f84e34334389b4213b1ff6b44846e4f51d694ce49154ff2f02a2d75cad70e67131f094c001b95f3fa888963a97ba201d8d1ad54a0597184e12e6f2366d44d883ca7f8086e68e9059df8ba3/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 16",
+                    "url": "https://wf1.jonextugundu.net/_v7/4019ddb7ba4ed9850b24ece82e5d22d8f03bf6dc4675ac996e3a0498ee9e66e4184c993dca43124ce62c531a5811203925bdbbc4f255d78634faa4fb374a0cc7dfc8ef82bfad0015e3eca61245c4349ee725f4e7bddbc2063568c784c5584710691c584aa90f6d15dc352d192de54e116c975bba632ae366137143314d7f62d7/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 17",
+                    "url": "https://mmd.jonextugundu.net/_v7/8b541e59d25d3178ab36fcb990ed62c7d46304c074c7eed8cf2b591ac596bfd8a3d2e515d51fdfc39d99dc3f51dd9e726fd3751ab7b8f962cb06915e117169a678338b4e5007748c7ece079b779fa7e460d1db2abb9e03372432d967f7f9e8e85fb94028379c76959aa0a1d3c3eaaf66d00e205b540b936c49e64d5cb4961eed/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 18",
+                    "url": "https://mmd.jonextugundu.net/_v7/e423b2d9554f088b792991c732c503c5576b69e90c6f16f7f2f3826a098c6c1c8adb9333672f514ee8cd65c1911d4f56e86a1a5cfdbcbaa493410e0df0a8f49be78369b83aca222349de022b93569f8d78209ceba3e6cb604f67270d96eeaaef04e42c964530dfdb7f35519201e6cbebc42dcc5dcc62708ba41825f27c9527fa/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 19",
+                    "url": "https://wf1.jonextugundu.net/_v7/55ca0b455c2fa93c69326e20c61261088008704ce73b96fa664edc24572996f1d127227e3e3c5a8db3271e1b54807abc575f6760d9845c99a7b9e066465f8a90221718a1f287cbacc02710698520a0db8b996f053543f843d6421d51ee5878600e6da7bd4fb3b1fcfa475f788228bae2390f2644add6e01e408bf3077aeee0e9/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 20",
+                    "url": "https://tt57.jonextugundu.net/_v7/fbc9c74642376e2e6dd61eb06fa33e049ecad775f6f663137777165e10413f4e19bf227ac4104caac5adff9984a6e74b5511c3b6ce31eec8e28e415caba47a2e77374ce23e13f0df57e44f4deebcc1fefb2be32980ad653f304515cf604ace9ce6704a20d5343708930f9cdff444c0b870abc3fcb67014f31d31534aecaeac5c/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 21",
+                    "url": "https://wf1.jonextugundu.net/_v7/9e57a4583a8f0415f7c36474d8c23f1fabab08bdd6c34d16e2215862faad1a01ec1d4dcd35311ab0b3d36ac2f271d51e81b72f24e9b57006e5610ecd67bcf439632a5b7dcae574117da3c57e1b6822824b6b5424a4b09a6eaf9232c7342cb89d5c3420ddc573e647a67cc1f331677c3f7fcd91bf27e872d55a0fb3cf17ab91ba/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 22",
+                    "url": "https://fgh5.jonextugundu.net/_v7/58f5c082c4f0305c79f1bc7d87b2fbfec770bb03dd35b6e361d2016a7a12b9a45add4c8fea853f0eb98101fddc39faad4cb5e546557e51717f8cd7ad528d35a3597129d8e1dc2665b4f6d85b88447190d96823c55b4ab18045aeed14dad1589ebdc2dfaa50ca8b2f9c3795664c91ee1b6ff37d45260f5f85cd49ac910d7d39ea/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 23",
+                    "url": "https://mmd.jonextugundu.net/_v7/db7e3632fcd5065bb51eb52cd4cb9146b9e374a85250abacea70f23f68b7a64e53adab835f15c117d53127ca852240550c1570f7e7b65ce436d17c96f4656b9492ba4b677af1cc839c79c885d16c0cbee166cde06eda4c998b3d680ac8cb909996774422ea9dc4f7a1a068825c5792cf5a67e21aa4adf342c971338e50980f67/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 24",
+                    "url": "https://wf1.jonextugundu.net/_v7/6b0f0c8e9fbb128997fc6a293455d5480388eff03ca5136e062b1bca7088e24371b6a66773ae888ae9cf2e237ebafe630a5e49214576894b2e6fac7bd8d1946bc706cdff6e7a1f8e4b0862d674ffa1fb641f6177007f1e72d0d435c7c9420096a881677fda2d06d129a8d266bc2ee4e0e14a8313376a8ac2313e24badf39aeca/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                }
+            ],
+            "season2": [
+                {
+                    "title": "Episode 1",
+                    "url": "https://fds.jonextugundu.net/_v7/f2d3c75052aa0fb72e6d350ba41b24a797e002608acd7c7f7c5e033b211451ca090b53ae1799fc50f78a7dcd9b2bd8cfc31901641914188cfe633046fb8dbf333c0a93589d95de9206491c9ebd415799fbbc75a5d9fb5ddfa0992698b1eab50628f3210a7bb0fb04240313e56c52b2df5095afce6bf38bb9d660100122b7af0f/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 2",
+                    "url": "https://wf1.jonextugundu.net/_v7/d40633168fa2951af5602bc91105a466cb0527d650967caf70a52367bd7721ef79ede5ac8fd6b041d155307ec165bc8d05628dac56deae36095de678ef470ddf28d16380c9d21ea3684cb105f5b18de0a0dc1b42078f67af9fb17948fdeba6ba577bf607cef265c18e75a509bbf31ac170a918b67b013a16472df2af9e585c52/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 3",
+                    "url": "https://mmd.jonextugundu.net/_v7/026ad36f7b2e1398891d84fd572f1c586a215356ec765a0bcd2490ff0b6dab474b99eb8bd8eec8b9fbfa4c3a1a262770d3abd94a20c33db68ece13cd56985fae7ddfb59dc875dee34b808efbe08d8386e4eac2ae62dc36433c6021d0dc2061ebbf49d83ba97861ebdf0b966487a3c297fc9a6b97b32c22055b24ce9c01c37a2c/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 4",
+                    "url": "https://tt57.jonextugundu.net/_v7/c0cb65b93bc4cbd3e9fe2b4ed52cdfb79dd2b895d7732dc7ea9f0f3fb0ace75919be082b7c92a745edcb0a78cd09f267bf44f817e8918b765a56b1a592994f3849cfe30fa4c0e716fe6671f93e9a7756cbdc9b86191d5083176b7c2ef170ef8bc14c51fedf7fc2f09bc557ee4f9a315fac32318c66306eb8c06b25d98a80f4dc/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 5",
+                    "url": "https://tt57.jonextugundu.net/_v7/de4804f6ff9cc00cef3e86316157c5376813d92a32d07d7b38d3377fe0e5edf3b572356cf2a600e75043fd3c15ea1a4805bc21b9aab4f8a20adcbd8e82329ccec9a8b9488920b5f761b6a5ac7fe0d12eedcde5b7da1a8e7cf68077571207ff5233584660f2939085883db30b61c569a00e719740bbbfa0da638b9bd7612b9be3/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 6",
+                    "url": "https://wf1.jonextugundu.net/_v7/c8f85298152340f709bf5fed7848a69da3784d43c8850ffe979ee95fd63c5f0ce474a852ad970b6c970d8209f3c8fa56cf329562341a5875612f3f5fed2befdcdbf51cf15e182338346c002093af26667c3e2091813b8cdf2b7589044631b0dff8b55af015afd03e4a0fd8550e9fa3c11eabaaad6d9e6705865f354b7ac40186/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 7",
+                    "url": "https://tt57.jonextugundu.net/_v7/247d58cb7d10ec47705397ce4b39a7b5822b7bf1238e29957d9c0f971fabc5374eb9d2a0820b18d221f5f97301bd511beb717ad153e86e715e313a8b74321cc8a31b25fd96e59c1846e7e7cd714c62a0793b3a0d227315302ec43070605f971c3d8b29f49fc7fb4d9e8c9647c43a3c7fcd12854ffef728ef39b685a6826ab117/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 8",
+                    "url": "https://fgh5.jonextugundu.net/_v7/783f47ba3fd09487e8d8815f3c35d8e9e8ce4a0fed82eeacab21ad5a1f041bd48296b015476ac99518ac7c3358be7da179730d3285b0a6314e5427ba5cc616b54b69fd8b102a5c38b555a51fbc998aead36f3e70331899370beaf1e3c504ae849aa54a5b6799cff5660fb52455f8beeb1de960baffdad77552cb9701abf3ecdd/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 9",
+                    "url": "https://mmd.jonextugundu.net/_v7/6eedeadf81b8bb270c8da1cb72a68ffed1451e4e781c74f18478e2b5cfa5505c8ed286b56765aca6190a09340727fa2c725dfe9c64be71267a671cefe4b87ac5df771e465caaa7e9296513d5e2a45d3c2ec798f691efb591b3511a1e95cfb3e06d2e6f26b48313fa7d7211c2745ee75e715518b26f9d5a252760b9bc90ff2686/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 10",
+                    "url": "https://wf1.jonextugundu.net/_v7/00c9c301e49067e6ebce9927a38aff21e766e430ba5940c3e441b5def85545abfa0d08b90ab7775f50f1eb772028548cafeee0fe9746afc9295f60d5616a6da84b4a26cda45bd03fc255ae74edf9b84c7cd64b8adc33d446b799f3b3c461fc3040f16dddd3052d298f731b65ede47efc0d70f370c182ea50135e16b0d51a2d8c/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 11",
+                    "url": "https://wf1.jonextugundu.net/_v7/0ec5c70c3cfc0bf70a5b8ec03cd175465c4be00023f77bdd1b5dcd33f5bb02f512c46ca050de7f5a6b53c8ee463511d79dbfdaba74ff04c331f93c2c3bd3847512b66c90e0265cf86f39767f6d93b48052a4593fbfb96d64367e40bf80ea97b151504d5e5f9553882ac540c67626825c33fb83de605dad2cc139940148e4432c/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 12",
+                    "url": "https://tt57.jonextugundu.net/_v7/dbf1a62fcdf4c6b1778dddab08bb06c6f9c556fd867530a28a96200c12f9905c3db615e7cfde360d566acdc6eeed663627d335fac63c4fcd442aa937803b2c529acb0c58efba037e7ebb246fe710d611fe7c6e970c6e539cd6354931b6c2f00efee307b6eeb7d61a4f65964801265873b59bb6c7179dd672552e74b0190e15d2/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 13",
+                    "url": "https://tt57.jonextugundu.net/_v7/b24485eedab3296d15ab402ca3cce0cf706666a6cb1e9a9c4bd862b4087e1fb220d9376157ef880c1e82a55492a3d2b597474a733027bbf2c52cfb01c3adde86af9d38f6d61438b14486dfed8a33823f8eaaa54098203843ea9438a7a160571f8ce93895ecfdddb3f8abf5abf957f972566feed955c96c6071d97db3ac6e8c38/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 14",
+                    "url": "https://wf1.jonextugundu.net/_v7/9eebb88a04fad832c59c5b48dcfe495b62989a57e676ba9d59fd6ec7e441449559c0f1488a71219dde55a18ead00ed220d5ab675f083e2cd4696329bc6a351d401ee8c74c116a0ec3e5483723d8a88d3560e8cc2e2d016d3d565bdcb301ab0a63dd931e8e65482fbb4dfe1c43d5eb0e9218855cfe76197d6663fc296f6532267/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 15",
+                    "url": "https://tt57.jonextugundu.net/_v7/3d424be713f6153f5ddd5d2f35887f4457b1b8336597c29d0bea53457483ba7e00c5a67e9a6b1f2dd17991823eb36871a18d7db7474c62d7cb466455057e49fe10c49506b31964b654e2d628fa997420d291dd82a15ba78831ca5a7d1f6b7a8970f9aff11fd812e88f823ace67cfb548519883646f6bed69e508eba32f1808fc/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 16",
+                    "url": "https://fgh5.jonextugundu.net/_v7/5657d9a7b2f204acd0db1e58966cb85249ec2aaedad7c72a8753c4f1a3566b311fee1d9377659107d75dd7a7842f6b3962795c55c3207ac38267be6879b49b59328c58e7905bdb42bea829982c33afc35a7a8410f7c2467652763cc68234a3375560e5d3d55e8753f948a7d7716d2397df60b0773eff0d9a52e7ed3417788d7d/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 17",
+                    "url": "https://mmd.jonextugundu.net/_v7/34234ef966e666efde4160a50a84e85034d2a4a12c8640c384cd0f06f0621529b0df0777bc4e28c8c096249e3072f3bbd6ca6756b6a2983fc9db6d368186240a3912086f29f91f3fe56cd7413ddb0fa0e14f61b120cb21fdfbfbaa3f577b5c6ab20e7dc69d1885f1921fab16f90ada9d9c53e880c57b6d7ac3d6f4eb41ffae0d/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 18",
+                    "url": "https://mmd.jonextugundu.net/_v7/ec0425d219f807c106063d67d88046d52c5e4112c39f78b260f8d9cd87d39abb73ec9e95055760b0a15fe75bf2179923e48760413afca7d34daabae4330a324d8d4573f88cf200221478f1bac04d239c2a85b4a9e3143294c3753dfb9b62c9b881aa0211226a5e9c894b11b7bfcfb9fa69c6c706325a2f858c5b1f6fc2c6aa92/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 19",
+                    "url": "https://wf1.jonextugundu.net/_v7/c32ca4ab676f30ec886db5792dc395c132f5de50cd2a1826f6037f8236e911d1dc6c08ee76d0bddc1279be4018cf0ddc8cef0a9951c4b2646611e595de0d84a235771004443de86a5c552f07069ca2b31c4ffce0af3b31195625d22f91236246ba4199cda3f01d7c03a985c75ea216232923b784a0b12770791425ba63bbde0e/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 20",
+                    "url": "https://mmd.jonextugundu.net/_v7/ff178b1bf3295bd2f72bb4b0456231483ee39abb39be5e6ee7eb3f55b2d5ec041300b21f81cdf0014217c77cab73be3896df701f08dee9daf91bd63beb7ffc3305b88e658fdeee49abb289787c2ccc0377adfc095541e7c9e8070690bd377721841c3b4c0322522f40f5a7642f259be4c66882544c0b22008881f13cc2752854/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 21",
+                    "url": "https://fds.jonextugundu.net/_v7/41cf1d8f6024058de82f9fc2fc6d62955e8ffd89e785cf2e3be23defbdadee539b518e8ef1f8ff301f896a66a4394df892808e068a8b938cc78971c64a07967440c25116a544a935420c8dfb840fe59e7d76b7db19920640f937e93ff6cef5eb371f1d92a05437205d928c5b15a30e70f6115205c46e260ade826b6362eb6de4/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 22",
+                    "url": "https://fds.jonextugundu.net/_v7/566c2c23039f64331bc0571cbc833865b158643d1416ec0f5c2bac305a60690cdcaf3a7560378b656fde0366f88ed04bebf519cd367e4a2cc692afe7a2ed10bf1db8824c28c9823eecb5ef4c60a8d015ff7696a721b22727cedb81974d47b2c0ec776b3cea76be8667ed56619b2ab939d072d76d411f9264eade4affbc77dadb/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 23",
+                    "url": "https://fgh5.jonextugundu.net/_v7/924b6c358b7ddc41bd6830001cd72e986b9635727a53007fda73e42c63082429524be325944a37c1fa8bc404967837f0362e3dffe36469932645fa4107597357dff8236372c929a522a989feefb8edb179e3d8b44456cc5b2f52658df9b3ac74d53c9e4c264eac4d131f639619621ad46a4924208f999a8fb33565913f640c48/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 24",
+                    "url": "https://fds.jonextugundu.net/_v7/b519f4846414bcb6113f9b36baec984d88ce080e5175f13eaf5f7d8c8dfe03d515fa7a6af466156942dc0c08535efc1c04bc74b549e416a54d1daa111b698b072ef0d5cdc869e04213e0185075192106e7291d9263fa3d6f8aa09b6234b9735e9ee69c8d8a813d430e170acb156b1dd2787ed69b92daec1a8c7ab8996989f45b/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                }
+            ]
+        },
+        "dub": {
+            "season1": [
+                {
+                    "title": "Episode 1",
+                    "url": "https://wf1.jonextugundu.net/_v7/3b174e8db2d89ea705fa53b206ac813570c9a5f359f2f0fb3d5195ee8dafcc0da70745edd1485599cda72d764036d38f35f72d26601ee1390c06edf66c27ededc4d553535ffc68d105face29ee8771d0a93716751e821c8b955d34d8dc308c65768b57d4c06eb9e7e7c148b9704382c308c6a953b27e89acf71dff68cdbfaa26/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 2",
+                    "url": "https://wf1.jonextugundu.net/_v7/8d9b4890518316c2e5c54ffdd96fbd9c437182900e521512e920b9b7bd446b622ad299a33a239a50ecfa4326f6f83c4cba5802fe907d7ff940b7b11a1174ecb1179a6005d55c73a3445594d8e5ab4fea933934479af4208e922c9ef090b70e441a402cd129e843818d8328acf30c0967a275138ad7b1f469d7d274c36df77148/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 3",
+                    "url": "https://mmd.jonextugundu.net/_v7/1f6c4cd370273b4c960d9b27ed77da9cab426a0f695e14b99e4639ea7f34a7d557664db8bd60a1721d96bf50f55fd33c3b1286b3f5187b68e4b0c1a8f88160017e83c066b4380913496e3681d5ee12ca5b37fbc0448fb2cdc497b1822e3c6c471156f90fbd393e545b000f307402e5059d148d141ddba6942b9d8faaf0a54abb/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 4",
+                    "url": "https://fds.jonextugundu.net/_v7/e1809bfacf29c28b5ba83eab5ca31e76dd3ed8dd91248246f2a4e68721dfc2037cc7bac70224383364dc6294a7ef37ece3225106f848afc7bb0e60b73c8567ca41cd1e98be07f30c5313ae169c68820dc7e76c19b7852c7003bdc850369d0ffbd5fb05c08a5b452a7fdd7822475dcf2593a0855e1d364fa09fb79d6210c70ca1/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 5",
+                    "url": "https://fgh5.jonextugundu.net/_v7/a9428948de21513b074e921dfcec5cb868671914dc48d48b64167126ce3be1d8bca17c90e67263e18d31382f0c78da6b78325033e64a560d4feae2dca91f59a7ebbca867bc11d030b7a00495a772f1ec19866a9bdbd6c820f7615bb53cd1f39e96390aade2f6c1ce5bb8b0ec5ead1640b1ec18b1cc99e6a7af708d88b8a5ef75/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 6",
+                    "url": "https://tt57.jonextugundu.net/_v7/4d993d8e6338b05c6a29e1162b8b626ace726b15085d7566bdff2669521e4427dabc84c25a7ca35f48765d2ea7af3cb62d2da413db47cb489783c5a1eec5dde8e8c28105f5f14bcb3f8d72a10ea32c4378f170c65ff888839a4d2371a44824f8a55998e8189bdd936abcd185412ef740602041b752f85980887dfa4e731310e1/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 7",
+                    "url": "https://mmd.jonextugundu.net/_v7/57fefa143bbc66c9e6e899da85366aa4d9309da6fa9fd88bf27dc0622ffbf19a62e46ea2a68c348f2f0d189b615a12e48f32595d85ef4e18efa4b647afa6156112065b0fe3b8371bbb935da5c9bf8fb4db699b2c8b305e1fa215d5536dd4b19299498b1e7b655b7200a79df3419d622e95b6273bada647cd2ea29a34570a5877/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 8",
+                    "url": "https://fgh5.jonextugundu.net/_v7/245ad888758681c02729248c98163ef413632b6082916009aaade17598b99047a35dca07c5fb1ecb5e09d0fc695f904c07392f038bafb2feefaf9b8c84b3edbd4190c2ea813f5e3b85ae778042b5e587fbb2ee427c903222ea05799f0cb32737943fb0d685917342e3ea4d09fbcb5caef7755e4e0028b982d59ce38e3d5592d3/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 9",
+                    "url": "https://wf1.jonextugundu.net/_v7/8975561e274f3c29dba641851d7a926e82b7aeaa3c9af02be8dbe91c778a432d88e45158b2408991c801e8f351238a53ae4c1ad43a5865841fe224f7a0440695d5491d198787619b280b35a123920a758e6ba24f191d3b2da6cac2971c15b29932be8f9233400373a05253edf18b4e6174b3e8ab68ffb5ac128d4934794d57cf/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 10",
+                    "url": "https://wf1.jonextugundu.net/_v7/76db5685a65af5476f52fcd50a4bcc89d02be6ae950b7ec7917c8080ab9d3d1e8ce4c4adf47154defbde3b534852b792b61dfd5c946073e29f5d21a403997355a32331f13c866e20b98762cc5541582c6a8fc2bd7480b7493c828ab63383475cd80ce3123f4c04252f441b553cf9e4e1935793fe32245d25bf1760e7fbae87b7/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 11",
+                    "url": "https://wf1.jonextugundu.net/_v7/1048e8846cd1415596ac8b5652cd27693da15366bb5068fd9f85d318cc69b802950f23f179a159b1d1e318309e6619a174a8e46efe9a4bd863300865abb0a10f81427e65c1c10094c32d7f717f1617284035beccfac36153f6eb3614e7eb228c45eb18d825326d3cf436036d2d610b7b5f2a35def708e75b0323b3b7be771f2c/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 12",
+                    "url": "https://wf1.jonextugundu.net/_v7/964d3264a7d11a8b0d07d962cb734b8243cf197f8a16c905f9278bc9e32a1792d36edd3c0a61115e440a5036bb7e3f7a42f954ae0dd6fdb2e5630397b1a8929942ef92d93dbe74fd8bb8af5c221ffa1b826608a6c891cf08e14d696ec23f5b588ce1ebbccbd4829f4483519df309bb00a70a56f870d297d968c5f884cb5a1eb9/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 13",
+                    "url": "https://fgh5.jonextugundu.net/_v7/de667825407663153bc26078b601f96884bc2fa645f250220c1d77a48e5dd4c5520988734b47fa249bf647e09a6bfd5d951d7137d84ab33e9d16bb324899bda2546e612ef97ad6d3ee90f29d15df6f72dd15a2ee308c37b40c2758e14464e4cf0014b7ef5c0e6de6a1fdf03290b6ca3c45e7047a90a8f3da3ce1474dc70e6aca/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 14",
+                    "url": "https://fds.jonextugundu.net/_v7/a1fa3bd11a47cd00117f563bff5cce9ff0efeea2a9a09c5069d6aa6181854005150620da83431900d577097a0d68a312c574d23eff6312026e70aedc1d29290c1603be162d24cf47adf7de943dec6d91ec12c003560733fb90accf9e3d337b0888a786d88ab5991e0bc48d47cff4b8bf110530b206f40b1c751cc7c4b5047bac/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 15",
+                    "url": "https://fds.jonextugundu.net/_v7/43687b65ae304982a1957507984c0d55c2ba285c217314465968bd1a00f095cbe7d3ebe42e4e7722a4ebe2060f830beceb986f6c037bfbe0b029124078130ddb78981465fe4d85831a8219c3912c12e829f0b765327c72e4dd8d9bc5ee66fb9f180c40ed5c5dbd95358f7e8a3bcb277028a018e59058079a51e65dbfceafa126/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 16",
+                    "url": "https://wf1.jonextugundu.net/_v7/41c61d2fb67e404ef9b48e262b5ca67d4294ac97e26d92f6bd3f63c130732db8252086835ad39220947bcd608e4d81f87e3431c2503dd8ce59986539e7e2dabc95e3bc5a29dbd20a1386f86da3b6a2f4f7185da63dcb04d82c7258ab55a133b759bfe05a60eb30d459063c4830a5fe7f227bf92cf5318ec90deaf5c35a9ee6a9/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 17",
+                    "url": "https://fds.jonextugundu.net/_v7/c7948e8ffe605918a77d3bd46c6407066853a5c8bb47abd27b395ee43ba4a13ed7a9508a16874b613ae279e570242cb62481b1d399d076ee4ffb13ca0e4b76658290897859778cd4296cfa74b48a10132bfdfd018260973a943eed2c6d83bf5b311ee81bd467ff7cda360359b98419b5cfa9b17837f9a6195802f506d551cf45/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 18",
+                    "url": "https://tt57.jonextugundu.net/_v7/74e6fe51966861f98c3cd81e9d321df7d0747af67fc7449a8f9e9a05db044752b0ff73ae729aa7f7e7bf61344730e5a35a7fb45087d52cf637c33002f8dd4cea1434485a4c67e7e87c9d1dc785f35e269611a3bb66c7cd012cc6a787964ee3b6fb7d75422cc069fc2486d07c7c2eb5dc9535116a31b1422b5d8428df972dac97/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 19",
+                    "url": "https://tt57.jonextugundu.net/_v7/80de6464b52829f072fafb7f422942f32531ae84c2b69cc9e3f3bbb8fdfda9e7dc6caead0fbada2413bb27fa6ce5fb14887c47f69154ba4bf9cefa70f9f994e370cfbb2bd4269f4cc7ebe5d98524e0cb9a5be4f73f1815786df6639b82e02896314bac87d969c5aee304943112d336db7a86aeef770ce4d92e3720a32a27f454/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 20",
+                    "url": "https://fds.jonextugundu.net/_v7/70fc6a748fb6ba4e9b3e4fc4087300c72241716763687ddbc12525d40f5555745d034e82340ed749dca6e373f6a7990d2df55f423b406ed5009f8c4618fc757e5e75163f822f8c26cd5eb43fda17c8fddeb16c2420d85f64f7948bcb8c42f87a69005b8fa8626b0474c045b0d3512c7cd6bf984036751f95186cce34f282ec5f/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Frapid-cloud.co%22%2C%22referer%22%3A%22https%3A%2F%2Frapid-cloud.co%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 21",
+                    "url": "https://fgh5.jonextugundu.net/_v7/94164b6249b0839d64e9c8744de95f53872471385a719365fa270eccaa630f97b251c5718f4b6df57506ea0f37986d4c686e4b006341950a69a435d6b634ec4430e6a16fea52df5b529845cfc09a4d859f098ad9d9a35a6504d55fcd3bf62794d232b713b68c7fa15fada2acae5f8e09fb16e91915a74e11f7f5a578b4673370/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 22",
+                    "url": "https://mmd.jonextugundu.net/_v7/67e5dff063b4128cfbac480f93209089f519b5e67e64dcee2a4e8c2ace5989eff8dc3a0432619c587b4559382aa819c14ec179e25e0aa6a9e05e2512aca7616568f90e7060850374d71e951c72a7bfe2deee3601395d455f6687060afa2764bc64e0e714a5b4c367b550fc355f8ce68b4db86d9b404c7d849eeee1a25c2687bd/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 23",
+                    "url": "https://mmd.jonextugundu.net/_v7/967d5797532f5e29f9c5b7ac764514956c43155f9bb648479200da34eeb3da6593b74127fd4097a4022b9b0307199e67a44d643838730b152ae11602c7a93e7941ea63f8ea9fb7b4fe4618b8812d607c5038239639f0a1912701260a8b3d366ef58d8a0e23eab09b75b78cb3918d98dec76214b0129eecfe273052fb326654b1/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 24",
+                    "url": "https://mmd.jonextugundu.net/_v7/6b2235e769bbf3d0e7ebe1c58dd6a1104d88e4d74f6c15a2ede61c5f942bf06177bfdca2f8343ee9846d7da2c88b3de3ae1b03064a6e24c11dc9b359ba7abec9e80e61c21fccdb394aae98a60d1e2fd1d42b0493da43ccd44c68cb16c9718f30e7ea34653fe50f8f2c5c81d611a07b6e0a7ee61f9d45c4f28c8fac40e0c70db2/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                }
+            ],
+            "season2": [
+                {
+                    "title": "Episode 1",
+                    "url": "https://fgh5.jonextugundu.net/_v7/c4cceedad2b73b34afb084c2bfb5b1b0a9a9d9a593c9e12b5a66db78df5845950a490deadb115675fc0df462d45bceadc122fce8b7c934e72d073dd3d224c62160169ebfcd43f8cc2842ddedf5f0187f1c45e0241eed30c51e8febbaeb1f84c21f65674c41e450f269dc98d8363086563fb1d1b6a0a07a9048c5780288ea75eb/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 2",
+                    "url": "https://mmd.jonextugundu.net/_v7/e33fdd620c132cb73be415e09704e285dfec64533214b59bd3346ad7ff8e62edfc4f206adef0fad4ce598b2f4f04935bc5ca7ff237477ca4525f2aefc72e358deb21b1f210250d826984ecf5ab5503c17a367a1a060fd85bb1b9dd3d2a6b3303321271097569def9670d0b65c16bc52b85407c33b0882e6edc5d99cd9e3f9817/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 3",
+                    "url": "https://mmd.jonextugundu.net/_v7/95745b8cac1d0ee15f1940edc38853303bb643fc78e87f9b127f8a1f24f7f5a4da693686a6878e1957bb4e7d3392cb8dc647c8652dab911dbf1ef475c400b60eb3ec0d5c3a7b69802feb9cb68d3c3f13a666c8c42592dd55c04f537af5ee3553914096aec03d54d53e06c3ebef712a99bebfd17dc611a08f55b03b22ba87bdcd/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 4",
+                    "url": "https://mmd.jonextugundu.net/_v7/2144bc2e897a7c695b28ce5be4d598db8e12a8928ef4b0c5966a258522263485309b36795c66d672697b00c1df93e21dc2a627c2f219e9f83f39ef33ceb6b3111e724176f01b411fb38bfc900fecab32796a948de18e85a1e5898e9efe11f73915796819ad6c0da00461b855119dd6ad0ceb1a97aad454ef1f9308e7d85c2425/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 5",
+                    "url": "https://fds.jonextugundu.net/_v7/1864368c54785a09e7559c5ac0869098f52bc180ad770dbfc0ccf2eb2c29775803b4ef01e716ccd55804ff8e7bf48bb79bf47ce06dd0a343d33917f732c70f6bc881c2ea486ecb040ecf4569be1e42167b97a774c796cb47cbce40e577ee9328e60d8f878076a1d9d8869cf10178bde54c6c3a8c59053dc137b191d09b8cd4ec/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 6",
+                    "url": "https://mmd.jonextugundu.net/_v7/85e3d6a1cd79c753e9ee3e83e5da92c8a7cf6abb1c3f6ac7c28878985b1774493adb4972cb81eef3262fbfbcf0bd54961e41ae52c32e9e554e0acd1558564807b2ff3c3834f05820d31974db775117a3488f116ab55062433d6f3a6491a28919d481b1014347f4a972b1b5bbc1e639654c33a8fbb84beecf6bba39d03eb5f3d6/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 7",
+                    "url": "https://fgh5.jonextugundu.net/_v7/176ef3575104bfd21632cebcc23e763a7d791186c6c43ae9b5bc8bddc210ee96284a135a7bbd429a116062ad385c5f6dcbda964303145e9eb38783df3e530082aa2acac99c05aac652da8b4335a2272498c2ca84978fb8e961f0cd990a1003f967080d8118e0c3ca6d5ecebc9705e735321ccf6e7d8dbd8e2524babab0979e4c/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 8",
+                    "url": "https://fds.jonextugundu.net/_v7/f9121b2e62fc65a4e37997d199198886c09d52644d70484dc17e9b57b5455e5ef51aebb0cfd6a8d4ad8b1b9fb6e9b53f8ee1ac62e2472e3e6edffd971b1d5c09d21315a25f170e8d54c41502e723341fd8cd90f7fe9e50f543d45b04d951d14ba8a1ac44f45c56d7bc5b127343cb6912decb781470403548f876739ed028d352/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 9",
+                    "url": "https://mmd.jonextugundu.net/_v7/7efbc5de07d45ea0a51d69293bef40910b719a91e7c1a5964237c753cd92a8ca186be00506c210eb6aaa02dea05ecf7243db1b195995946f1250d61335077ef83cadc66004b3455b406ecc6c66a9e394161aafdb56aebe6f1820ff86cab31d876d0bc9deab368912ebaffc2f110f525e66d0ed45161a06bf11fcc01db5f98b25/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 10",
+                    "url": "https://tt57.jonextugundu.net/_v7/b53c1ff0277662c82e879f83bbf81e240c6bf972913d5993fa3180acb61d16e54ce6f265946d0e8585e1264566ff4ff31787f92500716cdd3b52b059294eb9a09a1d7b93d13935b411dbfa1bd8486d459595aa965e42f8e70558662663b2ebd3906387337139b331dd60c22f1a1d2bc4395d218733b47ff1e1ef45644feb8f0a/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 11",
+                    "url": "https://tt57.jonextugundu.net/_v7/73a969b82db1a19210ba4c05b4d9606bb66a83bd399d406219736db3a79117dcc4c67e664a7f4dca4d5b85ffec400d511ffa38f830e57fe6ea2613278764c8b860787ed1011c3c57da3c70069996a55ce2c6c93455c44174e8e963e5097843c4066bc1e120dd6e4cd4fdd4c8d85335c9c6395ed882834211030a0f12925e1b9f/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 12",
+                    "url": "https://fgh5.jonextugundu.net/_v7/108262ae60dd55174cf016853d86e451c6ffd65fa4c0224ae523b1d000ff2836534361a224407909cce353359ca7a77c3f2b04bc3e1023516bf73728f5c503c824b9308cc8c6bc773f45f78da34f61d7965fa864f452b6ba2f8b997c8218c915f5c991e84b967f02fa3ee89a84f9276d3eafc2cbe7a1fdd9c5fb20ea82dd0b8b/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 13",
+                    "url": "https://fds.jonextugundu.net/_v7/194d606c09a89412208f4cbec6752ca8a047e1e2278a6964670013397527fc33fd335a4e0a82da5e9ded27d2fca6cf44e96da453b6ea330c5e4f199414982c7666631afcc7bbefe53c1ec3aa79d93989d21af5ebbe7eed6c67a624b85978db67a5033eead24fe9561fd9c560fd2f2699ad91b5ac1217944d1de1f639b64191bc/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 14",
+                    "url": "https://fgh5.jonextugundu.net/_v7/09644f1a3ba7d539bb93f8c8ad10740d6982a478f919f2986a6fcc580e3d9a99e0b9f6cd0cdd347ee709f0988dd51e195e8aaafcb7ebc3e1f5eaa0126b0f137019c3f9512d96586740e261a855d8e49e5f32b63c59fb7b2674ca09e13a1bfed2bf48c376f86b692c5ef4f299d3c62fdbe2418e46d41d362ba94256da93dd015e/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 15",
+                    "url": "https://wf1.jonextugundu.net/_v7/c52c3e3c0bde94923807313e51983eca68fe867681a54162ed0b02bb34a4f4ad73afec899b29999ed64218c0e969602a13097951f03b42c084a6e058028c25bf9322b957712be017d9861119bb5e532696108612e42f8a240e3b4fd178d4febcb0e760862f306cbfc3e1dc54c5b914af1b40b6c03a36c8d49886ec36d841dd3d/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 16",
+                    "url": "https://wf1.jonextugundu.net/_v7/0aae498c291bc0f45c8f5f9cc580ffafef9ec57941711f542ca54f661d120332618daaa0fdfd97dd88515efaa89e5985e8ef7daa09a0a72ef9a27b4560838689a9a83051000af20264ea52aac941ddaceec592ac6b54eedfcae19895da2ce18a1d9933c243c57fb29904b06e89dd3941f5b0afc6756b30a90ceb40cdb59652fb/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 17",
+                    "url": "https://tt57.jonextugundu.net/_v7/fa116d35de4c440420dc162e1ca87453d2d1a43216d32c20cd25e0611618e3b127874b1e5ac1a106dafd207d58e69eb650854f4d0e049ed25d1a6e438346815203bf4fd965cfb291a869808fb00962265a859ab6e51e3cebed8832e8e72baca7ca176ab004e2bd7a3453e8868d9f89a349c9f31fc88985cf0c6b3446983bd903/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 18",
+                    "url": "https://tt57.jonextugundu.net/_v7/1b09b413ec569f92b27206ffbc32a591162cda389b08c46b1683bccdc837ee02a8d718aa4941ee10ab78a09a69989126704083a78ac9ac89bf6a9da4edf3d13c41b8aa982d6f972dbb83cd193a449b3d04674f05126a7375eadf89328ff4121f12e5f294854a338372de219479272a4b0f3ac5a09b3b1c8f75364b26222dff57/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 19",
+                    "url": "https://mmd.jonextugundu.net/_v7/d52e5c7912b38cf064d47f33d85ab56f90386cfb3013938eb55270f11e4a278d7d202824c781c8a5240221994ca89d7f77452572920960ba77c2cfc24d6bf739a2af54db2e1f3cc09d6325966a7f366502e05910fab7b866ee6ea0ff2e1d82d3ff2d1a29ebe80fb3c802bd639a3d715eeb5e7f53946f35e36ea2eddf3769ff0e/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 20",
+                    "url": "https://fgh5.jonextugundu.net/_v7/df3680f4250f5c6420565e99b6830a539f6d285cc71046adbd3d9735b8f4dcfb995b3054c6629af862d687c550dc117b0dd7c351da207c33488c305e5e35cd4dfb1f0bfcce235de6bb432705b47c92b586e7c56c683a8e12752841b821c9a48ea766106905e723bd7e5be10403ecb022e50af0a1603db60447af27af7bbd04b1/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 21",
+                    "url": "https://tt57.jonextugundu.net/_v7/566bafc86dd2fcae1cb6f4bcabb55fdd67c5c459bebcc6cc9ab654dd78c701832218651c65c78e19ac963999ebe808163c2d0fd89ddd851572d570761d8fce95ffe5687e9b0574d4acd1396470fd9dace937931977abb23386190343b8edce12383c12b9739e7116f7b5a802d6e26d0677234db76db20e80a2090dc6cd114611/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hlsw"
+                },
+                {
+                    "title": "Episode 22",
+                    "url": "https://wf1.jonextugundu.net/_v7/af1775019402861bd58d84bdb3fe37d8265ad3806f4d3854ed50dd8960ad199e5ff162dee83a7897b200fa13aea1b0cd472be235c3166b96423905bf7de0067071e38e3849af70aacac00aa6ee98ddb6eba9c0bbc7f6c6fbaadf13c6a449c3f305f486a259155cc9030e5cc9820a0c107febc16e0643c6222cab189bb2023753/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 23",
+                    "url": "https://tt57.jonextugundu.net/_v7/17062a1514b688e7199e33f53ed6d7856fbf00000b542ed9fe039b824004a42cc79b21d51798ecec80ea2238ad94b004326ce11131c1c9d8d299a8558026899ffa7d3f51cb4b590f4fe1f69744e6025d360d54dfbd92d679c8bf366b4b76b69a37b196139fcdf351e6f785ba98c950790193f5b7f36d9cdb84e115eae3f2df62/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 24",
+                    "url": "https://wf1.jonextugundu.net/_v7/7066fcf70c719d5f9b0bc9044fe9c98507b4b5a1a43eff5eb93201791c0ae69fabe4e9744a7c4cd1ff178b5893206fcf5d578b5edc18d8e007c40b27e1bba1aea4f06cd6e8f0a5cdc000f94f3d74f94568067b4be1471bae708c89c9f3b820f54588f5681d4e074ecef4f9d5af523b957f577d146adfb58b538024b592267e49/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                }
+            ]
+        }
+    }
+}

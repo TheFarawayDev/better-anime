@@ -1,0 +1,210 @@
+{
+    "title": "The Faraway Paladin",
+    "seasons": 2,
+    "series": {
+        "sub": {
+            "season1": [
+                {
+                    "title": "Episode 1",
+                    "url": "https://fds.biananset.net/_v7/a732a92afad89c0ade1f831341fa9f2e9621e3e2181341099fd6e8212605fba36fc6e2c781fa85126adc8cc7f799eeab7a71b7a4f3691fcf2cd97f1f9df36a6cc5d178c1dae3cdc834b397279b8b3120da455efc1884ed4c70bdd9a2fb6b29394c2d62ead43e0793a981fc0dc500543b6f25dcd71a21c26ec6f51ae5942106e8/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 2",
+                    "url": "https://vd2.biananset.net/_v7/3c38b681dfab7c17fc9566a4cefe6d5597826173ff6ca856b38020e7d06dc943f35a31fcb30739055071f801bc6dbaccabab83f8539273a052e9b4fe81e594a58a0bc3980dc4b65f4927c724e09ebbbec1de16dfd90f91fd5fe48973daf054e3d9de92496b91dce441bbd5024344e907309af96a5555673e8fca9cfac03eef40/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 3",
+                    "url": "https://g4fv.biananset.net/_v7/be2ffac6e37a4100b586f1afcedee3ce1675555e9b92c0d570980e3f6f73128967cc18107d4fecfc7dce792e81122c70581eed4c49d04c0e9e16376c3001c259302ad9d7e50ed5c5f0d4e1b1d5bf89e1f863fda7fac4e41989167c635097a4cbd0a615c53903342850b82cb4c5cdc6a4dfd76b691b631860a6de0dae8d03816c/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 4",
+                    "url": "https://g4fv.biananset.net/_v7/dfd96c3b9c103c23b9bae0d96ab288696a033992b67e93e3f43c48c3415ca966825b4a8523d4e8dabc3aa9c927f34ac438d40f79292cdf7e3ef9f713bd394c0031caa38d95d0869dc7e9c141372f343e5d4aeb68d04570215885fafaa16df988d1febec2d13673f5314485f83b06d6bbb16f2e56876a449356874434dcb7ef3c/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 5",
+                    "url": "https://tt57.biananset.net/_v7/641909a930f1fb7ce76f82baccbb0abcd6675a1a972d0cfe50619b619ad3b5de77bea4b3aa759f5bdea865e4511577790f289e4fa6433a2e61b8afe4204b9f5d36ae3b2658cf5b06b3b96aff4212512e4dd780a7836b7448fb2fa614d682e0776d439c72b1714a8e40057cf7dee9b26e06a84ff7f3d12c35961b3a91b215d49d/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 6",
+                    "url": "https://tt57.biananset.net/_v7/ff5778278fb4e9e3fa09dffd18e708c80fdc2dc227b7c57bf7356d0667f79b389977c56323553696b5c7be6b7610f740d29bf7eaa2ced27bab92d630a2ce36b0089a91d681701599ccd70b394e5e35727493f4f01d090326a52f5c0cc80e319719837b6176f1fcbf03d77c50e029143e6ad00bb71f65c4a800024317558a56a8/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 7",
+                    "url": "https://vd2.biananset.net/_v7/f7f8eef8749ea59282bc40932e378baaa5ed2d4880dda96d294079746b5d6b075e2fd174c3d7816d6a199791d6dbe01a350c61cc3f6d44c6cd0fa1624a6468db057150097bf53d7d80bf2ae58f5ffa244db1f0aa677bbb1053da1557c74b453e3e0b35f21c0382b63e67030d4555a4fee34998a40d6f9acca59562a998f8fa8b/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 8",
+                    "url": "https://g4fv.biananset.net/_v7/12184b22215450d70d17a1c763715492d24e6d162aeda77ed0ab42ed314bad34b10073ec5752a6a4750be4c2cea142798be7536a0484a1ac2af6d81b4c414d1b024b6c93ee5a522d05da459a99af64e62c974035d9320acd7951cc0c290e5984ef2acdcf6822fd415e14e13bfc6efc1949b6d322f9a13ba53d3b4b6196c33ca1/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 9",
+                    "url": "https://wf1.biananset.net/_v7/5495624bb734676659f30e72d97a14d301b1725dc0ceda89ceb9f303760d604c4accce74475d9649df890d302c26ec46da4d3b84018ccde4ec6fc9bf94ec8a5223bc76e090371f74ff265950a2a8f9c2f074d9464227e3aed10f23fe389615596927a6d157d9c0e8ad7473d492fd41223f233629c3b9873762b8e4b2c39cc237/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 10",
+                    "url": "https://g4fv.biananset.net/_v7/580d9d50f7733bd5a9c51360bf558c6d1d1aba30542861f6cb390d934a1dd5d17a6731b3994216ee4c4ffd2af1cdd3d49af05514c6f879425421fbd0f0b8c2e1ca7c53774ae4dfde48c9cd240b7ac9a3d1da191dff914e7b8eff56c0dfa9bf63d6330049db52d6ec8331f5bcf3c6fe7c561a040ebec5a6004393dd2554fae1ed/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 11",
+                    "url": "https://fds.biananset.net/_v7/ae8061ff4c605062cd997d8daf6c1a2b86f259d304f0711cf4bc1b6ee027e2e98668f1804866f9e84a01e3a5cb4d9e2b769fc137f675946998c4b17f3a2cadbe3a7438b3c15fad7a36414eff5b67a6d613ebffb424f3f41b5444ec4396f2f34870ab842d5445c6b4b49f7384ff22211e708f67fa4c9aba84c3b1d8dc0f6cfa27/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 12",
+                    "url": "https://vd2.biananset.net/_v7/1e176c1941f8c4fa9ba81c003b207b7cbba0af9977d90e4ef660bf89ccb9ae61a46bff5f1af27322891b078007f0a28d3f3b7024b1251a2cf743ce16707dd4f69804848299a8d90ddb916af3ca9081a7c2af53dcd450e54908baa3d9ab1c9b629d1ce128e980240b1a3350e38ca94f671349c9420a9cf9eac92b6cda5513a7c1/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                }
+            ],
+            "season2": [
+                {
+                    "title": "Episode 1",
+                    "url": "https://vd2.biananset.net/_v7/0df077a7f19cc8bf8706263c10b2ec4f27f9468e471887756b92cdce6b46fb2c14b4ac97b5cbea8f5954727ff4da327b6d0eed2c45077d36cc9f660ba42db7ed0caa496e79ec861353db9dd234d1e81b7232a7149c7f58756985d37377f4fff0ebb139aaa68a1aa10ff419976aad9eb09eb35c230364aa910ee0a772823773ee/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 2",
+                    "url": "https://vd2.biananset.net/_v7/643db0449c150e3c5930654c37fd4b0757933390702e941b003f1b31aff64dc29133bc3930176e737a461ec4a737e1d6254b085e47c68f916a72f6bc8fd2d958d75e19cf242ef425e388fab821ace67782cc6baf40c801deff68654e6d9412a00c74e6cbfafbfe550a63c0150c7a4e54c1f6fffd836131609d07c85397045f29/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 3",
+                    "url": "https://tt57.biananset.net/_v7/379b692e02a4cea777c91cfa06db89b3658d332aecbc6d193fd99e0acff51f240b600fb7fa05682ce2139b12a357ce04e51f61160bdf6f455253b3c76a004bfb1f71c8abd8383b816dba39e1d5403080585afdabb936842f80d79028a6c1dcaf153f0c57c34a9e38282c20f9d9b4454e0c0eed570a9479c5ce24a3394feb3ba7/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 4",
+                    "url": "https://w2r.biananset.net/_v7/acd60feffb2fb99ebc969c4fbcb4b80401737289bce4a91776b674d44931a73b56d8bc119ab306dbb49708014855c467a5b809fa18db89f4b37a0286c483689e7f8a918416bd2f4b67349f246d76ba4418e684f8e2043acc38cdea2dede9236864c80e57f287aa2d475872912827e60dbfa870614a00b6e0a9371453f4f55634/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 5",
+                    "url": "https://fgh5.biananset.net/_v7/1fa93f7c0df7ea2c09fdac039f39ffaf653172c3b36b5059bce8dc041d4bfb488fd55d92d81b5f26dde49b3d914973b2a6c1a4af19958149a99deb0f0616948344269d6529d1965588fd80aef28d6c3386e85f859478eea14af153f2dcf7402d5d3764611299c98a51f61ec4593fe8d471a1c129239a3005689a677892ec398e/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 6",
+                    "url": "https://gg3.biananset.net/_v7/46cb087f3ae641ed66aedd272f027aed145057e0897c3cb27bca558b8c870697c9bd999fd26e194b96a5af388a7f921cd81b17d071cd37a4ff62061eb96961cf8c9a59343b2748e7023ca9f4774f9dad75e6c7c46cd8c89aa64ff31c20d6e3adb30b1e9f393cdcd5056ae0673b2e4ee1deebd11fc5cd9b7d977416eb370b00b0/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 7",
+                    "url": "https://vd2.biananset.net/_v7/f044e8a8b5a0f77c382ccfa6c4ba1f77ae86b9f61611c720c13e576393ffa2dd4f28a83a498375b5172da82e2feed6ea7fb47089fb1bd1690e692718c6c55f79bbe41501879f1262865fcc23aa05f86ec3afb95284331222b08b3d7034ca8f96abfdce1ce351691cbe937823f004da25fd509e5b35364030d5bdc99043b8ed42/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 8",
+                    "url": "https://w2r.biananset.net/_v7/1bddaa9efe1c718536c1e3a272396e317dc402d6352378bc6f82874ba1dc2803a96ee764df32590d0d56c264fca777e374ee6578e2f03b4f0d47c66f25a5bc428fbed4905bb9df65a19ed3d2212658de66382ab34acbf50197eba584bd509c755ebfdd8e0b57d6fb595983f0b17b2772b5689a33d0ef1b244c4877aaf648c499/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 9",
+                    "url": "https://g4fv.biananset.net/_v7/02c541fbfe201adfaf2527b492122028d0348fe9134b1d0209fd99b7e17bf8866350428c50f8d77c0be022dde927e21310a2c0f38d86ceb6e01b7d88b3e0b2f6316d94b945e54b621e1a883899a6e2cb912a142d59bc7a91ef47d9132be9f70d4fbc3a772f2e9040546987a34873d402467118f6b2e1de9608a408a96ccd9c79/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 10",
+                    "url": "https://w2r.biananset.net/_v7/e4d8693cd02728edecafc25eb81e4b91ed47acdeb29a09ab36eae661eeee1b2c5a93b2338823d845f226a5078d6c81b28c4a59a58fbbd4d6f96769ab3faf674fc882650fc4f3bf324a5f253c94702a643cb7616f95bbbeb360066480452bbcca5e69c0961562921e86860f9a60d8060a024817ab20076412c487c245f12ca782/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 11",
+                    "url": "https://fgh5.biananset.net/_v7/b0c275e83c25cb762233c5192076ab828de83f3d10775b33e82ab61a8c0097de5d574bf53ace551d98c5bb954fdcd21eade8f42fd0c870960a65d01bdc74ba6f1767d5f0401d14d650550152da80786483df92ec62cb1adbe9093741d0da5f1d920c3a4b170d320f8b856bf1b46e27dc5a26cc1618613e720d67cdc6be993f09/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 12",
+                    "url": "https://fgh5.biananset.net/_v7/e723531d74bbfdd1058b12b78e7c9effd36447e31124bd0b0b9dee881ba8e80c1f075689af1630f00887b1d15ae59d0a518006a05d5365dc9816f1273405c3a065ab2a901f30eb8caca90743d549c47c3ed5dffdc8dc71e479e5a93bdcedc21c7bd8723f38ab4cbef30528f054f5d4a30fad96bd1d98b891b88676ee3bf72c94/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                }
+            ]
+        },
+        "dub": {
+            "season1": [
+                {
+                    "title": "Episode 1",
+                    "url": "https://mmd.biananset.net/_v7/bc2b0325041c2b56ee364108d37cbfb18a509978c90d81780f26bd8a5ba67b64cfd086d24c5a516557b41c1d36ea4a68ef1d5fcd9a30584f704d48d5ae77beef7c3dfdb674fe277fd7f8a0f33b4efa25cfdc12f8ca733f7901c3d73cd688bd38b828eb7d29f4549e1b018849f6dcf04431718099bef1918c8d336146f1c61bbf/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 2",
+                    "url": "https://wf1.biananset.net/_v7/012bbdf4d7f1ad07bde27c43b3611bdadb528880511fd9f55ff127c96dedcb3c4eeabd4f84f41801264133caff67df4c3abaf73f1637d37ab1ce6b3af422d984694bc72ab894ddec3b360f413d06e76a7839a34b7a14bf15dd085b3e8fae8c64c9504cf5fa57f305677689bb50eefc47c0e049cfd30b09956780c702bf6f7b0b/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 3",
+                    "url": "https://tt57.biananset.net/_v7/bde8343c8d13262783af4fa2c78bb39d59a92418e139bbc7fc6899d750815fa8be07a5bbe2aba966cd6400fcdb4af662169a2f1f09e6ec32671bce2c7b947f255a47e2194e30deedcf3bdfb8d7443cf517762ce7b9560e74ab913bfe2e0db011c19dd61c633b186306a42146c53e5d1b43d9215c918898296769f3edb664b5ae/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 4",
+                    "url": "https://gg3.biananset.net/_v7/1247c6238bbc20a3750d5643c2d37d87d519a9d5351372693a406741a22911388e2c88a772b7890c96c89a62ede5f28ddd2778dc006dab8b8b14c3119de9247922085bde5b619a734b1625a988c4a3861bd9abf1ffa69d4f05bc4d18e4c8dbf96d9c561a9f8476a8546b5727bee0b7e28a4af0f41b1914aaf13975193fc7cc9a/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 5",
+                    "url": "https://w2r.biananset.net/_v7/67801f530e5af973d31a0d59a3a8846a23f050078daa3ec5994178b78b0ae08e05609bec323a1b5fa91834f3bf309d44cdccb5cc6419eee494f7abf2548788c9bb89163be396425ad7b8079e3522ad9427a9019252854c25e372634b6a8a30c6bad82cdde00bffc450b5274d2f4dde65b2bf99ed516394616d7449c12ccc77a0/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 6",
+                    "url": "https://mmd.biananset.net/_v7/ec483d172c2e088fe127bf2ddea8e56e8d519136b32a6d0d6521444626afd5ff4241d88baa20b1c226e536aca7d42e67ea16389b37738894027d8bae98860595c261e921c01b94b43e9a9f65e092b609f39990fceee48ff1ac75553b897f60d4a5a8f858f3254227856a676ba278b444ce43dadbb4556adf2e532e9d95fc977a/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 7",
+                    "url": "https://vd2.biananset.net/_v7/e2ede231fa29c9255e4cab84ee27e32f96cf62ca8ea10943c3e5afbf4aa86c9c0a811ba5b5410e96d84af646fa904077587cda8e0e41844fed3e48daca8961682117a14bf261b36ab358a75385d2fbb5c157faea28cda139444c48deba649e22f7309c7fef97af2489320ebb58ea7d2992bacf6a01a0e631c0d2ca5ab6c5c1dd/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 8",
+                    "url": "https://g4fv.biananset.net/_v7/2207dfba271913ce2e1711729e42b017c9631e27e910ce9f419f3defee9f88492b961963bd5bb1ea5688ae23c38bbbc06b7727e8d294081c2d208a3bf532162b7350c428282dd18e7ea7aae3328fd1f695526403e7bc1f271d5ba74bf8dff270cb354cbb0171a7afad3c779a8bfa18d1a2640408b8e1267bf39b8fb2249a512b/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 9",
+                    "url": "https://mmd.biananset.net/_v7/da29946b2aeca5364847ac77ec5172c24f3133248d13ea0aa0ccbb6980cdd00658c54b57d3822ec62714ba5c3e48fccbb33c23e6382936d6e79bd0f2c6d5d60397ffd22ad8620bc1661ad8e117f3c848375c4a6561f81dca0a878fa076927dfb17505bddeb693732c57371381506d711f943923fb507a8fc71ba3ea828a1fe0d/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 10",
+                    "url": "https://mmd.biananset.net/_v7/bdace425ddd68424313a7545c1311caa49ac2f27341dfe51a00326814ae12554c3629d403d65570e7ab496c8182024c4c11446a95038ae304362b2f91b653d2df20bd7c4cfcbc60e639162e542bb2bb26f8d8dc206e8bc8849eef8d1aca86f01d23391376a3f0eed065eadb115dd2ef2206098079c747a07a1714dec9051a40e/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 11",
+                    "url": "https://mmd.biananset.net/_v7/1bff9e457fad20c9823d61b3c33331716381c69f997a34c1925654455613bf41c5800cbee721ee29efebf43994d28689ca34bdc695b08c4599b334365b9f1531d39a475ae0ab4ff82139bac3ff6ae89229bae8cf132d36c621cfdfdcf8443202f8c4f838fcd5b2378ea9fd22e3c96e134d10e446f4e9f500c4bc423d78687430/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 12",
+                    "url": "https://gg3.biananset.net/_v7/9e7798e34d5ed88cad03cb5acd21266ec7ba155bb41145d97327a26f0831ac7ad5e63ed349e0c183659cea2072651adb6f7a49bf82bf95c29df2a96652e0f0d5891dd7ed0755271986a5e520003df5267516a689642ad9fd9e17cf1fefee185f3b0b41b3896bd06d1cabd264e1dd54fbf3c5666c496f9420495bd94c4f51cd1e/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                }
+            ],
+            "season2": [
+                {
+                    "title": "Episode 1",
+                    "url": "https://fds.biananset.net/_v7/f6d068ec39c264a089b33179ef0841860c3e305b4befad91415e50baeed9b0c0bc9e7e1dfc22dd03b7f2831911b246018e6506e5c834757b1ec382abcc2d90ecce0d53fd3f6db818bde874b07987d60605a90a59ab0ab9f11908ec25e05ef0fcda59874f74e6570eefd9a6a20bff2c60ffba0c2c271660e77567c4bc6237cc28/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 2",
+                    "url": "https://tt57.biananset.net/_v7/93d1661cbe2b74299c4cfd751b8545e8e5858f6bfdddf6127b98cb1a7377a59ea67ac533dcf70ee5eefe516ad800286b543c39417a067f81ca7147b7707720bb24817d2f920abc677b156f0a7c2fd51b3298ae1f71f036e4d726a00c46c2081443b143b7a2e098c81b08895efe011be485a23c5dc2332d67119526f384f47809/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 3",
+                    "url": "https://fds.biananset.net/_v7/590d8fb95512f69350864dff9131ed2c8e3e9121ed6ea5bf1b94987762b8953c419ba648b88f57eda8b95f75a6e05684e78494b3dbfa45c185518c09ba2309e9e5c58ca20401fcecc7b65ed0fd45e5cdafa2d8a56952d469d3ba6497cbc876586ec9af791aa4e06631cab4da7929e8694c99028605ad53060fdb8dc38e9f4c61/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 4",
+                    "url": "https://gg3.biananset.net/_v7/02d55c163275e0b20ad72389e6b5a2413e25c62fa8cbf2ec28adaaf7c70fbea976d3bc5e6ac9139b03c8656681e1cc0c16c188006a3945504487b3da50de35606339ba87e9606b884a1474edc14981bff3e29f154c5ebf289ca277489024c1d74ee22010a1dd192c451f31b423571f6991eec3ab736d20c92213cab8d7c5a5ba/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 5",
+                    "url": "https://vd2.biananset.net/_v7/578f1f7495d58c1b828832b333e8f84c84b3680e6c32f169337130d2416c2ba6896ad8c50ab6f7175b4235350e6a1be2b06e2d0be1f39879a3e7866dd42221bcd0f9441e3ff65fad35269733c1dfb55dc42cf2b530a866bfcaf126600dbbf6f6a42a9f3493271b46a184a7969c2d397f7eb7944187283ff6f8ea8aeefe4d8f88/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 6",
+                    "url": "https://w2r.biananset.net/_v7/3c79350a985278af6fabd352568edaee8fde82cb6e6c20e6dc7e174340fd1291f60727bb8af44a07edf90d94442e44be2db8b1af90cb64ebd76605c55e4208c187df3f1dd26991e0c8074a0312039887b1dfcca3b30b27222465172740c39fc7ada57fd36275260968e8648b1dac45c716e8e45f26a2881f99f32207af49bda7/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 7",
+                    "url": "https://g4fv.biananset.net/_v7/2cd034424b476ec82170eb1e7eb6503c4a049c2332e8ae4331051fda80de0e17537f65608235ffc2dea6a3672f4a9b427f1a25356b507d35a95248de4514db46e696ad99406c17eca1394e2ddd4e10f19ca011914c41ca81943287a8c0be674aa76c3a7a85567298cdbc6e526f487f397b5a913def4b95dfca1cb97a49c8ca9f/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 8",
+                    "url": "https://wf1.biananset.net/_v7/f78f7aff5193ff886b9dd12675785b513710c1c75039953ed6d1a8665c71285d420cbdfaa042479f597b55ecde33d39a67cfe375ccc858a9a282aed357aacc6f422abd8a40a5456b3ba0483016c34daba004a75e17d74055a4af55daf41d6ca0babc2f71811f991d6bb797e3e2ee6638cf1c06a6519c682c954c3f9fc5e403a0/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 9",
+                    "url": "https://fds.biananset.net/_v7/34fd924cc9875b4b76cab1b45c7dcedc40430cfd822604add74540589cf399e3034015dcd9cbe160a2e851c8fb30dc310462f8261d00a592b06374dc5815956300d9aad6fd5d357e6f47bdca0f307ba58e5942c080651ff559243efc11d29a9c84e46397940501b557c576f5a69196c5b58c8944d1e916c5a424cb889e04de85/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 10",
+                    "url": "https://wf1.biananset.net/_v7/70d744cee94b9edeb1919f7cb0d0bd62129558cabf7073e50e3939e7f2679e66a54793abefd31c9c7114a9773b2cb3aa235023dbbe900af1e6c0012315074e4cc1653f2c11b6c4680d969f7af94d75e5bda8a3890ef3d7fe99624eccfcae424fa5bbf9baf6b85bfb66a91dd9cbadd4c0641647134314f00a5746dddabffafe1f/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 11",
+                    "url": "https://w2r.biananset.net/_v7/4096c6d099d068bf2c9321e41336b5a30eda6c2f209b75eaee61a02cbba3a4db2e001b089cfaf2d8b703d4ae8c8198b73e4a2fb57565c8426c1270358f9cd7b25386467950bb10fa4f345cc69a014da623f677d30d9c3d8302a9df068ea91f090438f495553b1b243520db12b620cacaf781800b2f83d233c39415a89b65ad5d/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                },
+                {
+                    "title": "Episode 12",
+                    "url": "https://tt57.biananset.net/_v7/af1c242cd101837e7fc0c80c5671218cb305567d8f91575a6a2a343f51c33e101fc0b04aa1dc5217e6f8f77a18b6ba98b281add6c2db65e2d27d18ad9d65c8cd1790b27b80b53207e65b1ab789bf8be3f8f0325038e0a82c65461d6bc634348acf2020be9c0960296dffb8f375944910e576ff545729e6c73d14b42312d08ff9/master.m3u8?faststream-headers=%7B%22origin%22%3A%22https%3A%2F%2Fmegacloud.tv%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.tv%2F%22%7D&faststream-mode=accelerated_hls"
+                }
+            ]
+        }
+    }
+}

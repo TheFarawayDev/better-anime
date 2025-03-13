@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/thefarawaydev/better-anime/watch/refs/heads/main/other/BA.png">
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    :root {
+      --cadet-gray: #8fa3bb;
+      --bleu-de-france: #4a88d7;
+      --charcoal: #3a4f63;
+      --white: #ffffff;
+      --steel-blue: #4b7db9;
+      --light-gray: #f0f0f0;
+      --light-green: #3f8394;
+      --light-red: #d05656;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        background-color: #2b3e50;
+        scrollbar-width: none; /* For Firefox */
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: #2b3e50;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+        padding-bottom: 20px;
+        scrollbar-width: none;
+    }
+
+    header {
+        padding: 1rem 5rem;
+        background-color: var(--bleu-de-france) ;
+        color: #000000;
+        display: flex;
+        width: 100%;
+        height: 25px;
+        margin-left: 150px;
+        margin-bottom: 20px;
+    }
+
+    .logo a {
+        color: #fff;
+        font-size: 1.5rem;
+        text-decoration: none;
+        font-weight: bold;
+        margin-left: 2.5vw;
+    }
+
+    .logo a:hover {
+      color: #225186;
+    }
+
+    .content {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .video-js {
+        width: 85%;
+        height: 490px;
+        background-color: #3c4a5a;
+        margin-bottom: 10px;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        width: 86%;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .toggle-options, .season-selector, .setting-options {
+        display: flex;
+        justify-content: center;
+        margin: 2px 0;
+        flex-wrap: wrap;
+    }
+
+    .toggle-options button, .season-selector button, .setting-options button {
+        background-color: #3c6eb3;
+        color: white;
+        border: none;
+        padding: 10px 10px;
+        margin: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        flex: 1;
+        transition: background-color 0.3s, transform 0.2s;
+        flex: 1 1 calc(33.33% - 10px);
+        border-radius: 4px;
+    }
+
+    .toggle-options button:hover, .season-selector button:hover, .setting-options button:hover {
+        background-color: #5a9cec;
+        transform: scale(1.05);
+    }
+
+    .toggle-options button.active, .season-selector button.active, .setting-options button.active {
+        background-color: #4A90E2;
+    }
+
+    .episode-container {
+        display: flex;
+        justify-content: center;
+        overflow-y: auto;
+        height: 200px;
+        width: 83%;
+        border: 1px solid #799ec2;
+        background-color: #537196;
+        padding: 10px;
+        scrollbar-width: none;
+        border-radius: 4px;
+    }
+
+    .episode-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .episode-list button {
+        background-color: #34495E;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        width: 90%;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .episode-list button:hover {
+        background-color: #5a6b7c;
+        transform: scale(1.05);
+    }
+
+    .episode-list button.active {
+        background-color: #5a6b7c;
+        color: #2b3e50;
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px) {     
+        header {
+            margin-left: 75px;
+            padding: 1rem 5rem;
+        }
+    }
+    
+
+    @media screen and (max-width: 768px) {
+        .container {
+            width: 85%;
+            border-radius: 10px;
+            border: 2px solid #000000;
+        }
+
+        .video-js {
+            width: 93%;
+            height: 260px;
+        }
+
+        header {
+            margin-left: 10px;
+            border-bottom: 2px solid #000000;
+        }
+
+        .episode-container {
+            width: 87%;
+            height: 150px;
+        }
+
+        .button-container {
+            width: 95%;
+        }
+        
+        .season-selector button {
+            font-size: 14px;
+            text-align: center;
+            width: 10%;
+        }  
+
+        .toggle-options, .season-selector, .setting-options {
+            flex-wrap: wrap;
+        }
+
+        .toggle-options button, .season-selector button, .setting-options button {
+            flex: 1 1 calc(33.33% - 10px);
+        }
+
+        div[aria-live="polite"] {
+            display: none !important;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a href="https://thefarawaydev.github.io/better-anime/home">Better Anime</a></div>
+        </header>
+
+        <div class="content"></div>
+            <video id="my-video" class="video-js" controls preload="none" 
+                   poster="../other/BA.png"
+                   data-setup='' playsinline>
+                <source id="video-source" src="https://example.mp4" type="video/mp4" />
+            </video>
+
+            <div class="button-container">
+                <div class="toggle-options">
+                    <button onclick="toggleLanguage('sub')" id="subButton">Subbed</button>
+                    <button onclick="toggleLanguage('dub')" id="dubButton">Dubbed</button>
+                </div>
+
+                <div class="setting-options">
+                    <button id="previousButton" onclick="playPreviousEpisode()">Previous</button>
+                    <button id="autonextButton" onclick="toggleAutoNext()" id="autonextButton">Auto Next</button>
+                    <button id="nextButton" onclick="playNextEpisode()">Next</button>
+                </div>
+
+                <div class="season-selector" id="season-selector">
+                    <!-- Season buttons will be dynamically added here -->
+                </div>
+            </div>
+
+            <div class="episode-container">
+                <div class="episode-list" id="episode-list">
+                    <!-- Episodes will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+    
+    <script>
+        let currentLanguage = localStorage.getItem('preferredLanguage') || 'sub';
+        let currentSeason = localStorage.getItem('currentSeason') || 'season1';
+        let currentEpisodeButton = null;
+        let autoNext = JSON.parse(localStorage.getItem('autoNext')) || false;
+        let isIntroPlaying = false;
+        let episodes = { sub: {}, dub: {} };
+
+        function getVideoType(url) {
+            return url.endsWith('.m3u8') ? 'application/x-mpegURL' : 'video/mp4';
+        }
+
+        function toggleLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('preferredLanguage', lang);
+            updateButtonStyles('toggle-options', currentLanguage);
+            loadEpisodes();
+        }
+
+        function selectSeason(seasonName) {
+            currentSeason = seasonName;
+            localStorage.setItem('currentSeason', currentSeason);
+            updateButtonStyles('season-selector', currentSeason);
+            loadEpisodes();
+        }
+
+        function loadEpisodes() {
+            const episodeContainer = document.getElementById('episode-list');
+            episodeContainer.innerHTML = '';
+            const currentEpisodes = episodes[currentLanguage][currentSeason];
+
+            if (!currentEpisodes) {
+                console.warn(`No episodes found for ${currentLanguage} ${currentSeason}`);
+                return;
+            }
+
+            currentEpisodes.forEach(ep => {
+                const button = document.createElement('button');
+                button.textContent = ep.title;
+                button.dataset.url = ep.url;
+                button.onclick = () => changeVideo(ep.url, button);
+                episodeContainer.appendChild(button);
+
+                if (ep.url === localStorage.getItem('currentEpisodeUrl')) {
+                    button.classList.add('active');
+                    currentEpisodeButton = button;
+                }
+            });
+
+            if (localStorage.getItem('currentEpisodeUrl')) {
+                const currentEpisodeUrl = localStorage.getItem('currentEpisodeUrl');
+                const button = document.querySelector(`#episode-list button[data-url="${currentEpisodeUrl}"]`);
+                if (button) changeVideo(currentEpisodeUrl, button);
+            }
+
+            updateNavigationButtons();
+        }
+
+        function saveToContinueWatching(id, title, url) {
+            let continueWatchingArray = JSON.parse(localStorage.getItem('continueWatching')) || [];
+            const existingItemIndex = continueWatchingArray.findIndex(item => item.id === id);
+            const pageUrl = window.location.href;
+
+            if (existingItemIndex !== -1) {
+            continueWatchingArray[existingItemIndex].url = pageUrl;
+            } else {
+            continueWatchingArray.push({ id, title, url: pageUrl });
+            }
+
+            localStorage.setItem('continueWatching', JSON.stringify(continueWatchingArray));
+        }
+
+        function changeVideo(videoUrl, button) {
+            const player = videojs('my-video');
+            
+            if (currentEpisodeButton) {
+            currentEpisodeButton.classList.remove('active');
+            }
+
+            button.classList.add('active');
+            currentEpisodeButton = button;
+            
+            localStorage.setItem('currentSeason', currentSeason);
+            const seriesName = urlParams.get('series');
+            const currentEpisodeUrlKey = `currentEpisodeUrl_${seriesName}`;
+            localStorage.setItem(currentEpisodeUrlKey, videoUrl);
+            
+            // Save to continue watching
+            const seriesId = seriesName; // Assuming seriesName is the id
+            saveToContinueWatching(seriesId, seriesName, videoUrl);
+
+            isIntroPlaying = true;
+            player.src({ type: 'video/mp4', src: 'https://thefarawaydev.github.io/watch-2/other/BA.mp4' });
+            player.currentTime(0);
+            player.play();
+            player.off('ended');
+            player.on('ended', function () {
+            isIntroPlaying = false;
+            
+            // Extract the part after /_v7/
+            const baseUrl = 'https://54d8e.infinity-loop-21.biz'; // Replace with your desired base URL
+            const urlParts = videoUrl.split('/c3/');
+            const newVideoUrl = baseUrl + '/c3/' + urlParts[1];
+        
+            player.src({ type: getVideoType(newVideoUrl), src: newVideoUrl });
+            const savedTime = loadProgress(newVideoUrl);
+            player.currentTime(savedTime);
+            player.play();
+            setupVideoListeners(player, newVideoUrl);
+            });
+        }
+
+        function setupVideoListeners(player, videoUrl) {
+            player.off('timeupdate');
+            player.off('error');
+            player.off('ended');
+            
+            player.on('timeupdate', function () {
+            if (!isIntroPlaying) {
+                saveProgress(videoUrl, player.currentTime());
+            }
+            });
+            
+            player.on('error', function() {
+            player.src({ type: 'application/x-mpegURL', src: videoUrl });
+            player.play();
+            });
+            
+            player.on('ended', function() {
+            if (autoNext) {
+                playNextEpisode();
+            }
+            });
+
+            updateNavigationButtons();
+        }
+
+        function playNextEpisode() {
+            const currentEpisodes = episodes[currentLanguage][currentSeason];
+            if (!currentEpisodeButton) return;
+            const currentIndex = currentEpisodes.findIndex(ep => ep.url === currentEpisodeButton.dataset.url);
+            const nextIndex = currentIndex + 1;
+
+            if (nextIndex < currentEpisodes.length) {
+                const nextEpisode = currentEpisodes[nextIndex];
+                const nextButton = document.querySelector(`#episode-list button[data-url="${nextEpisode.url}"]`);
+                if (nextButton) {
+                    changeVideo(nextEpisode.url, nextButton);
+                }
+            } else {
+                // Attempt to go to the next season
+                const currentSeasonNumber = parseInt(currentSeason.replace('season', '')) || 0;
+                const nextSeasonNumber = currentSeasonNumber + 1;
+                const nextSeason = `season${nextSeasonNumber}`;
+
+                if (episodes[currentLanguage][nextSeason]) {
+                    selectSeason(nextSeason);
+                    const nextEpisode = episodes[currentLanguage][nextSeason][0];
+                    const nextButton = document.querySelector(`#episode-list button[data-url="${nextEpisode.url}"]`);
+                    if (nextButton) {
+                        changeVideo(nextEpisode.url, nextButton);
+                    }
+                }
+            }
+        }
+
+        function playPreviousEpisode() {
+            const currentEpisodes = episodes[currentLanguage][currentSeason];
+            if (!currentEpisodeButton) return;
+            const currentIndex = currentEpisodes.findIndex(ep => ep.url === currentEpisodeButton.dataset.url);
+            const prevIndex = currentIndex - 1;
+
+            if (prevIndex >= 0) {
+                const prevEpisode = currentEpisodes[prevIndex];
+                const prevButton = document.querySelector(`#episode-list button[data-url="${prevEpisode.url}"]`);
+                 if (prevButton) {
+                    changeVideo(prevEpisode.url, prevButton);
+                }
+            } else {
+                // Attempt to go to the previous season
+                const currentSeasonNumber = parseInt(currentSeason.replace('season', '')) || 0;
+                const prevSeasonNumber = currentSeasonNumber - 1;
+                const prevSeason = `season${prevSeasonNumber}`;
+
+                if (prevSeasonNumber > 0 && episodes[currentLanguage][prevSeason]) {
+                    selectSeason(prevSeason);
+                    const lastEpisodeIndex = episodes[currentLanguage][prevSeason].length - 1;
+                    const prevEpisode = episodes[currentLanguage][prevSeason][lastEpisodeIndex];
+                    const prevButton = document.querySelector(`#episode-list button[data-url="${prevEpisode.url}"]`);
+                    if (prevButton) {
+                        changeVideo(prevEpisode.url, prevButton);
+                    }
+                }
+            }
+        }
+
+        function updateButtonStyles(containerClass, activeId) {
+            document.querySelectorAll(`.${containerClass} button`).forEach(button => {
+                button.classList.remove('active');
+            });
+            const activeButton = document.getElementById(activeId + 'Button');
+            if (activeButton) activeButton.classList.add('active');
+        }
+
+        function saveProgress(videoUrl, currentTime) {
+            const seriesName = urlParams.get('series');
+            const progressKey = `progressData_${seriesName}`;
+            let progressData = JSON.parse(localStorage.getItem(progressKey)) || {};
+
+            if (!progressData[currentLanguage]) {
+                progressData[currentLanguage] = {};
+            }
+            if (!progressData[currentLanguage][currentSeason]) {
+                progressData[currentLanguage][currentSeason] = {};
+            }
+            progressData[currentLanguage][currentSeason][videoUrl] = currentTime;
+            localStorage.setItem(progressKey, JSON.stringify(progressData));
+        }
+
+        function loadProgress(videoUrl) {
+            const seriesName = urlParams.get('series');
+            const progressKey = `progressData_${seriesName}`;
+            let progressData = JSON.parse(localStorage.getItem(progressKey)) || {};
+            return progressData[currentLanguage]?.[currentSeason]?.[videoUrl] || 0;
+        }
+
+        function toggleAutoNext() {
+            autoNext = !autoNext;
+            localStorage.setItem('autoNext', JSON.stringify(autoNext));
+            const autonextButton = document.getElementById('autonextButton');
+            if (autonextButton) {
+                autonextButton.classList.toggle('active', autoNext);
+            }
+        }
+
+        function updateNavigationButtons() {
+            if (!episodes[currentLanguage] || !episodes[currentLanguage][currentSeason]) return;
+            const currentEpisodes = episodes[currentLanguage][currentSeason];
+            if (!currentEpisodeButton) return;
+            const currentIndex = currentEpisodes.findIndex(ep => ep.url === currentEpisodeButton?.dataset.url);
+
+            document.getElementById('previousButton').disabled = currentIndex <= 0;
+            document.getElementById('nextButton').disabled = currentIndex >= currentEpisodes.length - 1;
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const seriesName = urlParams.get('series');
+
+        if (seriesName) {
+            fetch(`./json/${seriesName}.json`)
+                .then(response => response.json())
+                .then(data => {
+                    document.title = data.title;
+                    episodes.sub = data.series.sub;
+                    episodes.dub = data.series.dub;
+                    generateSeasonButtons(data); // Pass the entire data object
+
+                    // Load the last watched episode and season if they exist
+                    const currentEpisodeUrlKey = `currentEpisodeUrl_${seriesName}`;
+                    const savedEpisodeUrl = localStorage.getItem(currentEpisodeUrlKey);
+
+                    // Determine the season from the saved episode URL, if available
+                    if (savedEpisodeUrl) {
+                        for (const lang in episodes) {
+                            for (const season in episodes[lang]) {
+                                if (episodes[lang][season].some(ep => ep.url === savedEpisodeUrl)) {
+                                    currentSeason = season;
+                                    localStorage.setItem('currentSeason', currentSeason);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    // Default to Season 1, Episode 1 if no saved episode or season
+                    if (!savedEpisodeUrl) {
+                        currentSeason = 'season1';
+                        localStorage.setItem('currentSeason', currentSeason);
+                        localStorage.setItem(currentEpisodeUrlKey, episodes[currentLanguage][currentSeason][0].url);
+                    }
+
+                    updateButtonStyles('season-selector', currentSeason);
+                    loadEpisodes(); // Load episodes after setting the correct season
+                    updateButtonStyles('toggle-options', currentLanguage);
+                    document.getElementById('autonextButton').classList.toggle('active', autoNext);
+
+                    if (savedEpisodeUrl) {
+                        const button = document.querySelector(`#episode-list button[data-url="${savedEpisodeUrl}"]`);
+                        if (button) {
+                            changeVideo(savedEpisodeUrl, button);
+                        }
+                    } else {
+                        const firstEpisodeUrl = episodes[currentLanguage][currentSeason][0].url;
+                        const button = document.querySelector(`#episode-list button[data-url="${firstEpisodeUrl}"]`);
+                        if (button) {
+                            changeVideo(firstEpisodeUrl, button);
+                        }
+                    }
+                });
+        }
+
+        function generateSeasonButtons(data) {
+            const seasonSelector = document.getElementById('season-selector');
+            for (let i = 1; i <= data.seasons; i++) {
+                const button = document.createElement('button');
+                button.textContent = `Season ${i}`;
+                button.onclick = () => selectSeason(`season${i}`);
+                button.id = `season${i}Button`;
+                seasonSelector.appendChild(button);
+            }
+
+            // Check if 'movies' property exists in either sub or dub
+            if (data.series.sub.movies || data.series.dub.movies) {
+                const moviesButton = document.createElement('button');
+                moviesButton.textContent = 'Movies';
+                moviesButton.onclick = () => selectSeason('movies');
+                moviesButton.id = 'moviesButton';
+                seasonSelector.appendChild(moviesButton);
+            }
+        }
+
+        let seasonNumber = currentSeason.replace('season', '') || '1';
+        if (!episodes[currentLanguage]['season' + seasonNumber]) {
+            seasonNumber = '1';
+            currentSeason = 'season1';
+            localStorage.setItem('currentSeason', currentSeason);
+        }
+
+        selectSeason(seasonNumber);
+        toggleLanguage(currentLanguage);
+
+        updateButtonStyles('toggle-options', currentLanguage);
+        videojs.addLanguage('en', {"The media could not be loaded, either because the server or network failed or because the format is not supported.": "Please select an episode to watch!"});
+    </script>
+    
+    <!-- Example URL: player.html?series=taboo_tattoo -->
+</body>
+</html>
