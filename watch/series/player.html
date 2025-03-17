@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Better Anime</title>
-    <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="../other/BA.png">
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=(), browsing-topics=(), run-ad-auction=(), join-ad-interest-group=(), private-state-token-redemption=(), private-state-token-issuance=(), private-aggregation=(), attribution-reporting=()">
+    <title></title>
+    <link rel="icon" type="image/x-icon" href="https://thefarawaydev.github.io/better-anime/watch/other/BA.png">
 </head>
 
 <style>
@@ -75,7 +73,7 @@
         align-items: center;
     }
 
-    .video-js {
+    .artplayer-app {
         width: 85%;
         height: 490px;
         background-color: #3c4a5a;
@@ -177,7 +175,7 @@
             border: 2px solid #000000;
         }
 
-        .video-js {
+        .artplayer-app {
             width: 93%;
             height: 260px;
         }
@@ -223,10 +221,7 @@
         </header>
 
         <div class="content"></div>
-            <video id="my-video" class="video-js" controls preload="metadata" 
-                   data-setup='' playsinline>
-                <source id="video-source" src="https://example.mp4" type="video/mp4" />
-            </video>
+            <div class="artplayer-app"></div>
 
             <div class="button-container">
                 <div class="toggle-options">
@@ -253,9 +248,60 @@
         </div>
     </div>
 
-    <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/artplayer-plugin-hls-control"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.17/hls.min.js"></script>
 
     <script>
+        const art = new Artplayer({
+            container: '.artplayer-app',
+            url: '',
+            lang: 'en', // or 'en'
+            setting: true,
+            plugins: [
+                artplayerPluginHlsControl({
+                    quality: {
+                        // Show qualitys in control
+                        control: true,
+                        // Show qualitys in setting
+                        setting: true,
+                        // Get the quality name from level
+                        getName: (level) => level.height + 'P',
+                        // I18n
+                        title: 'Quality',
+                        auto: 'Auto',
+                    },
+                    audio: {
+                        // Show audios in control
+                        control: true,
+                        // Show audios in setting
+                        setting: true,
+                        // Get the audio name from track
+                        getName: (track) => track.name,
+                        // I18n
+                        title: 'Audio',
+                        auto: 'Auto',
+                    }
+                }),
+            ],
+            customType: {
+                m3u8: function playM3u8(video, url, art) {
+                    if (Hls.isSupported()) {
+                        if (art.hls) art.hls.destroy();
+                        const hls = new Hls();
+                        hls.loadSource(url);
+                        hls.attachMedia(video);
+                        art.hls = hls;
+                        art.on('destroy', () => hls.destroy());
+                    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                        video.src = url;
+                    } else {
+                        art.notice.show = 'Unsupported playback format: m3u8';
+                    }
+                }
+            },
+        });
+
         let currentLanguage = localStorage.getItem('preferredLanguage') || 'sub';
         let currentSeason = localStorage.getItem('currentSeason') || 'season1';
         let currentEpisodeButton = null;
@@ -319,69 +365,69 @@
             const pageUrl = window.location.href;
 
             if (existingItemIndex !== -1) {
-            continueWatchingArray[existingItemIndex].url = pageUrl;
+                continueWatchingArray[existingItemIndex].url = pageUrl;
             } else {
-            continueWatchingArray.push({ id, title, url: pageUrl });
+                continueWatchingArray.push({ id, title, url: pageUrl });
             }
 
             localStorage.setItem('continueWatching', JSON.stringify(continueWatchingArray));
         }
 
         function changeVideo(videoUrl, button) {
-            const player = videojs('my-video');
-            
             if (currentEpisodeButton) {
-            currentEpisodeButton.classList.remove('active');
+                currentEpisodeButton.classList.remove('active');
             }
 
             button.classList.add('active');
             currentEpisodeButton = button;
-            
+
             localStorage.setItem('currentSeason', currentSeason);
             const seriesName = urlParams.get('series');
             const currentEpisodeUrlKey = `currentEpisodeUrl_${seriesName}`;
             localStorage.setItem(currentEpisodeUrlKey, videoUrl);
-            
+
             // Save to continue watching
             const seriesId = seriesName; // Assuming seriesName is the id
             saveToContinueWatching(seriesId, seriesName, videoUrl);
 
             isIntroPlaying = true;
-            player.src({ type: 'video/mp4', src: '../other/BA.mp4' });
-            player.currentTime(0);
-            player.play();
-            player.off('ended');
-            player.on('ended', function () {
-            isIntroPlaying = false;
-            
-            player.src({ type: getVideoType(videoUrl), src: videoUrl });
-            const savedTime = loadProgress(videoUrl);
-            player.currentTime(savedTime);
-            player.play();
-            setupVideoListeners(player, videoUrl);
+            art.switchUrl('https://thefarawaydev.github.io/better-anime/watch/other/BA.mp4');
+            art.once('video:ended', function () {
+                isIntroPlaying = false;
+
+                // Extract the part after /_v7/
+                const baseUrl = 'https://stormywind74.xyz'; // Replace with your desired base URL
+                const urlParts = videoUrl.split('/_v7/');
+                const newVideoUrl = baseUrl + '/_v7/' + urlParts[1];
+
+                art.switchUrl(newVideoUrl);
+                const savedTime = loadProgress(newVideoUrl);
+                art.currentTime = savedTime;
+                art.play();
+                setupVideoListeners(art, newVideoUrl);
             });
         }
 
         function setupVideoListeners(player, videoUrl) {
-            player.off('timeupdate');
-            player.off('error');
-            player.off('ended');
-            
-            player.on('timeupdate', function () {
-            if (!isIntroPlaying) {
-                saveProgress(videoUrl, player.currentTime());
-            }
+            player.off('video:timeupdate');
+            player.off('video:error');
+            player.off('video:ended');
+
+            player.on('video:timeupdate', function () {
+                if (!isIntroPlaying) {
+                    saveProgress(videoUrl, player.currentTime);
+                }
             });
-            
-            player.on('error', function() {
-            player.src({ type: 'video/mp4', src: videoUrl });
-            player.play();
+
+            player.on('video:error', function() {
+                player.switchUrl(videoUrl);
+                player.play();
             });
-            
-            player.on('ended', function() {
-            if (autoNext) {
-                playNextEpisode();
-            }
+
+            player.on('video:ended', function() {
+                if (autoNext) {
+                    playNextEpisode();
+                }
             });
 
             updateNavigationButtons();
@@ -425,7 +471,7 @@
             if (prevIndex >= 0) {
                 const prevEpisode = currentEpisodes[prevIndex];
                 const prevButton = document.querySelector(`#episode-list button[data-url="${prevEpisode.url}"]`);
-                 if (prevButton) {
+                if (prevButton) {
                     changeVideo(prevEpisode.url, prevButton);
                 }
             } else {
@@ -497,9 +543,9 @@
 
         const urlParams = new URLSearchParams(window.location.search);
         const seriesName = urlParams.get('series');
-    
+
         if (seriesName) {
-            fetch(`../series/json/${seriesName}.json`)
+            fetch(`https://thefarawaydev.github.io/better-anime/watch/series/json/${seriesName}.json`)
                 .then(response => response.json())
                 .then(data => {
                     document.title = data.title;
@@ -582,7 +628,6 @@
         toggleLanguage(currentLanguage);
 
         updateButtonStyles('toggle-options', currentLanguage);
-        videojs.addLanguage('en', {"The media could not be loaded, either because the server or network failed or because the format is not supported.": "Please select an episode to watch!"});
     </script>
     
     <!-- Example URL: player.html?series=taboo_tattoo -->
