@@ -354,16 +354,11 @@
             player.on('ended', function () {
             isIntroPlaying = false;
             
-            // Extract the part after /_v7/
-            const baseUrl = 'https://proxy-server-rej9.onrender.com/?url='; // Replace with your desired base URL
-            const urlParts = videoUrl.split('https://vault-99.kwikie.ru/');
-            const newVideoUrl = baseUrl + 'https://vault-99.kwikie.ru/' + urlParts[1];
-        
-            player.src({ type: getVideoType(newVideoUrl), src: newVideoUrl });
-            const savedTime = loadProgress(newVideoUrl);
+            player.src({ type: getVideoType(videoUrl), src: videoUrl });
+            const savedTime = loadProgress(videoUrl);
             player.currentTime(savedTime);
             player.play();
-            setupVideoListeners(player, newVideoUrl);
+            setupVideoListeners(player, videoUrl);
             });
         }
 
@@ -504,7 +499,7 @@
         const seriesName = urlParams.get('series');
 
         if (seriesName) {
-            fetch(`https://thefarawaydev.github.io/better-anime/watch/series/json/${seriesName}.json`)
+            fetch(`./json/${seriesName}.json`)
                 .then(response => response.json())
                 .then(data => {
                     document.title = data.title;
