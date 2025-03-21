@@ -4,12 +4,12 @@
     "series": {
         "sub": {
             "movies": [
-                { "title": "Weathering With You", "url": "https://cloudburst82.xyz/_v7/04c62d67738da375aca8b1659516f077c74801fa368082aa2ebd5c4556d4a621e40149ff082d9d6b627f702d28718f4cefec91e79fa9d9f8e407df2c2424be0114f0b211b8e8eb14baff1d78eb556215114a397444824941bed9fc5f7e12ed38b17fff668113bf7e2be351ef365348a89ba0ec5cdbbc56fd9b916d6342e2f46b/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.club%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.club%2F%22%7D&faststream-mode=accelerated_hls"}
+                { "title": "Weathering With You", "url": " https://better-anime-m3u8.vercel.app/m3u8-proxy?url=https://5dab6.megaup.cc/v3/hf277c44ee87f02521920bc08760b474cf1e7ffc5b2e564fdc61c5bcd321e6e9cd7729d772672ed4765c47f139599b2b83d710702820a0b4056a4ea6d387ae4af5f7261c383d2d355c5bf3de76afbb4bf088b41fe782bbc1b64fdeb5b87ec519882b7f16cc97dc5f18d/list.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegaup.cc%22%2C%22referer%22%3A%22https%3A%2F%2Fmegaup.cc%2F%22%7D&faststream-mode=accelerated_hls"}
             ]
         },
         "dub": {
             "movies": [
-                { "title": "Weathering With You", "url": "https://mistyvalley31.live/_v7/6946fab85caa166c1071ebf05437d63a6049e3c3b15e12610507699b02e15c66d7abe3c2e0f0140936078a338f20162534a91153b62465bd9ca80315487a4f4f88de4ac3014095d005398d980e01d94406a75f4c683537bcba48a577de2e49731c213e9f906250e43ede2b0f9550aba77c02c4918da09fa45aed93452b57b3b5/master.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegacloud.club%22%2C%22referer%22%3A%22https%3A%2F%2Fmegacloud.club%2F%22%7D&faststream-mode=accelerated_hls"}
+                { "title": "Weathering With You", "url": " https://better-anime-m3u8.vercel.app/m3u8-proxy?url=https://5ba44.megaup.cc/v3/hf277c44ee87f02521920bc087608474cf1e7ffc5b2e564fdd21c07d8325b2196d07ad5772672ed4765c47f139599b2b83d710702820a0b4056a4ea6d387ae4af5f7261c383d2d355c5bf3de76afbb4bf088b41fe782bbc1b64fdeb5d87ba539882b7f16cc97dc5f18d/list.m3u8?faststream-headers=%7B%22sec-gpc%22%3A%221%22%2C%22origin%22%3A%22https%3A%2F%2Fmegaup.cc%22%2C%22referer%22%3A%22https%3A%2F%2Fmegaup.cc%2F%22%7D&faststream-mode=accelerated_hls"}
             ]
         }
     }

@@ -8,9 +8,6 @@ A ---------------------------------------------
   Attack On Titan
 B ---------------------------------------------
   Berserk Of Gluttony
-  Black Clover
-  Bleach
-  Bleach: Thousand Year Blood War
   Bungo Stray Dogs
 C ---------------------------------------------
   Call of The Night
@@ -64,8 +61,6 @@ N ---------------------------------------------
 O ---------------------------------------------
   One Punch Man
   Overlord
-P ---------------------------------------------
-  
 R ---------------------------------------------
   Ragna Crimson
   Rascal Does Not Dream Of Bunny Senpai
@@ -110,4 +105,4 @@ Y ---------------------------------------------
   Yamada-kun And The Seven Witches
   Your Name
 ! ---------------------------------------------  
-  Site Wide Series & Movies Total [SWSMT]: 88
+  Site Wide Series & Movies Total [SWSMT]: 4
