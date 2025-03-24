@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-<title>Anime Player</title>
-<link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -249,8 +247,9 @@
             const serverButtonsContainer = document.querySelector('.toggle-options');
             const episodeListContainer = document.querySelector('.episode-list');
     
-            const apiUrlBase = 'https://hianime-server-retrieval.vercel.app';
-            const proxyUrl = 'https://better-anime-m3u8.vercel.app/m3u8-proxy?url=';
+            const apiUrlBase = 'https://better-anime.vercel.app';
+            const proxyUrl = 'https://better-m3u8-proxy.vercel.app/m3u8-proxy?url=';
+            const proxyHeaders = '&headers={%22referer%22:%20%22https://megacloud.club/%22}';
     
             const urlParams = new URLSearchParams(window.location.search);
             const currentAnimeId = urlParams.get('id'); // Pull the anime ID from the URL parameters
@@ -389,7 +388,7 @@
             // Function to play the video with progress
             function playVideo(videoUrl, startTime = 0) {
                 animePlayer.reset();
-                animePlayer.src({ type: 'application/x-mpegURL', src: proxyUrl + videoUrl });
+                animePlayer.src({ type: 'application/x-mpegURL', src: proxyUrl + videoUrl + proxyHeaders});
                 animePlayer.ready(() => {
                     animePlayer.currentTime(startTime);
                     animePlayer.play();
