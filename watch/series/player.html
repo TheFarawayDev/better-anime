@@ -162,6 +162,18 @@
         color: #2b3e50;
     }
 
+    .language-bar {
+        background-color: #3c6eb3;
+        color: white;
+        border: none;
+        padding: 10px 10px;
+        margin: 5px;
+        font-size: 16px;
+        border-radius: 4px;
+        text-align: center;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
     @media screen and (min-width: 769px) and (max-width: 1024px) {     
         header {
             margin-left: 75px;
@@ -233,6 +245,7 @@
                 <button onclick="toggleLanguage('sub')" id="subButton">Subbed</button>
                 <button onclick="toggleLanguage('dub')" id="dubButton">Dubbed</button>
             </div>
+            <div class="language-bar" id="language-bar">Current Language: Subbed</div>
             </div>
 
             <div class="episode-container">
@@ -250,7 +263,7 @@
             const episodeListContainer = document.querySelector('.episode-list');
     
             const apiUrlBase = 'https://better-anime.vercel.app';
-            const proxyUrl = 'https://better-anime-m3u8.vercel.app/m3u8-proxy?url=';
+            const proxyUrl = 'https://m3u8-proxy-peach.vercel.app/m3u8-proxy?url=';
     
             const urlParams = new URLSearchParams(window.location.search);
             const currentAnimeId = urlParams.get('id'); // Pull the anime ID from the URL parameters
@@ -320,7 +333,7 @@
                         const savedTime = loadProgress(episodeId, currentEpisodeTitle);
                         playVideo(videoUrl, savedTime);
                     } else {
-                        // Try with hd-1 if hd-2 fails
+                        // Try with hd-2 if hd-1 fails
                         const responseHd1 = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-1&category=${category}`);
                         const dataHd1 = await responseHd1.json();
                         if (dataHd1.success && dataHd1.data && dataHd1.data.sources && dataHd1.data.sources.length > 0) {
@@ -346,7 +359,7 @@
                 if (!currentAnimeId || !currentEpisodeId || !currentEpisodeTitle) {
                     return; // Don't save if we don't have the necessary info
                 }
-                const progressKey = `watchProgress_${currentAnimeId}_${currentEpisodeId}_${currentEpisodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}`; // Create a unique key
+                const progressKey = `watchProgress_${currentAnimeId}_${currentEpisodeId}_${currentEpisodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}_${currentCategory}`;
                 console.log("Saving progress for key:", progressKey, "at time:", currentTime);
                 localStorage.setItem(progressKey, currentTime);
             }
@@ -355,7 +368,7 @@
                 if (!currentAnimeId || !episodeId || !episodeTitle) {
                     return 0;
                 }
-                const progressKey = `watchProgress_${currentAnimeId}_${episodeId}_${episodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}`;
+                const progressKey = `watchProgress_${currentAnimeId}_${episodeId}_${episodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}_${currentCategory}`;
                 const savedTime = localStorage.getItem(progressKey);
                 console.log("Loading progress for key:", progressKey, "found time:", savedTime);
                 return savedTime ? parseFloat(savedTime) : 0;
@@ -430,6 +443,7 @@
                 currentCategory = category;
                 localStorage.setItem('preferredCategory', currentCategory);
                 updateButtonStyles('toggle-options', category);
+                document.getElementById('language-bar').textContent = `Current Language: ${category === 'sub' ? 'Subbed' : 'Dubbed'}`;
                 if (currentEpisodeId) {
                     loadStreamingLinks(currentEpisodeId, currentCategory);
                 }
@@ -457,6 +471,7 @@
                 }
                 // Auto-select preferred category or default to 'sub'
                 updateButtonStyles('toggle-options', currentCategory);
+                document.getElementById('language-bar').textContent = `Current Language: ${currentCategory === 'sub' ? 'Subbed' : 'Dubbed'}`;
                 // We don't need to load streaming links here initially, loadLastWatchedEpisode will handle it
             });
         </script>
