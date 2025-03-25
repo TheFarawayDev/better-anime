@@ -73,7 +73,7 @@ async function loadStreamingLinks(episodeId, category) {
             const savedTime = loadProgress(episodeId, currentEpisodeTitle);
             playVideo(videoUrl, savedTime);
         } else {
-            const responseHd1 = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-2&category=${category}`);
+            const responseHd2 = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-2&category=${category}`);
             const dataHd2 = await responseHd2.json();
             if (dataHd2.success && dataHd2.data && dataHd2.data.sources && dataHd2.data.sources.length > 0) {
                 const videoUrl = dataHd2.data.sources[0].url;
