@@ -164,12 +164,25 @@ function playPrevious() {
     }
 }
 
-// Function to toggle Auto Next
 function toggleAutoNext() {
     autoNextEnabled = !autoNextEnabled;
-    const autoNextButton = document.getElementById('autoNextButton');
-    autoNextButton.textContent = `Auto Next: ${autoNextEnabled ? 'On' : 'Off'}`;
+    localStorage.setItem('autoNextEnabled', autoNextEnabled); // Save state
+    updateAutoNextButton();
 }
+
+function updateAutoNextButton() {
+    const autoNextButton = document.getElementById('autoNextButton');
+    if (autoNextButton) {
+        autoNextButton.textContent = `Auto Next: ${autoNextEnabled ? 'On' : 'Off'}`;
+        autoNextButton.classList.toggle('active', autoNextEnabled);
+    }
+}
+
+// Load Auto Next state from localStorage on page load
+document.addEventListener('DOMContentLoaded', () => {
+    autoNextEnabled = localStorage.getItem('autoNextEnabled') === 'true'; // Convert string to boolean
+    updateAutoNextButton();
+});
 
 // Function to play the next episode
 function playNext() {
