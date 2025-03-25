@@ -111,7 +111,7 @@
         "title": "Call Of The Night",
         "id": "call-of-the-night-18041",
         "image_url": "https://m.media-amazon.com/images/M/MV5BOGE0OTk3MmYtZDZmMC00MWRiLTg1MGYtMWEzNWZmNjI2YzEyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=call-of-the-night-18041",
+        "url": "https://better-anime-proxy.vercel.app/?id=call-of-the-night-18041",
         "dub_count": "13",
         "sub_count": "13",
         "episodes": "13"
@@ -480,7 +480,7 @@
         "title": "Sakamoto Days",
         "id": "sakamoto-days-19431",
         "image_url": "https://m.media-amazon.com/images/M/MV5BM2MwZDRmYWItNGIzZC00ZWExLWEwNWYtNmM1ZmU3OTA3NmY4XkEyXkFqcGc@._V1_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=sakamoto-days-19431",
+        "url": "https://better-anime-proxy.vercel.app/?id=sakamoto-days-19431",
         "dub_count": "N/A",
         "sub_count": "N/A",
         "episodes": "11"
