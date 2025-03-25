@@ -5,7 +5,7 @@
 <title>Better Anime</title>
 <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
 <link rel="icon" type="image/x-icon" href="https://thefarawaydev.github.io/better-anime/watch/other/BA.png">
-<link href="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/series/player.css" rel="stylesheet" />
+<link href="https://thefarawaydev.github.io/better-anime/watch/series/player.css" rel="stylesheet" />
 <body>
     <div class="container">
         <header>
@@ -20,11 +20,16 @@
             </video>
 
             <div class="button-container">
-            <div class="toggle-options">
-                <button onclick="toggleLanguage('sub')" id="subButton">Subbed</button>
-                <button onclick="toggleLanguage('dub')" id="dubButton">Dubbed</button>
-            </div>
-            <div class="language-bar" id="language-bar">Current Language: Subbed</div>
+                <div class="toggle-options">
+                    <button onclick="toggleLanguage('sub')" id="subButton">Subbed</button>
+                    <button onclick="toggleLanguage('dub')" id="dubButton">Dubbed</button>
+                </div>
+                <div class="setting-options">
+                    <button onclick="playPrevious()" id="prevButton">Previous</button>
+                    <button onclick="toggleAutoNext()" id="autoNextButton">Auto Next: Off</button>
+                    <button onclick="playNext()" id="nextButton">Next</button>
+                </div>
+                <div class="language-bar" id="language-bar">Current Language: Subbed</div>
             </div>
 
             <div class="episode-container">
@@ -36,6 +41,6 @@
         </div>
 
         <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
-        <script src="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/series/player.js"></script>
+        <script src="https://thefarawaydev.github.io/better-anime/watch/series/player.js"></script>
 </body>
 </html>
