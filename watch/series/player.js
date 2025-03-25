@@ -65,7 +65,7 @@ async function loadEpisodeServers(episodeId, episodeTitle) {
 // Function to fetch and play streaming links
 async function loadStreamingLinks(episodeId, category) {
     try {
-        const response = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-2&category=${category}`);
+        const response = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-1&category=${category}`);
         const data = await response.json();
 
         if (data.success && data.data && data.data.sources && data.data.sources.length > 0) {
@@ -73,10 +73,10 @@ async function loadStreamingLinks(episodeId, category) {
             const savedTime = loadProgress(episodeId, currentEpisodeTitle);
             playVideo(videoUrl, savedTime);
         } else {
-            const responseHd1 = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-1&category=${category}`);
-            const dataHd1 = await responseHd1.json();
-            if (dataHd1.success && dataHd1.data && dataHd1.data.sources && dataHd1.data.sources.length > 0) {
-                const videoUrl = dataHd1.data.sources[0].url;
+            const responseHd1 = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-2&category=${category}`);
+            const dataHd2 = await responseHd2.json();
+            if (dataHd2.success && dataHd2.data && dataHd2.data.sources && dataHd2.data.sources.length > 0) {
+                const videoUrl = dataHd2.data.sources[0].url;
                 const savedTime = loadProgress(episodeId, currentEpisodeTitle);
                 playVideo(videoUrl, savedTime);
             } else {
