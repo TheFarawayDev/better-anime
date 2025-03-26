@@ -144,7 +144,7 @@ function playVideo(videoUrl, startTime = 0) {
     animePlayer.play();
 
     animePlayer.once('ended', () => {
-        // Play the main video with HLS support
+        // Ensure the main video is set after the intro ends
         if (Hls.isSupported()) {
             const hls = new Hls();
             hls.loadSource(proxiedVideoUrl);
@@ -162,6 +162,16 @@ function playVideo(videoUrl, startTime = 0) {
             animePlayer.play();
         } else {
             alert('HLS is not supported on this browser.');
+        }
+    });
+
+    // Ensure the intro does not override the main video source
+    animePlayer.on('sourcechange', () => {
+        if (animePlayer.source.src !== proxiedVideoUrl) {
+            animePlayer.source = {
+                type: 'video',
+                sources: [{ src: proxiedVideoUrl, type: 'application/vnd.apple.mpegurl' }],
+            };
         }
     });
 }
