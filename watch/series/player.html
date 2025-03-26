@@ -9,13 +9,6 @@
 <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0"></script>
 <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-<script>
-    // Initialize Eruda only on mobile devices
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        eruda.init();
-    }
-</script>
 <body>
     <div class="container">
         <header>
@@ -24,7 +17,7 @@
 
         <div class="content"></div>
             <video id="my-video" class="plyr" controls playsinline>
-                <source id="video-source" src="" type="video/mp4" />
+                <source id="video-source" src="https://example.mp4" type="video/mp4" />
             </video>
 
             <div class="button-container">
