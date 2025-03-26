@@ -1,18 +1,41 @@
-const animePlayer = new Plyr('#my-video');
 const serverButtonsContainer = document.querySelector('.toggle-options');
 const episodeListContainer = document.querySelector('.episode-list');
+const videoElement = document.getElementById('my-video');
 
 const apiUrlBase = 'https://better-anime.vercel.app';
 const proxyUrl = 'https://better-anime-proxy.vercel.app/m3u8-proxy?url=';
 const proxyHeaders = '&headers={"referer":"https://megacloud.club"}';
 
 const urlParams = new URLSearchParams(window.location.search);
-const currentAnimeId = urlParams.get('id'); // Pull the anime ID from the URL parameters
-const currentSeriesName = urlParams.get('series'); // Get the series name
+const currentAnimeId = urlParams.get('id');
+const currentSeriesName = urlParams.get('series');
 let currentEpisodeId = null;
 let currentEpisodeTitle = null;
 let currentCategory = localStorage.getItem('preferredCategory') || 'sub';
-let autoNextEnabled = true; // Auto Next is enabled by default
+let autoNextEnabled = true;
+
+let hls = null;
+
+// Function to initialize HLS.js
+function initializeHls(videoUrl, startTime = 0) {
+    if (hls) {
+        hls.destroy();
+    }
+
+    hls = new Hls();
+    hls.loadSource(videoUrl);
+    hls.attachMedia(videoElement);
+
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        videoElement.currentTime = startTime;
+        videoElement.play();
+    });
+
+    hls.on(Hls.Events.ERROR, (event, data) => {
+        console.error('HLS.js error:', data);
+        alert('Error playing video.');
+    });
+}
 
 // Function to fetch anime episodes
 async function fetchAnimeEpisodes(animeId) {
@@ -32,13 +55,13 @@ async function fetchAnimeEpisodes(animeId) {
 
 // Function to display the list of episodes
 function displayEpisodes(episodes) {
-    episodeListContainer.innerHTML = ''; // Clear existing episodes
+    episodeListContainer.innerHTML = '';
     episodes.forEach(episode => {
         const button = document.createElement('button');
         button.textContent = `Episode ${episode.number}: ${episode.title}`;
-        button.dataset.url = episode.url; // Add data-url attribute
-        button.dataset.episodeId = episode.episodeId; // Add data-episodeId attribute
-        button.dataset.episodeTitle = episode.title; // Add data-episodeTitle attribute
+        button.dataset.url = episode.url;
+        button.dataset.episodeId = episode.episodeId;
+        button.dataset.episodeTitle = episode.title;
         button.addEventListener('click', () => {
             loadEpisodeServers(episode.episodeId, episode.title);
             highlightCurrentEpisode(button);
@@ -57,8 +80,8 @@ function highlightCurrentEpisode(selectedButton) {
 async function loadEpisodeServers(episodeId, episodeTitle) {
     currentEpisodeId = episodeId;
     currentEpisodeTitle = episodeTitle;
-    localStorage.setItem('lastWatchedEpisodeId_' + currentAnimeId, episodeId); // Save the ID
-    localStorage.setItem('lastWatchedEpisodeTitle_' + currentAnimeId, episodeTitle); // Save the title
+    localStorage.setItem('lastWatchedEpisodeId_' + currentAnimeId, episodeId);
+    localStorage.setItem('lastWatchedEpisodeTitle_' + currentAnimeId, episodeTitle);
     loadStreamingLinks(episodeId, currentCategory);
 }
 
@@ -69,26 +92,14 @@ async function loadStreamingLinks(episodeId, category) {
         const data = await response.json();
 
         if (data.success && data.data && data.data.sources && data.data.sources.length > 0) {
-            const videoUrl = data.data.sources[0].url;
+            const videoUrl = `${proxyUrl}${encodeURIComponent(data.data.sources[0].url)}${proxyHeaders}`;
             const savedTime = loadProgress(episodeId, currentEpisodeTitle);
-            playVideo(videoUrl, savedTime);
+            initializeHls(videoUrl, savedTime);
         } else {
-            const responseHd1 = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-1&category=${category}`);
-            const dataHd1 = await responseHd1.json();
-            if (dataHd1.success && dataHd1.data && dataHd1.data.sources && dataHd1.data.sources.length > 0) {
-                const videoUrl = dataHd1.data.sources[0].url;
-                const savedTime = loadProgress(episodeId, currentEpisodeTitle);
-                playVideo(videoUrl, savedTime);
-            } else {
-                animePlayer.reset();
-                animePlayer.src({ type: 'application/x-mpegURL', src: '' });
-                alert(`No ${category} streams found for this episode.`);
-            }
+            alert(`No ${category} streams found for this episode.`);
         }
     } catch (error) {
         console.error('Error fetching streaming links:', error);
-        animePlayer.reset();
-        animePlayer.src({ type: 'application/x-mpegURL', src: '' });
         alert(`Error loading ${category} stream.`);
     }
 }
@@ -96,7 +107,7 @@ async function loadStreamingLinks(episodeId, category) {
 // Function to save the watch progress of each episode
 function saveProgress(videoUrl, currentTime) {
     if (!currentAnimeId || !currentEpisodeId || !currentEpisodeTitle) {
-        return; // Don't save if we don't have the necessary info
+        return;
     }
     const progressKey = `watchProgress_${currentAnimeId}_${currentEpisodeId}_${currentEpisodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}_${currentCategory}`;
     localStorage.setItem(progressKey, currentTime);
@@ -129,53 +140,6 @@ function loadLastWatchedEpisode() {
     }
 }
 
-// Function to play the video with HLS support
-function playVideo(videoUrl, startTime = 0) {
-    const introUrl = 'https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.mp4';
-
-    // Proxy the video URL
-    const proxiedVideoUrl = `${proxyUrl}${encodeURIComponent(videoUrl)}${proxyHeaders}`;
-
-    // Play intro video first
-    animePlayer.source = {
-        type: 'video',
-        sources: [{ src: introUrl, type: 'video/mp4' }],
-    };
-    animePlayer.play();
-
-    animePlayer.once('ended', () => {
-        // Ensure the main video is set after the intro ends
-        if (Hls.isSupported()) {
-            const hls = new Hls();
-            hls.loadSource(proxiedVideoUrl);
-            hls.attachMedia(animePlayer.media);
-            hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                animePlayer.currentTime = startTime;
-                animePlayer.play();
-            });
-        } else if (animePlayer.media.canPlayType('application/vnd.apple.mpegurl')) {
-            animePlayer.source = {
-                type: 'video',
-                sources: [{ src: proxiedVideoUrl, type: 'application/vnd.apple.mpegurl' }],
-            };
-            animePlayer.currentTime = startTime;
-            animePlayer.play();
-        } else {
-            alert('HLS is not supported on this browser.');
-        }
-    });
-
-    // Ensure the intro does not override the main video source
-    animePlayer.on('sourcechange', () => {
-        if (animePlayer.source.src !== proxiedVideoUrl) {
-            animePlayer.source = {
-                type: 'video',
-                sources: [{ src: proxiedVideoUrl, type: 'application/vnd.apple.mpegurl' }],
-            };
-        }
-    });
-}
-
 // Function to play the previous episode
 function playPrevious() {
     const currentEpisodeButton = document.querySelector('.episode-list button.active');
@@ -191,9 +155,10 @@ function playPrevious() {
     }
 }
 
+// Function to toggle Auto Next
 function toggleAutoNext() {
     autoNextEnabled = !autoNextEnabled;
-    localStorage.setItem('autoNextEnabled', autoNextEnabled); // Save state
+    localStorage.setItem('autoNextEnabled', autoNextEnabled);
     updateAutoNextButton();
 }
 
@@ -204,12 +169,6 @@ function updateAutoNextButton() {
         autoNextButton.classList.toggle('active', autoNextEnabled);
     }
 }
-
-// Load Auto Next state from localStorage on page load
-document.addEventListener('DOMContentLoaded', () => {
-    autoNextEnabled = localStorage.getItem('autoNextEnabled') === 'true'; // Convert string to boolean
-    updateAutoNextButton();
-});
 
 // Function to play the next episode
 function playNext() {
@@ -227,35 +186,11 @@ function playNext() {
 }
 
 // Automatically play the next episode when the current one ends (if Auto Next is enabled)
-animePlayer.on('ended', () => {
+videoElement.addEventListener('ended', () => {
     if (autoNextEnabled) {
         playNext();
     }
 });
-
-// Function to save the series ID for the continue watching page
-function saveToContinueWatching(id, title, url) {
-    let continueWatchingArray = JSON.parse(localStorage.getItem('continueWatching')) || [];
-    const existingItemIndex = continueWatchingArray.findIndex(item => item.id === id);
-    const pageUrl = window.location.href;
-
-    if (existingItemIndex !== -1) {
-        continueWatchingArray[existingItemIndex].url = pageUrl;
-    } else {
-        continueWatchingArray.push({ id, title, url: pageUrl });
-    }
-
-    localStorage.setItem('continueWatching', JSON.stringify(continueWatchingArray));
-}
-
-// Function to update button styles
-function updateButtonStyles(containerClass, activeId) {
-    document.querySelectorAll(`.${containerClass} button`).forEach(button => {
-        button.classList.remove('active');
-    });
-    const activeButton = document.getElementById(activeId + 'Button');
-    if (activeButton) activeButton.classList.add('active');
-}
 
 // Function to toggle language and highlight button
 function toggleLanguage(category) {
@@ -268,17 +203,14 @@ function toggleLanguage(category) {
     }
 }
 
-// Event listeners for server buttons
-serverButtonsContainer.addEventListener('click', (event) => {
-    if (event.target.classList.contains('server-button')) {
-        updateButtonStyles('toggle-options', event.target.dataset.category);
-        currentCategory = event.target.dataset.category;
-        localStorage.setItem('preferredCategory', currentCategory);
-        if (currentEpisodeId) {
-            loadStreamingLinks(currentEpisodeId, currentCategory);
-        }
-    }
-});
+// Function to update button styles
+function updateButtonStyles(containerClass, activeId) {
+    document.querySelectorAll(`.${containerClass} button`).forEach(button => {
+        button.classList.remove('active');
+    });
+    const activeButton = document.getElementById(activeId + 'Button');
+    if (activeButton) activeButton.classList.add('active');
+}
 
 // Get the anime ID when the page loads
 document.addEventListener('DOMContentLoaded', () => {
@@ -286,8 +218,12 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchAnimeEpisodes(currentAnimeId).then(() => {
             loadLastWatchedEpisode();
         });
-        saveToContinueWatching(currentAnimeId, 'Anime Title', window.location.href);
     }
     updateButtonStyles('toggle-options', currentCategory);
     document.getElementById('language-bar').textContent = `Current Language: ${currentCategory === 'sub' ? 'Subbed' : 'Dubbed'}`;
+});
+
+// Save progress periodically
+videoElement.addEventListener('timeupdate', () => {
+    saveProgress(videoElement.src, videoElement.currentTime);
 });

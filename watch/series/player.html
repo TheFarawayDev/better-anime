@@ -3,12 +3,222 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Better Anime</title>
-<link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
 <link rel="icon" type="image/x-icon" href="https://thefarawaydev.github.io/better-anime/watch/other/BA.png">
-<link href="https://thefarawaydev.github.io/better-anime/watch/series/player.css" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0"></script>
-<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    :root {
+    --cadet-gray: #8fa3bb;
+    --bleu-de-france: #4a88d7;
+    --charcoal: #3a4f63;
+    --white: #ffffff;
+    --steel-blue: #4b7db9;
+    --light-gray: #f0f0f0;
+    --light-green: #3f8394;
+    --light-red: #d05656;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        background-color: #2b3e50;
+        scrollbar-width: none; /* For Firefox */
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: #2b3e50;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+        padding-bottom: 20px;
+        scrollbar-width: none;
+    }
+
+    header {
+        padding: 1rem 5rem;
+        background-color: var(--bleu-de-france) ;
+        color: #000000;
+        display: flex;
+        width: 100%;
+        height: 25px;
+        margin-left: 150px;
+        margin-bottom: 20px;
+    }
+
+    .logo a {
+        color: #fff;
+        font-size: 1.5rem;
+        text-decoration: none;
+        font-weight: bold;
+        margin-left: 2.5vw;
+    }
+
+    .logo a:hover {
+    color: #225186;
+    }
+
+    .content {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    /* Add Plyr-specific styles */
+    #my-video {
+        width: 85.5%;
+        height: auto;
+        margin-bottom: 10px;
+        background-color: #3c4a5a;
+    }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        width: 86%;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .toggle-options, .season-selector, .setting-options {
+        display: flex;
+        justify-content: center;
+        margin: 2px 0;
+        flex-wrap: wrap;
+    }
+
+    .toggle-options button, .season-selector button, .setting-options button {
+        background-color: #3c6eb3;
+        color: white;
+        border: none;
+        padding: 10px 10px;
+        margin: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        flex: 1;
+        transition: background-color 0.3s, transform 0.2s;
+        flex: 1 1 calc(33.33% - 10px);
+        border-radius: 4px;
+    }
+
+    .toggle-options button:hover, .season-selector button:hover, .setting-options button:hover {
+        background-color: #5a9cec;
+        transform: scale(1.05);
+    }
+
+    .toggle-options button.active, .season-selector button.active, .setting-options button.active {
+        background-color: #4A90E2;
+    }
+
+    .episode-container {
+        display: flex;
+        justify-content: center;
+        overflow-y: auto;
+        height: 200px;
+        width: 83%;
+        border: 1px solid #799ec2;
+        background-color: #537196;
+        padding: 10px;
+        scrollbar-width: none;
+        border-radius: 4px;
+    }
+
+    .episode-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .episode-list button {
+        background-color: #34495E;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        width: 90%;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .episode-list button:hover {
+        background-color: #5a6b7c;
+        transform: scale(1.05);
+    }
+
+    .episode-list button.active {
+        background-color: #5a6b7c;
+        color: #2b3e50;
+    }
+
+    .language-bar {
+        background-color: #3c6eb3;
+        color: white;
+        border: none;
+        padding: 10px 10px;
+        margin: 5px;
+        font-size: 16px;
+        border-radius: 4px;
+        text-align: center;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px) {     
+        header {
+            margin-left: 75px;
+            padding: 1rem 5rem;
+        }
+    }
+
+
+    @media screen and (max-width: 768px) {
+        .container {
+            width: 85%;
+            border-radius: 10px;
+            border: 2px solid #000000;
+        }
+
+        header {
+            margin-left: 10px;
+            border-bottom: 2px solid #000000;
+        }
+
+        .episode-container {
+            width: 87%;
+            height: 150px;
+        }
+
+        .button-container {
+            width: 95%;
+        }
+        
+        .season-selector button {
+            font-size: 14px;
+            text-align: center;
+            width: 10%;
+        }  
+
+        .toggle-options, .season-selector, .setting-options {
+            flex-wrap: wrap;
+        }
+
+        .toggle-options button, .season-selector button, .setting-options button {
+            flex: 1 1 calc(33.33% - 10px);
+        }
+
+        div[aria-live="polite"] {
+            display: none !important;
+        }
+    }
+</style>
 <body>
     <div class="container">
         <header>
@@ -16,9 +226,7 @@
         </header>
 
         <div class="content"></div>
-            <video id="my-video" class="plyr" controls playsinline>
-                <source id="video-source" src="https://example.mp4" type="video/mp4" />
-            </video>
+            <video id="my-video" controls playsinline></video>
 
             <div class="button-container">
                 <div class="toggle-options">
@@ -39,6 +247,28 @@
             </div>
         </div>
 
-        <script src="https://thefarawaydev.github.io/better-anime/watch/series/player.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const video = document.getElementById('my-video');
+                const videoSource = 'https://example.m3u8'; // Replace with your HLS stream URL
+
+                if (Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(videoSource);
+                    hls.attachMedia(video);
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        video.play();
+                    });
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = videoSource;
+                    video.addEventListener('loadedmetadata', () => {
+                        video.play();
+                    });
+                } else {
+                    console.error('HLS is not supported in this browser.');
+                }
+            });
+        </script>
+        <script src="player.js"></script>
 </body>
 </html>
