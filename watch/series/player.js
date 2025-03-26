@@ -153,13 +153,15 @@ function playVideo(videoUrl, startTime = 0) {
                 animePlayer.currentTime = startTime;
                 animePlayer.play();
             });
-        } else {
+        } else if (animePlayer.media.canPlayType('application/vnd.apple.mpegurl')) {
             animePlayer.source = {
                 type: 'video',
-                sources: [{ src: proxiedVideoUrl, type: 'application/x-mpegURL' }], // Changed MIME type
+                sources: [{ src: proxiedVideoUrl, type: 'application/vnd.apple.mpegurl' }],
             };
             animePlayer.currentTime = startTime;
             animePlayer.play();
+        } else {
+            alert('HLS is not supported on this browser.');
         }
     });
 
@@ -168,7 +170,7 @@ function playVideo(videoUrl, startTime = 0) {
         if (animePlayer.source.src !== proxiedVideoUrl) {
             animePlayer.source = {
                 type: 'video',
-                sources: [{ src: proxiedVideoUrl, type: 'application/x-mpegURL' }], // Changed MIME type
+                sources: [{ src: proxiedVideoUrl, type: 'application/vnd.apple.mpegurl' }],
             };
         }
     });
