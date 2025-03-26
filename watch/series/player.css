@@ -70,6 +70,14 @@ color: #225186;
     margin-bottom: 10px;
 }
 
+/* Add Plyr-specific styles */
+.plyr {
+    width: 85%;
+    height: auto;
+    margin-bottom: 10px;
+    background-color: #3c4a5a;
+}
+
 .button-container {
     display: flex;
     flex-direction: column;

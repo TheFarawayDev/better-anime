@@ -1,4 +1,4 @@
-const animePlayer = videojs('my-video');
+const animePlayer = new Plyr('#my-video');
 const serverButtonsContainer = document.querySelector('.toggle-options');
 const episodeListContainer = document.querySelector('.episode-list');
 
@@ -129,23 +129,40 @@ function loadLastWatchedEpisode() {
     }
 }
 
-// Function to play the video with progress
+// Function to play the video with HLS support
 function playVideo(videoUrl, startTime = 0) {
     const introUrl = 'https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.mp4';
-    animePlayer.reset();
-    animePlayer.src({ type: 'video/mp4', src: introUrl });
-    animePlayer.ready(() => {
-        animePlayer.play();
-    });
 
-    animePlayer.on('ended', function onIntroEnded() {
-        animePlayer.off('ended', onIntroEnded);
-        animePlayer.reset();
-        animePlayer.src({ type: 'application/x-mpegURL', src: proxyUrl + videoUrl + proxyHeaders });
-        animePlayer.ready(() => {
-            animePlayer.currentTime(startTime);
+    // Proxy the video URL
+    const proxiedVideoUrl = `${proxyUrl}${encodeURIComponent(videoUrl)}${proxyHeaders}`;
+
+    // Play intro video first
+    animePlayer.source = {
+        type: 'video',
+        sources: [{ src: introUrl, type: 'video/mp4' }],
+    };
+    animePlayer.play();
+
+    animePlayer.once('ended', () => {
+        // Play the main video with HLS support
+        if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource(proxiedVideoUrl);
+            hls.attachMedia(animePlayer.media);
+            hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                animePlayer.currentTime = startTime;
+                animePlayer.play();
+            });
+        } else if (animePlayer.media.canPlayType('application/vnd.apple.mpegurl')) {
+            animePlayer.source = {
+                type: 'video',
+                sources: [{ src: proxiedVideoUrl, type: 'application/vnd.apple.mpegurl' }],
+            };
+            animePlayer.currentTime = startTime;
             animePlayer.play();
-        });
+        } else {
+            alert('HLS is not supported on this browser.');
+        }
     });
 }
 

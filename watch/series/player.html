@@ -6,6 +6,9 @@
 <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
 <link rel="icon" type="image/x-icon" href="https://thefarawaydev.github.io/better-anime/watch/other/BA.png">
 <link href="https://thefarawaydev.github.io/better-anime/watch/series/player.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0"></script>
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 <body>
     <div class="container">
         <header>
@@ -13,10 +16,8 @@
         </header>
 
         <div class="content"></div>
-            <video id="my-video" class="video-js" controls preload="none" 
-                poster="https://thefarawaydev.github.io/better-anime/watch/other/BA.png"
-                data-setup='' playsinline>
-            <source id="video-source" src="https://example.mp4" type="video/mp4" />
+            <video id="my-video" class="plyr" controls playsinline>
+                <source id="video-source" src="https://example.mp4" type="video/mp4" />
             </video>
 
             <div class="button-container">
@@ -36,11 +37,8 @@
             <div class="episode-list" id="episode-list">
                 <!-- Episodes will be dynamically added here -->
             </div>
-            </div>
-        </div>
         </div>
 
-        <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
         <script src="https://thefarawaydev.github.io/better-anime/watch/series/player.js"></script>
 </body>
 </html>
