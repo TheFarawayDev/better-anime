@@ -221,67 +221,76 @@
 
   <script>
     const jsonUrl = "./anime-search-results.json";
-  
+
     function getAnimeDetails(ids) {
       return fetch(`${jsonUrl}?t=${new Date().getTime()}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log('Fetched data:', data); // Debugging line
-          if (Array.isArray(ids)) {
-            // Handle multiple IDs
-            return ids.map(id => data.find(anime => anime.id === id) || {});
-          } else {
-            // Handle single ID
-            return [data.find(anime => anime.id === ids) || {}];
-          }
+      .then(response => response.json())
+      .then(data => {
+        console.log('Fetched data:', data); // Debugging line
+        const animeDetails = ids.map(id => {
+        const anime = data.find(anime => anime.id === id);
+        console.log('Matching anime for ID', id, ':', anime); // Debugging line
+        return anime || {};
         });
+        return animeDetails;
+      });
     }
-  
+
     function formatTitle(title) {
       return title.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
     }
-  
+
     document.addEventListener('DOMContentLoaded', () => {
       const continueWatchingContainer = document.getElementById("continue-watching");
       const continueWatchingArray = JSON.parse(localStorage.getItem('continueWatching')) || [];
-  
+
       if (continueWatchingArray.length > 0) {
-        continueWatchingArray.forEach(async item => {
-          const animeDetailsArray = await getAnimeDetails(item.id);
-          const itemElement = document.createElement("div");
-          itemElement.classList.add("anime-item");
-  
-          // Generate content for each ID
-          const animeContent = animeDetailsArray.map((animeDetails, index) => `
-            <img src="${animeDetails.image_url || item.image_url || 'default-image.jpg'}" alt="${formatTitle(animeDetails.title || item.title)}">
-            <div class="anime-info">
-              <h3>${formatTitle(animeDetails.title || item.title)}</h3>
-              <div class="tick ltr">
-                <div class="tick-item tick-sub"><i class="fas fa-closed-captioning"></i> ${animeDetails.sub_count || item.sub_count || '00'}</div>
-                <div class="tick-item tick-dub"><i class="fas fa-microphone"></i> ${animeDetails.dub_count || item.dub_count || '00'}</div>
-                <div class="tick-item tick-eps">${animeDetails.episodes || item.episodes || '00'}</div>
-              </div>
-              <hr>
-              <a href="${item[`season${index + 1}_url`] || item.url}" target="_blank">Continue Season ${index + 1}</a>
-            </div>
-          `).join('');
-  
-          itemElement.innerHTML = animeContent;
-  
-          const deleteButton = document.createElement("button");
-          deleteButton.classList.add("btn-delete");
-          deleteButton.textContent = "Delete";
-          deleteButton.addEventListener("click", function() {
-            itemElement.remove();
-            const updatedArray = continueWatchingArray.filter(watchItem => watchItem.id !== item.id);
-            localStorage.setItem('continueWatching', JSON.stringify(updatedArray));
-          });
-  
-          itemElement.appendChild(deleteButton);
-          continueWatchingContainer.appendChild(itemElement);
+      continueWatchingArray.forEach(async item => {
+        const ids = Array.isArray(item.id) ? item.id : [item.id];
+        const animeDetailsArray = await getAnimeDetails(ids);
+
+        animeDetailsArray.forEach(animeDetails => {
+        const itemElement = document.createElement("div");
+        itemElement.classList.add("anime-item");
+        itemElement.innerHTML = `
+          <img src="${animeDetails.image_url || 'default-image.jpg'}" alt="${formatTitle(animeDetails.title || item.title)}">
+          <div class="anime-info">
+          <h3>${formatTitle(animeDetails.title || item.title)}</h3>
+          <div class="tick ltr">
+            <div class="tick-item tick-sub"><i class="fas fa-closed-captioning"></i> ${animeDetails.sub_count || '00'}</div>
+            <div class="tick-item tick-dub"><i class="fas fa-microphone"></i> ${animeDetails.dub_count || '00'}</div>
+            <div class="tick-item tick-eps">${animeDetails.episodes || '00'}</div>
+          </div>
+          <hr>
+          </div>
+        `;
+
+        const continueLink = document.createElement("a");
+        continueLink.href = item.url;
+        continueLink.textContent = "Continue";
+        continueLink.addEventListener("click", function(event) {
+          event.preventDefault();
+          window.open(item.url, "_blank");
         });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("btn-delete");
+        deleteButton.textContent = "Remove";
+        deleteButton.addEventListener("click", () => {
+          const updatedArray = continueWatchingArray.filter(entry => entry !== item);
+          localStorage.setItem('continueWatching', JSON.stringify(updatedArray));
+          itemElement.remove();
+        });
+
+        const animeInfoDiv = itemElement.querySelector(".anime-info");
+        animeInfoDiv.appendChild(continueLink);
+        animeInfoDiv.appendChild(deleteButton);
+
+        continueWatchingContainer.appendChild(itemElement);
+        });
+      });
       } else {
-        continueWatchingContainer.innerHTML = "<p>No items found in your continue watching list.</p>";
+      continueWatchingContainer.innerHTML = "<p>No items found in your continue watching list.</p>";
       }
     });
   </script>
