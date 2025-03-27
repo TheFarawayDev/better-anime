@@ -228,7 +228,7 @@
       .then(data => {
         console.log('Fetched data:', data); // Debugging line
         const animeDetails = ids.map(id => {
-        const anime = data.find(anime => anime.id === id);
+        const anime = data.find(anime => anime.id.includes(id));
         console.log('Matching anime for ID', id, ':', anime); // Debugging line
         return anime || {};
         });

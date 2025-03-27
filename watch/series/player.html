@@ -200,19 +200,25 @@
             }
         }
 
-        function saveToContinueWatching(id, title, episodeUrl) {
+        function saveToContinueWatching(id) {
             let continueWatchingArray = JSON.parse(localStorage.getItem('continueWatching')) || [];
-            const existingItemIndex = continueWatchingArray.findIndex(item => item.id === id && item.title === title);
+            const existingItemIndex = continueWatchingArray.findIndex(item => item.id === id);
             const pageUrl = window.location.href;
 
             if (existingItemIndex !== -1) {
-                continueWatchingArray[existingItemIndex].url = pageUrl;
+            continueWatchingArray[existingItemIndex].url = pageUrl;
             } else {
-                continueWatchingArray.push({ id, title, url: pageUrl });
+            continueWatchingArray.push({ id, url: pageUrl });
             }
 
             localStorage.setItem('continueWatching', JSON.stringify(continueWatchingArray));
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (currentAnimeId) {
+            saveToContinueWatching(currentAnimeId);
+            }
+        });
 
         function initializeArtplayer(url) {
             if (art) {
@@ -228,7 +234,7 @@
                 customType: {
                     m3u8: playM3u8,
                 },
-                volume: 0.5,
+                volume: 1,
                 autoplay: true,
                 autoSize: false,
                 screenshot: true,
