@@ -129,8 +129,8 @@
         </div>
         <div class="artplayer-app"></div>
         <div class="controls-area">
-            <button id="subbedButton">Subbed</button>
-            <button id="dubbedButton">Dubbed</button>
+            <button id="subbedButton">Sub Server</button>
+            <button id="dubbedButton">Dub Server</button>
         </div>
         <div class="language-bar">
             Current Language: <span id="currentLanguage">Subbed</span>
@@ -153,7 +153,7 @@
         const proxyHeaders = '&headers={"referer":"https://megacloud.club"}';
 
         const urlParams = new URLSearchParams(window.location.search);
-        const currentAnimeId = urlParams.get('id');
+        const currentAnimeId = 'sakamoto-days-19431';
         const currentSeriesName = urlParams.get('series');
         let currentEpisodeId = null;
         let currentEpisodeTitle = null;
@@ -169,7 +169,7 @@
                 hls.loadSource(url);
                 hls.attachMedia(video);
                 if (art) art.hls = hls;
-                hls.on(Hls.Events.MANIFEST_PARSED,function() {
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
                     video.play();
                 });
             } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
@@ -264,6 +264,10 @@
                 button.dataset.episodeTitle = episode.title;
                 button.style.transitionDelay = `${index * 50}ms`;
                 button.style.opacity = 0;
+                button.addEventListener('click', () => { // Added click event listener
+                    loadEpisodeServers(episode.episodeId, episode.title);
+                    highlightCurrentEpisode(button);
+                });
                 episodeListContainer.appendChild(button);
                 requestAnimationFrame(() => {
                     button.style.opacity = 1;
@@ -297,7 +301,6 @@
                     currentCategory = 'dub';
                 }
                 localStorage.setItem('preferredCategory', currentCategory);
-                //corrected this line below
                 currentLanguageSpan.textContent = currentCategory === 'sub' ? 'Subbed' : 'Dubbed';
             }
 
@@ -326,7 +329,6 @@
                     const savedTime = loadProgress(episodeId, currentEpisodeTitle, category);
                     initializeArtplayer(videoUrl);
                     if (art) art.seek = savedTime;
-                    //corrected this line below
                     currentLanguageSpan.textContent = category === 'sub' ? 'Subbed' : 'Dubbed';
                 } else {
                     alert(`No ${category} streams found for this episode.`);
@@ -385,7 +387,7 @@
                                 if (hasSubbed || hasDubbed) {
                                     loadStreamingLinks(lastWatchedEpisodeId, preferredCategory);
                                     currentCategory = preferredCategory;
-                                    currentLanguageSpan.textContent = currentCategory.charAt(0).toUpperCase() + 'bed';
+                                    currentLanguageSpan.textContent = currentCategory === 'sub' ? 'Subbed' : 'Dubbed';
                                 }
                             });
                         } else if (document.querySelector('.episode-list button:first-child')) {
@@ -402,15 +404,7 @@
                     currentCategory = 'sub';
                     localStorage.setItem('preferredCategory', currentCategory);
                     currentLanguageSpan.textContent = 'Subbed';
-                    loadEpisodeServers(currentEpisodeId, currentCategory);
-                     // Add this back to trigger fade-in on language switch
-                    Array.from(episodeListContainer.children).forEach((child, index) => {
-                        child.style.transitionDelay = `${index * 50}ms`;
-                        child.style.opacity = 0; // Reset opacity before fade-in
-                        requestAnimationFrame(() => {
-                            child.style.opacity = 1;
-                        });
-                    });
+                    loadStreamingLinks(currentEpisodeId, currentCategory);
                 } else if (!hasSubbed) {
                     alert('No subbed version available for this episode.');
                 } else {
@@ -423,15 +417,7 @@
                     currentCategory = 'dub';
                     localStorage.setItem('preferredCategory', currentCategory);
                     currentLanguageSpan.textContent = 'Dubbed';
-                    loadEpisodeServers(currentEpisodeId, currentCategory);
-                    // Add this back to trigger fade-in on language switch
-                    Array.from(episodeListContainer.children).forEach((child, index) => {
-                        child.style.transitionDelay = `${index * 50}ms`;
-                        child.style.opacity = 0;  // Reset opacity before fade-in
-                        requestAnimationFrame(() => {
-                            child.style.opacity = 1;
-                        });
-                    });
+                    loadStreamingLinks(currentEpisodeId, currentCategory);
                 } else if (!hasDubbed) {
                     alert('No dubbed version available for this episode.');
                 } else {
