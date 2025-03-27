@@ -1,274 +1,444 @@
 <!DOCTYPE html>
-<html>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Better Anime</title>
-<link rel="icon" type="image/x-icon" href="https://thefarawaydev.github.io/better-anime/watch/other/BA.png">
-<script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0"></script>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-    :root {
-    --cadet-gray: #8fa3bb;
-    --bleu-de-france: #4a88d7;
-    --charcoal: #3a4f63;
-    --white: #ffffff;
-    --steel-blue: #4b7db9;
-    --light-gray: #f0f0f0;
-    --light-green: #3f8394;
-    --light-red: #d05656;
-    }
-
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-        padding: 0;
-        font-family: 'Roboto', sans-serif;
-        background-color: #2b3e50;
-        scrollbar-width: none; /* For Firefox */
-    }
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        background-color: #2b3e50;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        overflow: hidden;
-        padding-bottom: 20px;
-        scrollbar-width: none;
-    }
-
-    header {
-        padding: 1rem 5rem;
-        background-color: var(--bleu-de-france) ;
-        color: #000000;
-        display: flex;
-        width: 100%;
-        height: 25px;
-        margin-left: 150px;
-        margin-bottom: 20px;
-    }
-
-    .logo a {
-        color: #fff;
-        font-size: 1.5rem;
-        text-decoration: none;
-        font-weight: bold;
-        margin-left: 2.5vw;
-    }
-
-    .logo a:hover {
-    color: #225186;
-    }
-
-    .content {
-        flex-direction: column; 
-        align-items: center;
-    }
-
-    /* Add Plyr-specific styles */
-    #my-video {
-        width: 85.5%;
-        height: auto;
-        margin-bottom: 10px;
-        background-color: #3c4a5a;
-    }
-
-    .button-container {
-        display: flex;
-        flex-direction: column;
-        width: 86%;
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    .toggle-options, .season-selector, .setting-options {
-        display: flex;
-        justify-content: center;
-        margin: 2px 0;
-        flex-wrap: wrap;
-    }
-
-    .toggle-options button, .season-selector button, .setting-options button {
-        background-color: #3c6eb3;
-        color: white;
-        border: none;
-        padding: 10px 10px;
-        margin: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        flex: 1;
-        transition: background-color 0.3s, transform 0.2s;
-        flex: 1 1 calc(33.33% - 10px);
-        border-radius: 4px;
-    }
-
-    .toggle-options button:hover, .season-selector button:hover, .setting-options button:hover {
-        background-color: #5a9cec;
-        transform: scale(1.05);
-    }
-
-    .toggle-options button.active, .season-selector button.active, .setting-options button.active {
-        background-color: #4A90E2;
-    }
-
-    .episode-container {
-        display: flex;
-        justify-content: center;
-        overflow-y: auto;
-        height: 200px;
-        width: 83%;
-        border: 1px solid #799ec2;
-        background-color: #537196;
-        padding: 10px;
-        scrollbar-width: none;
-        border-radius: 4px;
-    }
-
-    .episode-list {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .episode-list button {
-        background-color: #34495E;
-        color: white;
-        border: none;
-        padding: 10px;
-        margin: 5px;
-        width: 90%;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: background-color 0.3s, transform 0.2s;
-    }
-
-    .episode-list button:hover {
-        background-color: #5a6b7c;
-        transform: scale(1.05);
-    }
-
-    .episode-list button.active {
-        background-color: #5a6b7c;
-        color: #2b3e50;
-    }
-
-    .language-bar {
-        background-color: #3c6eb3;
-        color: white;
-        border: none;
-        padding: 10px 10px;
-        margin: 5px;
-        font-size: 16px;
-        border-radius: 4px;
-        text-align: center;
-        transition: background-color 0.3s, transform 0.2s;
-    }
-
-    @media screen and (min-width: 769px) and (max-width: 1024px) {     
-        header {
-            margin-left: 75px;
-            padding: 1rem 5rem;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Better Anime</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+    <link rel="icon" type="image/x-icon" href="https://thefarawaydev.github.io/better-anime/watch/other/BA.png">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #121212;
+            margin: 0;
+            padding: 20px;
+            font-family: sans-serif;
+            color: #fff;
         }
-    }
-
-
-    @media screen and (max-width: 768px) {
-        .container {
-            width: 85%;
-            border-radius: 10px;
-            border: 2px solid #000000;
+        .artplayer-app-container {
+            width: 80%;
+            max-width: 800px;
+            background: #121212;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        header {
-            margin-left: 10px;
-            border-bottom: 2px solid #000000;
+        .site-link-bar {
+            width: 100%;
+            background-color: #1e1e1e;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            box-sizing: border-box;
+            margin-bottom: 10px;
         }
-
-        .episode-container {
-            width: 87%;
-            height: 150px;
+        .site-link {
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
         }
-
-        .button-container {
-            width: 95%;
-        }
-        
-        .season-selector button {
-            font-size: 14px;
+        .player-header {
+            width: 100%;
             text-align: center;
-            width: 10%;
-        }  
-
-        .toggle-options, .season-selector, .setting-options {
-            flex-wrap: wrap;
+            padding: 10px 0;
+            font-size: 1.5em;
+            margin-bottom: 10px;
         }
-
-        .toggle-options button, .season-selector button, .setting-options button {
-            flex: 1 1 calc(33.33% - 10px);
+        .artplayer-app {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: black;
         }
-
-        div[aria-live="polite"] {
-            display: none !important;
+        .controls-area {
+            width: 100%;
+            background-color: #1e1e1e;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            box-sizing: border-box;
+            margin-top: 10px;
         }
-    }
-</style>
+        .controls-area button {
+            width: 100%;
+        }
+        .language-bar {
+            width: 100%;
+            background-color: #2c2c2c;
+            padding: 8px;
+            text-align: center;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+        .episode-list-container {
+            width: 80%;
+            max-width: 800px;
+            margin-top: 20px;
+            background-color: #1e1e1e;
+            padding: 15px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .episode-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 8px;
+            width: 100%;
+        }
+        .episode-list button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            box-sizing: border-box;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 0.9em;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .episode-list button.active {
+            background-color: #23ade5;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo"><a href="https://thefarawaydev.github.io/better-anime/home">Better Anime</a></div>
-        </header>
-
-        <div class="content"></div>
-            <video id="my-video" controls playsinline></video>
-
-            <div class="button-container">
-                <div class="toggle-options">
-                    <button onclick="toggleLanguage('sub')" id="subButton">Subbed</button>
-                    <button onclick="toggleLanguage('dub')" id="dubButton">Dubbed</button>
-                </div>
-                <div class="setting-options">
-                    <button onclick="playPrevious()" id="prevButton">Previous</button>
-                    <button onclick="toggleAutoNext()" id="autoNextButton">Auto Next: Off</button>
-                    <button onclick="playNext()" id="nextButton">Next</button>
-                </div>
-                <div class="language-bar" id="language-bar">Current Language: Subbed</div>
-            </div>
-
-            <div class="episode-container">
-            <div class="episode-list" id="episode-list">
-                <!-- Episodes will be dynamically added here -->
-            </div>
+    <div class="artplayer-app-container">
+        <div class="site-link-bar">
+            <a href="https://thefarawaydev.github.io/better-anime/" class="site-link">Better Anime</a>
         </div>
+        <div class="artplayer-app"></div>
+        <div class="controls-area">
+            <button id="subbedButton">Subbed</button>
+            <button id="dubbedButton">Dubbed</button>
+        </div>
+        <div class="language-bar">
+            Current Language: <span id="currentLanguage">Subbed</span>
+        </div>
+    </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const video = document.getElementById('my-video');
-                const videoSource = 'https://example.m3u8'; // Replace with your HLS stream URL
+    <div class="episode-list-container">
+        <div class="episode-list">
+            </div>
+    </div>
 
-                if (Hls.isSupported()) {
-                    const hls = new Hls();
-                    hls.loadSource(videoSource);
-                    hls.attachMedia(video);
-                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                        video.play();
-                    });
-                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                    video.src = videoSource;
-                    video.addEventListener('loadedmetadata', () => {
-                        video.play();
-                    });
-                } else {
-                    console.error('HLS is not supported in this browser.');
+    <script>
+        const artContainer = document.querySelector('.artplayer-app');
+        const subbedButton = document.getElementById('subbedButton');
+        const dubbedButton = document.getElementById('dubbedButton');
+        const currentLanguageSpan = document.getElementById('currentLanguage');
+        const episodeListContainer = document.querySelector('.episode-list');
+        const apiUrlBase = 'https://better-anime.vercel.app';
+        const proxyUrl = 'https://better-anime-proxy.vercel.app/m3u8-proxy?url=';
+        const proxyHeaders = '&headers={"referer":"https://megacloud.club"}';
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentAnimeId = urlParams.get('id');
+        const currentSeriesName = urlParams.get('series');
+        let currentEpisodeId = null;
+        let currentEpisodeTitle = null;
+        let currentCategory = localStorage.getItem('preferredCategory') || 'sub';
+        let art;
+        let hasSubbed = false;
+        let hasDubbed = false;
+
+        function playM3u8(video, url) {
+            if (Hls.isSupported()) {
+                if (art && art.hls) art.hls.destroy();
+                const hls = new Hls();
+                hls.loadSource(url);
+                hls.attachMedia(video);
+                if (art) art.hls = hls;
+                hls.on(Hls.Events.MANIFEST_PARSED,function() {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = url;
+                video.play();
+            } else {
+                if (art) art.notice.show = 'Unsupported playback format: m3u8';
+            }
+        }
+
+        function saveToContinueWatching(id, title, episodeUrl) {
+            let continueWatchingArray = JSON.parse(localStorage.getItem('continueWatching')) || [];
+            const existingItemIndex = continueWatchingArray.findIndex(item => item.id === id && item.title === title);
+            const pageUrl = window.location.href;
+
+            if (existingItemIndex !== -1) {
+                continueWatchingArray[existingItemIndex].url = pageUrl;
+            } else {
+                continueWatchingArray.push({ id, title, url: pageUrl });
+            }
+
+            localStorage.setItem('continueWatching', JSON.stringify(continueWatchingArray));
+        }
+
+        function initializeArtplayer(url) {
+            if (art) {
+                art.destroy(true);
+            }
+            const videoElement = document.createElement('video');
+            artContainer.appendChild(videoElement);
+
+            art = new Artplayer({
+                container: '.artplayer-app',
+                url: url,
+                type: 'm3u8',
+                customType: {
+                    m3u8: playM3u8,
+                },
+                volume: 0.5,
+                autoplay: true,
+                autoSize: false,
+                screenshot: true,
+                setting: true,
+                loop: true,
+                pip: true,
+                playbackRate: true,
+                aspectRatio: true,
+                fullscreen: true,
+                fullscreenWeb: true,
+                miniProgressBar: true,
+                theme: '#23ade5',
+                autoOrientation: true,
+            });
+
+            art.on('video:ended', () => {
+                // You can implement auto next episode logic here if needed
+            });
+
+            art.on('video:timeupdate', () => {
+                if (currentEpisodeId && currentEpisodeTitle) {
+                    saveProgress(art.url, art.currentTime);
+                    // Make sure currentAnimeId and currentSeriesName are defined and passed here
+                    if (currentAnimeId && currentSeriesName) {
+                        saveToContinueWatching(currentAnimeId, currentSeriesName, window.location.href);
+                    }
                 }
             });
-        </script>
-        <script src="player.js"></script>
+        }
+
+        async function fetchAnimeEpisodes(animeId) {
+            try {
+                const response = await fetch(`${apiUrlBase}/api/v2/hianime/anime/${animeId}/episodes`);
+                const data = await response.json();
+                if (data.success && data.data && data.data.episodes) {
+                    displayEpisodes(data.data.episodes);
+                } else {
+                    alert('Could not load episodes.');
+                }
+            } catch (error) {
+                console.error('Error fetching episodes:', error);
+                alert('Error loading episodes.');
+            }
+        }
+
+        function displayEpisodes(episodes) {
+            episodeListContainer.innerHTML = '';
+            episodes.forEach((episode, index) => {
+                const button = document.createElement('button');
+                button.textContent = `Episode ${episode.number}: ${episode.title}`;
+                button.dataset.url = episode.url;
+                button.dataset.episodeId = episode.episodeId;
+                button.dataset.episodeTitle = episode.title;
+                button.style.transitionDelay = `${index * 50}ms`;
+                button.style.opacity = 0;
+                episodeListContainer.appendChild(button);
+                requestAnimationFrame(() => {
+                    button.style.opacity = 1;
+                });
+            });
+        }
+
+        function highlightCurrentEpisode(selectedButton) {
+            document.querySelectorAll('.episode-list button').forEach(button => button.classList.remove('active'));
+            selectedButton.classList.add('active');
+        }
+
+        async function loadEpisodeServers(episodeId, episodeTitle) {
+            currentEpisodeId = episodeId;
+            currentEpisodeTitle = episodeTitle;
+            localStorage.setItem('lastWatchedEpisodeId_' + currentAnimeId, episodeId);
+            localStorage.setItem('lastWatchedEpisodeTitle_' + currentAnimeId, episodeTitle);
+            const subbedSources = await fetchStreamingLinks(episodeId, 'sub');
+            const dubbedSources = await fetchStreamingLinks(episodeId, 'dub');
+
+            hasSubbed = subbedSources.length > 0;
+            hasDubbed = dubbedSources.length > 0;
+
+            subbedButton.style.display = hasSubbed ? 'inline-block' : 'none';
+            dubbedButton.style.display = hasDubbed ? 'inline-block' : 'none';
+
+            if ((currentCategory === 'sub' && !hasSubbed) || (currentCategory === 'dub' && !hasDubbed)) {
+                if (hasSubbed) {
+                    currentCategory = 'sub';
+                } else if (hasDubbed) {
+                    currentCategory = 'dub';
+                }
+                localStorage.setItem('preferredCategory', currentCategory);
+                //corrected this line below
+                currentLanguageSpan.textContent = currentCategory === 'sub' ? 'Subbed' : 'Dubbed';
+            }
+
+            loadStreamingLinks(episodeId, currentCategory);
+        }
+
+        async function fetchStreamingLinks(episodeId, category) {
+            try {
+                const response = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-2&category=${category}`);
+                const data = await response.json();
+                if (data.success && data.data && data.data.sources) {
+                    return data.data.sources;
+                }
+                return [];
+            } catch (error) {
+                console.error(`Error fetching ${category} streaming links:`, error);
+                return [];
+            }
+        }
+
+        async function loadStreamingLinks(episodeId, category) {
+            try {
+                const sources = await fetchStreamingLinks(episodeId, category);
+                if (sources.length > 0) {
+                    const videoUrl = `${proxyUrl}${encodeURIComponent(sources[0].url)}${proxyHeaders}`;
+                    const savedTime = loadProgress(episodeId, currentEpisodeTitle, category);
+                    initializeArtplayer(videoUrl);
+                    if (art) art.seek = savedTime;
+                    //corrected this line below
+                    currentLanguageSpan.textContent = category === 'sub' ? 'Subbed' : 'Dubbed';
+                } else {
+                    alert(`No ${category} streams found for this episode.`);
+                    if (category === 'sub' && hasDubbed) {
+                        loadStreamingLinks(episodeId, 'dub');
+                        currentCategory = 'dub';
+                        localStorage.setItem('preferredCategory', currentCategory);
+                        currentLanguageSpan.textContent = 'Dubbed';
+                    } else if (category === 'dub' && hasSubbed) {
+                        loadStreamingLinks(episodeId, 'sub');
+                        currentCategory = 'sub';
+                        localStorage.setItem('preferredCategory', currentCategory);
+                        currentLanguageSpan.textContent = 'Subbed';
+                    }
+                }
+            } catch (error) {
+                console.error(`Error loading ${category} stream:`, error);
+                alert(`Error loading ${category} stream.`);
+            }
+        }
+
+        function saveProgress(videoUrl, currentTime) {
+            if (!currentAnimeId || !currentEpisodeId || !currentEpisodeTitle) {
+                return;
+            }
+            const progressKey = `watchProgress_${currentAnimeId}_${currentEpisodeId}_${currentEpisodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}_${currentCategory}`;
+            localStorage.setItem(progressKey, currentTime);
+        }
+
+        function loadProgress(episodeId, episodeTitle, category) {
+            if (!currentAnimeId || !episodeId || !episodeTitle) {
+                return 0;
+            }
+            const progressKey = `watchProgress_${currentAnimeId}_${episodeId}_${episodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}_${category}`;
+            const savedTime = localStorage.getItem(progressKey);
+            return savedTime ? parseFloat(savedTime) : 0;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeArtplayer('');
+
+            if (currentAnimeId) {
+                fetchAnimeEpisodes(currentAnimeId).then(() => {
+                    const lastWatchedEpisodeId = localStorage.getItem('lastWatchedEpisodeId_' + currentAnimeId);
+                    const lastWatchedEpisodeTitle = localStorage.getItem('lastWatchedEpisodeTitle_' + currentAnimeId);
+                    const preferredCategory = localStorage.getItem('preferredCategory') || 'sub';
+
+                    if (lastWatchedEpisodeId && lastWatchedEpisodeTitle) {
+                        const episodeButton = Array.from(document.querySelectorAll('.episode-list button')).find(
+                            button => button.dataset.episodeId === lastWatchedEpisodeId
+                        );
+
+                        if (episodeButton) {
+                            highlightCurrentEpisode(episodeButton);
+                            loadEpisodeServers(lastWatchedEpisodeId, lastWatchedEpisodeTitle).then(() => {
+                                if (hasSubbed || hasDubbed) {
+                                    loadStreamingLinks(lastWatchedEpisodeId, preferredCategory);
+                                    currentCategory = preferredCategory;
+                                    currentLanguageSpan.textContent = currentCategory.charAt(0).toUpperCase() + 'bed';
+                                }
+                            });
+                        } else if (document.querySelector('.episode-list button:first-child')) {
+                            document.querySelector('.episode-list button:first-child').click();
+                        }
+                    } else if (document.querySelector('.episode-list button:first-child')) {
+                        document.querySelector('.episode-list button:first-child').click();
+                    }
+                });
+            }
+
+            subbedButton.addEventListener('click', () => {
+                if (currentEpisodeId && hasSubbed) {
+                    currentCategory = 'sub';
+                    localStorage.setItem('preferredCategory', currentCategory);
+                    currentLanguageSpan.textContent = 'Subbed';
+                    loadEpisodeServers(currentEpisodeId, currentCategory);
+                     // Add this back to trigger fade-in on language switch
+                    Array.from(episodeListContainer.children).forEach((child, index) => {
+                        child.style.transitionDelay = `${index * 50}ms`;
+                        child.style.opacity = 0; // Reset opacity before fade-in
+                        requestAnimationFrame(() => {
+                            child.style.opacity = 1;
+                        });
+                    });
+                } else if (!hasSubbed) {
+                    alert('No subbed version available for this episode.');
+                } else {
+                    alert('Please select an episode first.');
+                }
+            });
+
+            dubbedButton.addEventListener('click', () => {
+                if (currentEpisodeId && hasDubbed) {
+                    currentCategory = 'dub';
+                    localStorage.setItem('preferredCategory', currentCategory);
+                    currentLanguageSpan.textContent = 'Dubbed';
+                    loadEpisodeServers(currentEpisodeId, currentCategory);
+                    // Add this back to trigger fade-in on language switch
+                    Array.from(episodeListContainer.children).forEach((child, index) => {
+                        child.style.transitionDelay = `${index * 50}ms`;
+                        child.style.opacity = 0;  // Reset opacity before fade-in
+                        requestAnimationFrame(() => {
+                            child.style.opacity = 1;
+                        });
+                    });
+                } else if (!hasDubbed) {
+                    alert('No dubbed version available for this episode.');
+                } else {
+                    alert('Please select an episode first.');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
