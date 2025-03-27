@@ -34,7 +34,7 @@
     }
 
     .anime-item {
-      background-color: #3a4f63;
+      background-color: #fff;
       border: 1px solid #ccd1d9;
       border-radius: 8px;
       overflow: hidden;
@@ -99,7 +99,8 @@
     }
 
     .anime-info h3 {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+      overflow: hidden;
     }
 
     .tick-item.tick-sub {
@@ -168,14 +169,6 @@
       hr {
         border: 1px solid var(--white);
       }
-
-      .anime-item {
-        background-color: #29292a;
-        /* Dark background */
-        color: #ffffff;
-        /* White text */
-      }
-
       .anime-info {
         background-color: #29292a;
         /* Dark background */
@@ -210,108 +203,76 @@
   </footer>
 
   <script>
+    function loadContent(event, url) {
+      event.preventDefault();
+      fetch(url)
+        .then(response => response.text())
+        .then(data => {
+          document.querySelector("main").innerHTML = data;
+        })
+        .catch(error => {
+          console.error("Error loading content:", error);
+          document.querySelector("main").innerHTML = "<p>Sorry, something went wrong. Please try again later.</p>";
+        });
+    }
+
     const jsonUrl = './anime-search-results.json';
-  fetch(`${jsonUrl}?t=${new Date().getTime()}`)
-    .then(response => response.json())
-    .then(data => {
-      console.log("Fetched Data:", data);
-      const resultsContainer = document.getElementById("results");
-      const resultsArray = Array.isArray(data) ? data : [];
-      const params = new URLSearchParams(window.location.search);
-      const query = params.get("query");
+    fetch(`${jsonUrl}?t=${new Date().getTime()}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log("Fetched Data:", data);
+        const resultsContainer = document.getElementById("results");
+        const resultsArray = Array.isArray(data) ? data : [];
+        const params = new URLSearchParams(window.location.search);
+        const query = params.get("query");
 
-      if (query) {
-        document.title = `Results for "${query}"`;
-        const filteredResults = resultsArray.filter(result =>
-          result.title.toLowerCase().includes(query.toLowerCase())
-        );
-        console.log("Filtered Results:", filteredResults);
-        if (filteredResults.length > 0) {
-          filteredResults.forEach(result => {
-            const resultItem = document.createElement("div");
-            resultItem.classList.add("anime-item");
-            resultItem.innerHTML = `
-              <img src="${result.image_url}" alt="${result.title}">
-              <div class="anime-info">
-                <h3>${result.title}</h3>
-                <div class="tick ltr">
-                  <div class="tick-item tick-sub"><i class="fas fa-closed-captioning"></i> ${result.sub_count || '00'}</div>
-                  <div class="tick-item tick-dub"><i class="fas fa-microphone"></i> ${result.dub_count || '00'}</div>
-                  <div class="tick-item tick-eps">${result.episodes || '00'}</div>
+        if (query) {
+          document.title = `Results for "${query}"`;
+          const filteredResults = resultsArray.filter(result =>
+            result.title.toLowerCase().includes(query.toLowerCase())
+          );
+          console.log("Filtered Results:", filteredResults);
+          if (filteredResults.length > 0) {
+            filteredResults.forEach(result => {
+              const resultItem = document.createElement("div");
+              resultItem.classList.add("anime-item");
+              resultItem.innerHTML = `
+                <img src="${result.image_url}" alt="${result.title}">
+                <div class="anime-info">
+                  <h3>${result.title}</h3>
+                  <div class="tick ltr">
+                    <div class="tick-item tick-sub"><i class="fas fa-closed-captioning"></i> ${result.sub_count || '00'}</div>
+                    <div class="tick-item tick-dub"><i class="fas fa-microphone"></i> ${result.dub_count || '00'}</div>
+                    <div class="tick-item tick-eps">${result.episodes || '00'}</div>
+                  </div>
+                  <hr>
                 </div>
-                <hr>
-              </div>
-            `;
+              `;
 
-            // Dynamically create season buttons
-            const animeInfoDiv = resultItem.querySelector(".anime-info");
-            Object.keys(result).forEach(key => {
-              if (key.startsWith("season") && key.endsWith("_url")) {
-                const seasonNumber = key.replace("season", "").replace("_url", ""); // Extract season number
-                const seasonButton = document.createElement("a");
-                seasonButton.href = result[key];
-                seasonButton.textContent = `Season ${seasonNumber}`;
-                seasonButton.style.display = "inline-block";
-                seasonButton.style.padding = "0.5rem 1rem";
-                seasonButton.style.backgroundColor = "#3a4f63";
-                seasonButton.style.color = "#fff";
-                seasonButton.style.borderRadius = "8px";
-                seasonButton.style.textDecoration = "none";
-                seasonButton.style.fontWeight = "bold";
-                seasonButton.style.marginBottom = "0.5rem";
-                seasonButton.target = "_blank"; // Open in a new tab
-                animeInfoDiv.appendChild(seasonButton);
-              }
+              const link = document.createElement("a");
+              link.href = result.url;
+              link.textContent = "Watch Now";
+              link.addEventListener("click", function(event) {
+                event.preventDefault();
+                window.open(result.url, "_blank");
+              });
+
+              const animeInfoDiv = resultItem.querySelector(".anime-info");
+              animeInfoDiv.appendChild(link);
+
+              resultsContainer.appendChild(resultItem);
             });
-
-            // Add full series button if available
-            if (result.fullseries_url) {
-              const fullSeriesButton = document.createElement("a");
-              fullSeriesButton.href = result.fullseries_url;
-              fullSeriesButton.textContent = "Watch Full Series";
-              fullSeriesButton.style.display = "inline-block";
-              fullSeriesButton.style.padding = "0.5rem 1rem";
-              fullSeriesButton.style.backgroundColor = "#4b7db9";
-              fullSeriesButton.style.color = "#fff";
-              fullSeriesButton.style.borderRadius = "8px";
-              fullSeriesButton.style.textDecoration = "none";
-              fullSeriesButton.style.fontWeight = "bold";
-              fullSeriesButton.style.marginTop = "0.5rem";
-              fullSeriesButton.target = "_blank"; // Open in a new tab
-              animeInfoDiv.appendChild(fullSeriesButton);
-            }
-
-            // Add movie button if available
-            if (result.movie_url) {
-              const movieButton = document.createElement("a");
-              movieButton.href = result.movie_url;
-              movieButton.textContent = "Watch Movie";
-              movieButton.style.display = "inline-block";
-              movieButton.style.padding = "0.5rem 1rem";
-              movieButton.style.backgroundColor = "#d9534f";
-              movieButton.style.color = "#fff";
-              movieButton.style.borderRadius = "8px";
-              movieButton.style.textDecoration = "none";
-              movieButton.style.fontWeight = "bold";
-              movieButton.style.marginTop = "0.5rem";
-              movieButton.target = "_blank"; // Open in a new tab
-              animeInfoDiv.appendChild(movieButton);
-            }
-
-            resultsContainer.appendChild(resultItem);
-          });
+          } else {
+            resultsContainer.innerHTML = `<p>No results found for "<strong>${query}</strong>". Try a different search!</p>`;
+          }
         } else {
-          resultsContainer.innerHTML = `<p>No results found for "<strong>${query}</strong>". Try a different search!</p>`;
+          resultsContainer.innerHTML = "<p>No query provided. Go back and try again.</p>";
         }
-      } else {
-        resultsContainer.innerHTML = "<p>No query provided. Go back and try again.</p>";
-      }
-    })
-    .catch(error => {
-      console.error("Error fetching data:", error);
-      document.getElementById("results").innerHTML = "<p>Sorry, something went wrong. Please try again later.</p>";
-    });
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+        document.getElementById("results").innerHTML = "<p>Sorry, something went wrong. Please try again later.</p>";
+      });
   </script>
-  
 </body>
 </html>
