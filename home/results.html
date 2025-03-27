@@ -203,7 +203,7 @@
   </footer>
 
   <script>
-    const jsonUrl = 'anime-search-results.json';
+    const jsonUrl = './anime-search-results.json';
     fetch(`${jsonUrl}?t=${new Date().getTime()}`)
       .then(response => response.json())
       .then(data => {
