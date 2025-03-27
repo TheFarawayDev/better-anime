@@ -131,6 +131,20 @@
         button:hover {
             background-color: #555;
         }
+        @media (max-width: 768px) {
+            .episode-list-container {
+                overflow-y: scroll;
+                max-height: 300px;
+            }
+            .episode-list {
+                display: block; /* Change to block for vertical scrolling */
+            }
+            .episode-list button {
+                display: block;
+                width: 100%;
+                margin-bottom: 8px;
+            }
+        }
     </style>
 </head>
 <body>
