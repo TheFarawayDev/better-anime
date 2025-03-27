@@ -405,6 +405,15 @@
         "episodes": "24"
     },
     {
+        "title": "One Piece",
+        "id": "one-piece-100",
+        "image_url": "https://m.media-amazon.com/images/M/MV5BMTNjNGU4NTUtYmVjMy00YjRiLTkxMWUtNzZkMDNiYjZhNmViXkEyXkFqcGc@._V1_QL75_UY281_CR8,0,190,281_.jpg",
+        "fullseries_url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=one-piece-100",
+        "dub_count": "1122",
+        "sub_count": "1122",
+        "episodes": "1122"
+    },
+    {
         "title": "No Longer Allowed In Another World",
         "id": "no_longer_allowed_in_another_world",
         "image_url": "https://imgs.search.brave.com/IB-M50naJ_HjCbYWD80aRtHp5jK36o326SXfw32Aa08/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1XTXdOekV5/WVRrdE56a3hZaTAw/TmpBeExUZ3dZMlF0/TkRZME9HSXhOREkz/TW1WbFhrRXlYa0Zx/Y0djQC5qcGc",
