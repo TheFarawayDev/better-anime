@@ -240,7 +240,7 @@
               const animeInfoDiv = resultItem.querySelector(".anime-info");
               Object.keys(result).forEach(key => {
                 if (key.startsWith("season") && key.endsWith("_url")) {
-                  const seasonNumber = key.match(/\d+/)[0]; // Extract season number
+                  const seasonNumber = key.replace("season", "").replace("_url", ""); // Extract season number
                   const seasonButton = document.createElement("a");
                   seasonButton.href = result[key];
                   seasonButton.textContent = `Season ${seasonNumber}`;
