@@ -10,30 +10,48 @@
     },
     {
         "title": "Alderamin On The Sky",
-        "id": "alderamin_on_the_sky",
+        "id": "alderamin-on-the-sky-903",
         "image_url": "https://m.media-amazon.com/images/M/MV5BYmNkMjJlMmEtNzJlNC00MTE5LTljOTAtYTFiMzFiNDhjOWM4XkEyXkFqcGc@._V1_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=alderamin_on_the_sky",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=alderamin-on-the-sky-903",
         "dub_count": "12",
         "sub_count": "12",
         "episodes": "12"
     },
     {
         "title": "Amagi Brilliant Park",
-        "id": "amagi_brilliant_park",
+        "id": "amagi-brilliant-park-1452",
         "image_url": "https://imgs.search.brave.com/ywEdvaKRWDHvvp3uTdZNcOyOf9Q2bkcbCu0C2lbIWZU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1QllUQmhOVEJt/TVdNdFptRmlOQzAw/TWpRMkxXSmhOV0l0/TkRGbE5EQmhObUUy/T1RsalhrRXlYa0Zx/Y0djQC5qcGc",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=amagi_brilliant_park",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=amagi-brilliant-park-1452",
         "dub_count": "13",
         "sub_count": "13",
         "episodes": "13"
     },
     {
         "title": "Arifureta",
-        "id": "arifureta",
-        "image_url": "https://m.media-amazon.com/images/M/MV5BMTBmMGI0ZDMtMDA3Zi00OTFiLTk4YTktNzAzZjAzNjJjMWVkXkEyXkFqcGc@._V1_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=arifureta",
-        "dub_count": "42",
-        "sub_count": "42",
-        "episodes": "42"
+        "id": "arifureta-from-commonplace-to-worlds-strongest-5832",
+        "image_url": "https://m.media-amazon.com/images/M/MV5BOWVkOGM3ZGItZTNiYS00ZjA0LTg0NWQtNDhmMWY3YzI2OGEyXkEyXkFqcGc@._V1_.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=arifureta-from-commonplace-to-worlds-strongest-5832",
+        "dub_count": "13",
+        "sub_count": "13",
+        "episodes": "13"
+    },
+    {
+        "title": "Arifureta: Season 2",
+        "id": "arifureta-shokugyou-de-sekai-saikyou-2nd-season-15646",
+        "image_url": "https://m.media-amazon.com/images/M/MV5BMTBmMGI0ZDMtMDA3Zi00OTFiLTk4YTktNzAzZjAzNjJjMWVkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=arifureta-shokugyou-de-sekai-saikyou-2nd-season-15646",
+        "dub_count": "12",
+        "sub_count": "12",
+        "episodes": "12"
+    },
+    {
+        "title": "Arifureta: Season 3",
+        "id": "arifureta-from-commonplace-to-worlds-strongest-season-3-19321",
+        "image_url": "https://m.media-amazon.com/images/M/MV5BYjVjZmRkZWItODlkOC00ODlmLWEyNDctYTNiMDE4NGM2NTYzXkEyXkFqcGc@._V1_FMjpg_UY3000_.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=arifureta-from-commonplace-to-worlds-strongest-season-3-19321",
+        "dub_count": "16",
+        "sub_count": "16",
+        "episodes": "16"
     },
     {
         "title": "A Silent Voice",
@@ -414,15 +432,6 @@
         "episodes": "24"
     },
     {
-        "title": "One Piece",
-        "id": "one-piece-100",
-        "image_url": "https://m.media-amazon.com/images/M/MV5BMTNjNGU4NTUtYmVjMy00YjRiLTkxMWUtNzZkMDNiYjZhNmViXkEyXkFqcGc@._V1_QL75_UY281_CR8,0,190,281_.jpg",
-        "fullseries_url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=one-piece-100",
-        "dub_count": "1122",
-        "sub_count": "1122",
-        "episodes": "1122"
-    },
-    {
         "title": "No Longer Allowed In Another World",
         "id": "no_longer_allowed_in_another_world",
         "image_url": "https://imgs.search.brave.com/IB-M50naJ_HjCbYWD80aRtHp5jK36o326SXfw32Aa08/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1XTXdOekV5/WVRrdE56a3hZaTAw/TmpBeExUZ3dZMlF0/TkRZME9HSXhOREkz/TW1WbFhrRXlYa0Zx/Y0djQC5qcGc",
@@ -430,6 +439,15 @@
         "dub_count": "12",
         "sub_count": "12",
         "episodes": "12"
+    },
+    {
+        "title": "One Piece",
+        "id": "one-piece-100",
+        "image_url": "https://m.media-amazon.com/images/M/MV5BMTNjNGU4NTUtYmVjMy00YjRiLTkxMWUtNzZkMDNiYjZhNmViXkEyXkFqcGc@._V1_QL75_UY281_CR8,0,190,281_.jpg",
+        "fullseries_url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=one-piece-100",
+        "dub_count": "1122",
+        "sub_count": "1122",
+        "episodes": "1122"
     },
     {
         "title": "One Punch Man",
@@ -448,6 +466,15 @@
         "dub_count": "52",
         "sub_count": "52",
         "episodes": "52"
+    },
+    {
+        "title": "Possibly The Greatest Alchemist Of All Time",
+        "id": "possibly-the-greatest-alchemist-of-all-time-19451",
+        "image_url": "https://m.media-amazon.com/images/M/MV5BMTU2ZWFhZTItYzIyZC00MGY4LWI3MzYtMTlhZDY2YmZiYTRiXkEyXkFqcGc@._V1_.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=possibly-the-greatest-alchemist-of-all-time-19451",
+        "dub_count": "12",
+        "sub_count": "12",
+        "episodes": "12"
     },
     {
         "title": "Ragna Crimson",
