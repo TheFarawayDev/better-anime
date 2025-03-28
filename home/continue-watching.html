@@ -56,13 +56,17 @@
     }
 
     .anime-info {
-      padding: 1.5rem; /* Increased padding */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%; /* Ensure it takes up the full height of the parent */
+      padding: 1rem;
     }
 
     .tick.ltr {
       display: flex;
       gap: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin-top: auto; /* Push the ticks to the bottom above the hr */
     }
 
     .tick-item {
@@ -99,8 +103,8 @@
     }
 
     .anime-info h3 {
-      margin-bottom: 15px;
-      overflow: hidden;
+      margin-top: auto;
+      overflow-wrap: break-word;
     }
 
     .tick-item.tick-sub {
