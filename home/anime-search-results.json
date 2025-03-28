@@ -532,10 +532,9 @@
     },
     {
         "title": "Solo Leveling",
-        "id": ["solo-leveling-18718", "solo-leveling-19413"],
+        "id": "solo-leveling-18718",
         "image_url": "https://m.media-amazon.com/images/M/MV5BNjIwZjM4MWMtOGZiOS00YTllLTkwMWYtZmQxZjM2ZGU4ZmNiXkEyXkFqcGc@._V1_.jpg",
-        "season1_url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=solo-leveling-18718",
-        "season2_url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=solo-leveling-19413",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=solo-leveling-18718",
         "dub_count": "N/A",
         "sub_count": "N/A",
         "episodes": "25"
