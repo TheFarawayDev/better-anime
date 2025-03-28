@@ -172,7 +172,7 @@
         </div>
         <div class="episode-control-area">
             <button id="previousButton" style="width: 100%;">Previous</button>
-            <!--<button id="autoNextButton" style="width: 100%;">Auto Next</button>-->
+            <button id="autoNextButton" style="width: 100%;">Auto Next</button>
             <button id="nextButton" style="width: 100%;">Next</button>
         </div>
     </div>
@@ -336,7 +336,7 @@
 
             art.on('video:timeupdate', () => {
                 if (currentEpisodeId && currentEpisodeTitle) {
-                    saveProgress(art.currentTime); // Save only the current time
+                    saveProgress(art.url, art.currentTime);
                 }
             });
 
@@ -354,10 +354,6 @@
             art.on('play', () => {
                 videoEnded = false;
                 isPlaying = true;
-                const savedTime = loadProgress();
-                if (savedTime > 0 && Math.abs(art.currentTime - savedTime) > 2) { // Prevent resetting if already near the saved time
-                    art.seek = savedTime;
-                }
             });
             art.on('pause', () => {
                 isPlaying = false;
@@ -456,11 +452,9 @@
                 const sources = await fetchStreamingLinks(episodeId, category);
                 if (sources.length > 0) {
                     const videoUrl = `${proxyUrl}${encodeURIComponent(sources[0].url)}${proxyHeaders}`;
+                    const savedTime = loadProgress(episodeId, currentEpisodeTitle, category);
                     initializeArtplayer(videoUrl);
-                    document.addEventListener('click', () => { // Wait for user interaction
-                        const savedTime = loadProgress();
-                        if (art) art.seek = savedTime; // Seek to the saved time after interaction
-                    }, { once: true });
+                    if (art) art.seek = savedTime;
                     currentLanguageSpan.textContent = category === 'sub' ? 'Subbed' : 'Dubbed';
                 } else {
                     alert(`No ${category} streams found for this episode.`);
@@ -482,28 +476,21 @@
             }
         }
 
-        function saveProgress(currentTime) {
+        function saveProgress(videoUrl, currentTime) {
             if (!currentAnimeId || !currentEpisodeId || !currentEpisodeTitle) {
                 return;
             }
             const progressKey = `watchProgress_${currentAnimeId}_${currentEpisodeId}_${currentEpisodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}_${currentCategory}`;
-            const progressData = {
-                lastTime: Math.round(currentTime), // Save rounded time
-            };
-            localStorage.setItem(progressKey, JSON.stringify(progressData)); // Save as JSON
+            localStorage.setItem(progressKey, currentTime);
         }
 
-        function loadProgress() {
-            if (!currentAnimeId || !currentEpisodeId || !currentEpisodeTitle) {
+        function loadProgress(episodeId, episodeTitle, category) {
+            if (!currentAnimeId || !episodeId || !episodeTitle) {
                 return 0;
             }
-            const progressKey = `watchProgress_${currentAnimeId}_${currentEpisodeId}_${currentEpisodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}_${currentCategory}`;
-            const savedData = localStorage.getItem(progressKey);
-            if (savedData) {
-                const progressData = JSON.parse(savedData);
-                return progressData.lastTime || 0; // Return the saved time
-            }
-            return 0;
+            const progressKey = `watchProgress_${currentAnimeId}_${episodeId}_${episodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}_${category}`;
+            const savedTime = localStorage.getItem(progressKey);
+            return savedTime ? parseFloat(savedTime) : 0;
         }
 
         function playNextEpisode() {
@@ -559,10 +546,6 @@
                             highlightCurrentEpisode(episodeButton);
                             loadEpisodeServers(lastWatchedEpisodeId, lastWatchedEpisodeTitle).then(() => {
                                 if (hasSubbed || hasDubbed) {
-                                    document.addEventListener('click', () => { // Wait for user interaction
-                                        const savedTime = loadProgress();
-                                        if (art) art.seek = savedTime; // Seek to the saved time after interaction
-                                    }, { once: true });
                                     loadStreamingLinks(lastWatchedEpisodeId, preferredCategory);
                                     currentCategory = preferredCategory;
                                     currentLanguageSpan.textContent = currentCategory.charAt(0).toUpperCase() + 'bed';
@@ -620,6 +603,7 @@
             autoNextButton.addEventListener('click', () => {
                 autoNext = !autoNext; // Toggle autoNext
                 autoNextButton.classList.toggle('active', autoNext); // visually indicate state
+                autoNextButton.textContent = autoNext ? 'Auto Next [ON]' : 'Auto Next [OFF]';
             });
         });
     </script>
