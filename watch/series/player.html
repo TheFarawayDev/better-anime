@@ -304,9 +304,6 @@
                 theme: '#23ade5',
                 autoOrientation: true,
                 playsInline: true,
-                icons: {
-                    loading: '<img src="https://thefarawaydev.github.io/better-anime/watch/other/loading-video.gif">',
-                },
             });
 
             // Prevent phone screen from turning off
@@ -340,17 +337,6 @@
                 }
             });
 
-            art.on('ended', () => {
-                videoEnded = true;
-                console.log("Video Ended Event triggered");
-                if (autoNext && videoEnded) { // Check videoEnded here
-                    console.log("Auto Next is ON and videoEnded is true, playing next episode");
-                    playNextEpisode();
-                }
-                else{
-                    console.log("Auto next is off or videoEnded is false")
-                }
-            });
             art.on('play', () => {
                 videoEnded = false;
                 isPlaying = true;
@@ -359,9 +345,11 @@
                     art.seek = savedTime;
                 }
             });
+
             art.on('pause', () => {
                 isPlaying = false;
             });
+
             art.on('destroy', () => {
                 isPlaying = false;
             });
@@ -615,11 +603,6 @@
 
             previousButton.addEventListener('click', () => {
                 playPreviousEpisode();
-            });
-
-            autoNextButton.addEventListener('click', () => {
-                autoNext = !autoNext; // Toggle autoNext
-                autoNextButton.classList.toggle('active', autoNext); // visually indicate state
             });
         });
     </script>
