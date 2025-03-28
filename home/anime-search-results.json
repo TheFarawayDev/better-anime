@@ -1,9 +1,9 @@
 [
     {
         "title": "Akashic Records Of Bastard Magic Instructor",
-        "id": "akashic_records_of_bastard_magic_instructor",
-        "image_url": "https://m.media-amazon.com/images/M/MV5BODgwMGJkZWEtNzFjMS00OTlkLTg0MjMtMTY5NmFjZmUwMjJjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=akashic_records_of_bastard_magic_instructor",
+        "id": "akashic-records-of-bastard-magic-instructor-2674",
+        "image_url": "https://a.storyblok.com/f/178900/640x952/fd2cf70e07/cb561f966cb66dbe8e007957cbedf0461491318782_full.png/m/640x952",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=akashic-records-of-bastard-magic-instructor-2674",
         "dub_count": "12",
         "sub_count": "12",
         "episodes": "12"
@@ -333,6 +333,15 @@
         "episodes": "37"
     },
     {
+        "title": "Loner Life In Another World",
+        "id": "loner-life-in-another-world-19337",
+        "image_url": "https://a.storyblok.com/f/178900/750x1089/3f328a8fdc/loner_life_in_another_world_key_art.jpg/m/filters:quality(95)format(webp)",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=loner-life-in-another-world-19337",
+        "dub_count": "N/A",
+        "sub_count": "12",
+        "episodes": "12"
+    },
+    {
         "title": "Loving Yamada At Lv. 999",
         "id": "loving_yamada_at_lv_999",
         "image_url": "https://m.media-amazon.com/images/M/MV5BOGU4NzQ3YzQtOTU4MC00ZGMzLThlOGMtODMzODg3YzM1Mzg2XkEyXkFqcGc@._V1_.jpg",
@@ -533,11 +542,20 @@
     {
         "title": "Solo Leveling",
         "id": "solo-leveling-18718",
-        "image_url": "https://m.media-amazon.com/images/M/MV5BNjIwZjM4MWMtOGZiOS00YTllLTkwMWYtZmQxZjM2ZGU4ZmNiXkEyXkFqcGc@._V1_.jpg",
+        "image_url": "https://a.storyblok.com/f/178900/1000x1413/903d0297d4/solo-leveling-kv1.jpeg/m/filters:quality(95)format(webp)",
         "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=solo-leveling-18718",
+        "dub_count": "12",
+        "sub_count": "12",
+        "episodes": "12"
+    },
+    {
+        "title": "Solo Leveling: Arise From The Shadows",
+        "id": "solo-leveling-season-2-arise-from-the-shadow-19413",
+        "image_url": "https://a.storyblok.com/f/178900/1067x1601/0090e9bf15/solo-leveling-season-2-key-visual.png/m/filters:quality(95)format(webp)",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=solo-leveling-season-2-arise-from-the-shadow-19413",
         "dub_count": "N/A",
         "sub_count": "N/A",
-        "episodes": "25"
+        "episodes": "N/A"
     },
     {
         "title": "Spy X Family",
