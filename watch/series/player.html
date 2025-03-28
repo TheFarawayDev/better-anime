@@ -75,6 +75,9 @@
             box-sizing: border-box;
             margin-top: 10px;
         }
+        .episode-control-area button.active {
+            background-color: #23ade5;
+        }
         .controls-area button {
             width: 100%;
         }
@@ -85,6 +88,7 @@
             text-align: center;
             margin-top: 10px;
             box-sizing: border-box;
+            font-size: 0.9em; /* Match the button text size */
         }
         .episode-list-container {
             width: 80%;
@@ -94,12 +98,18 @@
             padding: 15px;
             border-radius: 5px;
             box-sizing: border-box;
+            overflow-y: auto;
+            scrollbar-width: none; /* For Firefox */
+            -ms-overflow-style: none; /* For Internet Explorer and Edge */
         }
         .episode-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 8px;
             width: 100%;
+        }
+        .episode-list-container::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari, and Opera */
         }
         .episode-list button {
             background-color: #333;
@@ -162,6 +172,7 @@
         </div>
         <div class="episode-control-area">
             <button id="previousButton" style="width: 100%;">Previous</button>
+            <button id="autoNextButton" style="width: 100%;">Auto Next [ERROR]</button>
             <button id="nextButton" style="width: 100%;">Next</button>
         </div>
     </div>
@@ -195,6 +206,7 @@
 
         const previousButton = document.getElementById('previousButton');
         const nextButton = document.getElementById('nextButton');
+        const autoNextButton = document.getElementById('autoNextButton');
 
         function playM3u8(video, url) {
             if (Hls.isSupported()) {
@@ -258,10 +270,12 @@
                 playbackRate: true,
                 aspectRatio: true,
                 fullscreen: true,
-                autoPlayback: true,
                 miniProgressBar: true,
                 theme: '#23ade5',
                 autoOrientation: true,
+                icons: {
+                    loading: '<img src="https://thefarawaydev.github.io/better-anime/watch/other/loading-video.gif">',
+                },
             });
 
             art.on('video:timeupdate', () => {
@@ -270,6 +284,12 @@
                     if (currentAnimeId && currentSeriesName) {
                         saveToContinueWatching(currentAnimeId, currentSeriesName, window.location.href);
                     }
+                }
+            });
+
+            art.on('video:ended', () => {
+                if (autoNext === true) {
+                    playNextEpisode();
                 }
             });
         }
@@ -416,10 +436,6 @@
                     highlightCurrentEpisode(nextEpisodeButton);
                     loadEpisodeServers(nextEpisode.episodeId, nextEpisode.title);
                 }
-            } else {
-                alert('No more episodes available.');
-                autoNext = false;
-                autoNextButton.textContent = 'Auto Next';
             }
         }
 
@@ -434,8 +450,6 @@
                   highlightCurrentEpisode(previousEpisodeButton);
                   loadEpisodeServers(previousEpisode.episodeId, previousEpisode.title);
                 }
-            } else {
-                alert('This is the first episode.');
             }
         }
 
@@ -485,12 +499,7 @@
                             child.style.opacity = 1;
                         });
                     });
-                } else if (!hasSubbed) {
-                    alert('No subbed version available for this episode.');
-                } else {
-                    alert('Please select an episode first.');
-                }
-            });
+                }});
 
             dubbedButton.addEventListener('click', () => {
                 if (currentEpisodeId && hasDubbed) {
@@ -505,12 +514,7 @@
                             child.style.opacity = 1;
                         });
                     });
-                } else if (!hasDubbed) {
-                    alert('No dubbed version available for this episode.');
-                } else {
-                    alert('Please select an episode first.');
-                }
-            });
+                }});
 
             nextButton.addEventListener('click', () => {
                 playNextEpisode();
@@ -518,6 +522,11 @@
 
             previousButton.addEventListener('click', () => {
                 playPreviousEpisode();
+            });
+
+            autoNextButton.addEventListener('click', () => {
+                autoNext = !autoNext;
+                autoNextButton.classList.toggle('active', autoNext);
             });
         });
     </script>
