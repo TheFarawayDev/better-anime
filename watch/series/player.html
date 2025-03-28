@@ -64,20 +64,6 @@
             box-sizing: border-box;
             margin-top: 10px;
         }
-
-        .episode-control-area {
-            width: 100%;
-            background-color: #1e1e1e;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            box-sizing: border-box;
-            margin-top: 10px;
-        }
-        .episode-control-area button.active {
-            background-color: #23ade5;
-        }
         .controls-area button {
             width: 100%;
         }
@@ -170,11 +156,6 @@
         <div class="language-bar">
             Current Language: <span id="currentLanguage">Subbed</span>
         </div>
-        <div class="episode-control-area">
-            <button id="previousButton" style="width: 100%;">Previous</button>
-            <!--<button id="autoNextButton" style="width: 100%;">Auto Next</button>-->
-            <button id="nextButton" style="width: 100%;">Next</button>
-        </div>
     </div>
 
     <div class="episode-list-container">
@@ -205,10 +186,6 @@
         let autoNext = false; // Add autoNext state
         let videoEnded = false; //track ended
         let isPlaying = false; // Track if video is playing
-
-        const previousButton = document.getElementById('previousButton');
-        const nextButton = document.getElementById('nextButton');
-        const autoNextButton = document.getElementById('autoNextButton');
 
         function playM3u8(video, url) {
             if (Hls.isSupported()) {
@@ -304,6 +281,24 @@
                 theme: '#23ade5',
                 autoOrientation: true,
                 playsInline: true,
+                controls: [
+                    {
+                        name: 'previous',
+                        position: 'left',
+                        html: '<span style="font-size: 1.7em;">⮜</span>',
+                        click: () => {
+                            playPreviousEpisode();
+                        },
+                    },
+                    {
+                        name: 'next',
+                        position: 'left',
+                        html: '<span style="font-size: 1.7em;">⮞</span>',
+                        click: () => {
+                            playNextEpisode();
+                        },
+                    },
+                ],
             });
 
             // Prevent phone screen from turning off
@@ -595,14 +590,6 @@
                         });
                     });
                 }
-            });
-
-            nextButton.addEventListener('click', () => {
-                playNextEpisode();
-            });
-
-            previousButton.addEventListener('click', () => {
-                playPreviousEpisode();
             });
         });
     </script>
