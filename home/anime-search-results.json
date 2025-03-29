@@ -55,9 +55,9 @@
     },
     {
         "title": "A Silent Voice",
-        "id": "a_silent_voice",
+        "id": "a-silent-voice-11",
         "image_url": "https://m.media-amazon.com/images/M/MV5BOTFiNzRiOWEtYTQwNy00NmRiLWE0ZWYtNTE0YjExZjFmZjkwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=a_silent_voice",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=a-silent-voice-11",
         "dub_count": "1",
         "sub_count": "1",
         "episodes": "1"
@@ -91,9 +91,9 @@
     },
     {
         "title": "Black Clover",
-        "id": "black_clover",
+        "id": "black-clover-2404",
         "image_url": "https://m.media-amazon.com/images/M/MV5BZmZkZjNhMWMtM2U0Mi00MjdlLTk3NmMtMTMwZjgwOTJmODMzXkEyXkFqcGc@._V1_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=black_clover",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=black-clover-2404",
         "dub_count": "170",
         "sub_count": "170",
         "episodes": "170"
