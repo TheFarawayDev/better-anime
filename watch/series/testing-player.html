@@ -435,7 +435,7 @@
 
         async function fetchStreamingLinks(episodeId, category) {
             try {
-                const response = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-2&category=${category}`);
+                const response = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-1&category=${category}`);
                 const data = await response.json();
                 if (data.success && data.data && data.data.sources) {
                     return data.data.sources;
