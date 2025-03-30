@@ -142,6 +142,35 @@
             }
         }
     </style>
+    <script>
+        // Block developer tools
+        (function() {
+            const devtools = /./;
+            devtools.toString = function() {
+                this.opened = true;
+                alert('Developer tools are blocked for security reasons.');
+            };
+            Object.defineProperty(window, 'devtools', {
+                get: function() {
+                    return devtools;
+                }
+            });
+            setInterval(() => {
+                if (devtools.opened) {
+                    window.location.reload();
+                }
+            }, 1000);
+        })();
+
+        // Disable right-click and key combinations for dev tools
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i' || e.key === 'j' || e.key === 'c')) {
+                e.preventDefault();
+                alert('This action is disabled for security reasons.');
+            }
+        });
+    </script>
 </head>
 <body>
     <div class="artplayer-app-container">
@@ -196,28 +225,33 @@
                 const hls = new Hls();
                 hls.loadSource(url);
                 hls.attachMedia(video);
-                art.hls = hls; // IMPORTANT:  Store the hls instance
-                hls.on(Hls.Events.MANIFEST_PARSED, function () {
-                    video.play();
+                art.hls = hls; // Store the Hls instance
+
+                // Ensure progressive loading as the user watches
+                hls.on(Hls.Events.BUFFER_APPENDING, () => {
+                    const bufferInfo = hls.bufferInfo(video.currentTime, 0);
+                    if (bufferInfo.end - video.currentTime < 10) { // Ensure at least 10 seconds of buffer ahead
+                        hls.startLoad();
+                    }
                 });
-                hls.on(Hls.Events.ERROR, function (event, data) { //error handling
+
+                hls.on(Hls.Events.ERROR, function (event, data) {
                     if (data.fatal) {
                         console.log("HLS error", data);
-                        // Try to recover network error
                         if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
-                            console.log("network error, trying to recover...");
+                            console.log("Network error, trying to recover...");
                             hls.startLoad();
-                        }
-                        // Destroy Hls instance on media error
-                        else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
-                            console.log("media error, trying to recover...");
+                        } else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
+                            console.log("Media error, trying to recover...");
                             hls.recoverMediaError();
                         }
                     }
                 });
             } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                 video.src = url;
-                video.play();
+                video.addEventListener('loadedmetadata', () => {
+                    video.play();
+                });
             } else {
                 if (art) art.notice.show = 'Unsupported playback format: m3u8';
             }
@@ -434,7 +468,7 @@
             try {
                 const sources = await fetchStreamingLinks(episodeId, category);
                 if (sources.length > 0) {
-                    const videoUrl = `${proxyUrl}${encodeURIComponent(sources[0].url)}${proxyHeaders}`;
+                    const videoUrl = `${proxyUrl}${encodeURIComponent(sources[0].url)}${proxyHeaders}`; // Revert obfuscation
                     initializeArtplayer(videoUrl);
                     document.addEventListener('click', () => { // Wait for user interaction
                         const savedTime = loadProgress();
