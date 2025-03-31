@@ -226,26 +226,19 @@
                     xhrSetup: function(xhr, url) {
                         xhr.withCredentials = false; // Ensure no CORS issues
                     },
-                    debug: true, // Enable debugging for troubleshooting
-                    startFragPrefetch: false, // Disable fragment prefetching
-                    maxBufferLength: 3600, // Set buffer length to 1 hour
-                    maxMaxBufferLength: 3600, // Ensure the buffer can hold up to 1 hour
-                    maxBufferSize: 500 * 1024 * 1024, // Set buffer size to 500 MB
-                    liveSyncDurationCount: 0, // Disable live sync for VOD
+                    debug: false, // Disable debugging for production
+                    startLevel: -1, // Start with the lowest quality level
+                    maxBufferLength: 30, // Reduce buffer length for mobile compatibility
+                    maxMaxBufferLength: 60, // Ensure buffer doesn't grow too large
+                    maxBufferSize: 50 * 1024 * 1024, // Limit buffer size to 50 MB
                 });
                 hls.loadSource(url);
                 hls.attachMedia(video);
                 art.hls = hls; // Store the Hls instance
 
-                // Force 360p quality
                 hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                    const levelIndex = hls.levels.findIndex(level => level.height === 360);
-                    if (levelIndex !== -1) {
-                        hls.currentLevel = levelIndex; // Set to 360p
-                        console.log("Forced quality to 360p");
-                    } else {
-                        console.warn("360p quality not found, using default quality");
-                    }
+                    hls.currentLevel = hls.levels.length - 1; // Force the lowest quality
+                    console.log("Forced quality to the lowest available");
                     video.play();
                 });
 
