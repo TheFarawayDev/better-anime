@@ -64,12 +64,21 @@
     },
     {
         "title": "Assassination Classroom",
-        "id": "assassination_classroom",
+        "id": "assassination-classroom-372",
         "image_url": "https://m.media-amazon.com/images/M/MV5BZjBkYmRiOTAtY2IwOS00ZWU3LTk3YjItNjMzYWZiMDE1MjcyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=assassination_classroom",
-        "dub_count": "47",
-        "sub_count": "47",
-        "episodes": "47"
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=assassination-classroom-372",
+        "dub_count": "22",
+        "sub_count": "22",
+        "episodes": "22"
+    },
+    {
+        "title": "Assassination Classroom: Season 2",
+        "id": "assassination-classroom-second-season-79",
+        "image_url": "https://m.media-amazon.com/images/M/MV5BY2JlMmUzMWItNDdmOS00MjU4LTgzYTAtNjQ0ZTQ4MzI1MDk3XkEyXkFqcGc@._V1_FMjpg_UY472_.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=assassination-classroom-second-season-79",
+        "dub_count": "25",
+        "sub_count": "25",
+        "episodes": "25"
     },
     {
         "title": "Attack On Titan",
@@ -82,9 +91,9 @@
     },
     {
         "title": "Berserk Of Gluttony",
-        "id": "berserk_of_gluttony",
+        "id": "berserk-of-gluttony-18593",
         "image_url": "https://m.media-amazon.com/images/M/MV5BNGI3NTg0YjEtZmVjZS00OWZjLTg1OTUtYjJmMmJlMTNhZWE3XkEyXkFqcGc@._V1_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=berserk_of_gluttony",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=berserk-of-gluttony-18593",
         "dub_count": "12",
         "sub_count": "12",
         "episodes": "12"
