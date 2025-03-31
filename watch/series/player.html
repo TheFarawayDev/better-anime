@@ -232,6 +232,8 @@
                     startFragPrefetch: true, // Prefetch fragments for smoother playback
                     maxBufferLength: 3600, // Allow buffering of the entire video
                     maxMaxBufferLength: 3600, // Ensure the buffer can hold the entire video
+                    maxBufferSize: 60 * 1024 * 1024, // Set maximum buffer size to 60MB
+                    maxBufferHole: 3600, // Allow large buffer holes to load the entire video
                     liveSyncDurationCount: 0, // Disable live sync for VOD
                     enableWorker: false, // Disable web workers for better compatibility on mobile
                 });
@@ -240,7 +242,7 @@
                 art.hls = hls; // Store the Hls instance
 
                 hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                    hls.currentLevel = 0; // Force the lowest quality
+                    hls.currentLevel = 0; // Force the lowest quality (360p)
                     console.log("Forced quality to the lowest available and loading entire video");
                     video.play();
                 });
