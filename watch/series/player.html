@@ -332,7 +332,8 @@
                     {
                         name: 'previous',
                         position: 'left',
-                        html: '<span style="font-size: 1.7em;">⇤</span>',
+                        index: 10, // Place to the left of play
+                        html: '<span style="font-size: 1.7em;">◄</span>',
                         click: () => {
                             playPreviousEpisode();
                         },
@@ -340,7 +341,8 @@
                     {
                         name: 'next',
                         position: 'left',
-                        html: '<span style="font-size: 1.7em;">⇥</span>',
+                        index: 12, // Place to the right of play
+                        html: '<span style="font-size: 1.7em;">►</span>',
                         click: () => {
                             playNextEpisode();
                         },
