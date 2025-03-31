@@ -6,7 +6,7 @@
     <title>Better Anime</title>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
-    <link rel="icon" type="image/x-icon" href="https://thefarawaydev.github.io/better-anime/watch/other/BA.png">
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.png">
     <style>
         body {
             display: flex;
@@ -345,6 +345,17 @@
                         html: '<span style="font-size: 1.7em;">►</span>',
                         click: () => {
                             playNextEpisode();
+                        },
+                    },
+                ],
+                layers: [
+                    {
+                        html: '<img width="100" src="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.png" alt="Logo" />',
+                        style: {
+                            position: 'absolute',
+                            top: '20px',
+                            right: '20px',
+                            opacity: '.9',
                         },
                     },
                 ],
