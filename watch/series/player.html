@@ -225,17 +225,14 @@
                 const hls = new Hls({
                     xhrSetup: function(xhr, url) {
                         xhr.withCredentials = false; // Ensure no CORS issues
+                        xhr.setRequestHeader('Referer', 'https://megacloud.club/'); // Add Referer header
                     },
                     debug: false, // Disable debugging for production
                     startLevel: 0, // Start with the lowest quality level
-                    autoStartLoad: true, // Automatically start loading
-                    startFragPrefetch: true, // Prefetch fragments for smoother playback
                     maxBufferLength: 3600, // Allow buffering of the entire video
                     maxMaxBufferLength: 3600, // Ensure the buffer can hold the entire video
-                    maxBufferSize: 60 * 1024 * 1024, // Set maximum buffer size to 60MB
-                    maxBufferHole: 3600, // Allow large buffer holes to load the entire video
-                    liveSyncDurationCount: 0, // Disable live sync for VOD
-                    enableWorker: false, // Disable web workers for better compatibility on mobile
+                    maxBufferSize: 0, // Remove buffer size limit
+                    lowLatencyMode: false, // Disable low-latency mode for smoother playback
                 });
                 hls.loadSource(url);
                 hls.attachMedia(video);
@@ -264,6 +261,9 @@
                 });
             } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                 video.src = url;
+                video.setAttribute('playsinline', 'playsinline'); // Ensure inline playback on mobile
+                video.setAttribute('webkit-playsinline', 'webkit-playsinline'); // For iOS Safari
+                video.setAttribute('muted', 'muted'); // Ensure autoplay works on mobile
                 video.addEventListener('loadedmetadata', () => {
                     video.play();
                 });
