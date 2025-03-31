@@ -260,13 +260,27 @@
                     }
                 });
             } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = url;
-                video.setAttribute('playsinline', 'playsinline'); // Ensure inline playback on mobile
-                video.setAttribute('webkit-playsinline', 'webkit-playsinline'); // For iOS Safari
-                video.setAttribute('muted', 'muted'); // Ensure autoplay works on mobile
-                video.addEventListener('loadedmetadata', () => {
-                    video.play();
-                });
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = 'blob';
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        const blobUrl = URL.createObjectURL(xhr.response);
+                        video.src = blobUrl;
+                        video.setAttribute('playsinline', 'playsinline'); // Ensure inline playback on mobile
+                        video.setAttribute('webkit-playsinline', 'webkit-playsinline'); // For iOS Safari
+                        video.setAttribute('muted', 'muted'); // Ensure autoplay works on mobile
+                        video.addEventListener('loadedmetadata', () => {
+                            video.play();
+                        });
+                    } else {
+                        console.error('Failed to load video via XHR:', xhr.status);
+                    }
+                };
+                xhr.onerror = function () {
+                    console.error('XHR error while loading video.');
+                };
+                xhr.send();
             } else {
                 if (art) art.notice.show = 'Unsupported playback format: m3u8';
             }
