@@ -342,6 +342,24 @@
         "episodes": "47"
     },
     {
+        "title": "Kabaneri Of The Iron Fortress",
+        "id": "kabaneri-of-the-iron-fortress-2523",
+        "image_url": "https://m.media-amazon.com/images/M/MV5BMTY5NTkwMTctYjRkNC00MWJiLTgxNmUtZTA3Yzk0OGI3NWU1XkEyXkFqcGc@._V1_.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=kabaneri-of-the-iron-fortress-2523",
+        "dub_count": "12",
+        "sub_count": "12",
+        "episodes": "12"
+    },
+    {
+        "title": "Kabaneri Of The Iron Fortress: Battle For Unato",
+        "id": "kabaneri-of-the-iron-fortress-the-battle-of-unato-933",
+        "image_url": "https://m.media-amazon.com/images/M/MV5BYzAxY2Y5YWMtNzg2NS00MWQyLTg4YmEtNDcyMzdkZGJiNzkxXkEyXkFqcGc@._V1_.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=kabaneri-of-the-iron-fortress-the-battle-of-unato-933",
+        "dub_count": "1",
+        "sub_count": "1",
+        "episodes": "1"
+    },
+    {
         "title": "Kaguya-sama: Love Is War",
         "id": "kaguya_sama_love_is_war",
         "image_url": "https://m.media-amazon.com/images/M/MV5BMTM1ZWViNWMtZWY2ZC00YmYyLTk1ZGEtMzRjOWI2YTM1OTI3XkEyXkFqcGc@._V1_.jpg",
