@@ -328,16 +328,6 @@
                 if (currentEpisodeId && currentEpisodeTitle) {
                     saveProgress(videoPlayer.currentTime()); // Save only the current time
                 }
-
-                // Fix audio desync or jumping backward
-                const buffered = videoPlayer.buffered();
-                const currentTime = videoPlayer.currentTime();
-                if (buffered.length > 0) {
-                    const bufferEnd = buffered.end(buffered.length - 1);
-                    if (currentTime > bufferEnd - 0.5) { // If playback is near the end of the buffer
-                        videoPlayer.currentTime(bufferEnd - 0.5); // Adjust to stay within the buffer
-                    }
-                }
             });
 
             videoPlayer.on('ended', () => {
