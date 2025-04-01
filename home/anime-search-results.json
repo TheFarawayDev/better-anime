@@ -586,9 +586,9 @@
     },
     {
         "title": "Shinobi no Ittoki",
-        "id": "shinobi_no_ittoki",
-        "image_url": "https://m.media-amazon.com/images/M/MV5BNzYzYzNkYzMtOTJjZi00ZTVhLWI1MTUtYmE4Yjc5MDA1NDEzXkEyXkFqcGc@._V1_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=shinobi_no_ittoki",
+        "id": "shinobi-no-ittoki-18163",
+        "image_url": "https://images.justwatch.com/poster/300961669/s718/season-1.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=shinobi-no-ittoki-18163",
         "dub_count": "12",
         "sub_count": "12",
         "episodes": "12"
@@ -883,10 +883,19 @@
     },
     {
         "title": "Toilet-Bound Hanako-Kun",
-        "id": "toilet_bound_hanako_kun",
-        "image_url": "https://m.media-amazon.com/images/M/MV5BM2MzMGRlN2QtM2FhMS00Y2FhLWE4MTEtMGNiZTU5YTdiY2JiXkEyXkFqcGc@._V1_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=toilet_bound_hanako_kun",
+        "id": "toilet-bound-hanako-kun-899",
+        "image_url": "https://images.justwatch.com/poster/311374650/s332/season-1",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=toilet-bound-hanako-kun-899",
         "dub_count": "12",
+        "sub_count": "12",
+        "episodes": "12"
+    },
+    {
+        "title": "Toilet-Bound Hanako-Kun: Season 2",
+        "id": "toilet-bound-hanako-kun-season-2-19437",
+        "image_url": "https://images.justwatch.com/poster/323396916/s718/season-2.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=toilet-bound-hanako-kun-season-2-19437",
+        "dub_count": "N/A",
         "sub_count": "12",
         "episodes": "12"
     },
