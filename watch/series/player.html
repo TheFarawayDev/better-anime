@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Better Anime</title>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.png">
@@ -237,6 +236,7 @@
             controls: true,
             preload: 'auto',
             fluid: true,
+            techOrder: ['html5'], // Ensure video.js uses its built-in HLS
         });
 
         const subbedButton = document.getElementById('subbedButton');
@@ -264,48 +264,13 @@
         let isPlaying = false; // Track if video is playing
 
         function playM3u8(video, url) {
-            if (Hls.isSupported()) {
-                if (videoPlayer.hls) {
-                    videoPlayer.hls.destroy();
-                    videoPlayer.hls = null;
-                }
-                const hls = new Hls();
-                hls.loadSource(url);
-                hls.attachMedia(video);
-                videoPlayer.hls = hls; // Store the Hls instance
-
-                hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                    hls.currentLevel = 0; // Force the lowest quality (360p)
-                    console.log("Forced quality to the lowest available and loading entire video");
-                    video.play();
-                });
-
-                hls.on(Hls.Events.ERROR, function (event, data) {
-                    console.error("HLS error:", data);
-                    if (data.fatal) {
-                        if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
-                            console.log("Network error, retrying...");
-                            hls.startLoad();
-                        } else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
-                            console.log("Media error, attempting recovery...");
-                            hls.recoverMediaError();
-                        } else {
-                            console.error("Fatal error, destroying HLS instance.");
-                            hls.destroy();
-                        }
-                    }
-                });
-            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = url;
-                video.setAttribute('playsinline', 'playsinline'); // Ensure inline playback on mobile
-                video.setAttribute('webkit-playsinline', 'webkit-playsinline'); // For iOS Safari
-                video.setAttribute('muted', 'muted'); // Ensure autoplay works on mobile
-                video.addEventListener('loadedmetadata', () => {
-                    video.play();
-                });
-            } else {
-                alert('Unsupported playback format: m3u8');
-            }
+            videoPlayer.src({
+                src: url,
+                type: 'application/x-mpegURL',
+            });
+            videoPlayer.ready(() => {
+                video.play();
+            });
         }
 
         function saveToContinueWatching(id) {
@@ -331,7 +296,7 @@
         function initializeVideoPlayer(url) {
             videoPlayer.src({
                 src: url,
-                type: 'application/x-mpegURL',
+                type: 'application/x-mpegURL', // Use video.js's built-in HLS support
             });
 
             videoPlayer.ready(() => {
