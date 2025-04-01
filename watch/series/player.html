@@ -330,10 +330,6 @@
                 }
             });
 
-            videoPlayer.on('ended', () => {
-                playNextEpisode();
-            });
-
             videoPlayer.on('play', () => {
                 const savedTime = loadProgress();
                 if (savedTime > 0 && Math.abs(videoPlayer.currentTime() - savedTime) > 2) {
