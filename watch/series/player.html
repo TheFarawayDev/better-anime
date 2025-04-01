@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Better Anime</title>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.png">
+    <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -19,7 +21,7 @@
             color: #fff;
         }
         .artplayer-app-container {
-            width: 90%;
+            width: 80%;
             max-width: 800px;
             background: #121212;
             display: flex;
@@ -64,6 +66,20 @@
             box-sizing: border-box;
             margin-top: 10px;
         }
+
+        .episode-control-area {
+            width: 100%;
+            background-color: #1e1e1e;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            box-sizing: border-box;
+            margin-top: 10px;
+        }
+        .episode-control-area button.active {
+            background-color: #23ade5;
+        }
         .controls-area button {
             width: 100%;
         }
@@ -77,7 +93,7 @@
             font-size: 0.9em; /* Match the button text size */
         }
         .episode-list-container {
-            width: 90%;
+            width: 80%;
             max-width: 800px;
             margin-top: 20px;
             background-color: #1e1e1e;
@@ -162,14 +178,31 @@
             }, 1000);
         })();
 
-        // Disable right-click and key combinations for dev tools
+        // Disable right-click, key combinations for dev tools, and "More Tools" options
         document.addEventListener('contextmenu', (e) => e.preventDefault());
         document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i' || e.key === 'j' || e.key === 'c')) {
+            if (
+                e.ctrlKey && 
+                (e.key === 'u' || e.key === 's' || e.key === 'i' || e.key === 'j' || e.key === 'c') || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') // Block Ctrl+Shift+I
+            ) {
                 e.preventDefault();
                 alert('This action is disabled for security reasons.');
             }
         });
+
+        // Disable "More Tools" options in browsers
+        const disableMoreTools = () => {
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            iframe.contentWindow.eval(`
+                Object.defineProperty(navigator, 'webdriver', { get: () => true });
+            `);
+            document.body.removeChild(iframe);
+        };
+
+        document.addEventListener('DOMContentLoaded', disableMoreTools);
     </script>
 </head>
 <body>
@@ -177,13 +210,19 @@
         <div class="site-link-bar">
             <a href="https://thefarawaydev.github.io/better-anime/home" class="site-link">Better Anime</a>
         </div>
-        <div class="artplayer-app"></div>
+        <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" playsinline webkit-playsinline></video>
         <div class="controls-area">
             <button id="subbedButton">Subbed</button>
             <button id="dubbedButton">Dubbed</button>
         </div>
         <div class="language-bar">
             Current Language: <span id="currentLanguage">Subbed</span>
+        </div>
+
+        <div class="episode-control-area">
+            <button id="previousButton" style="width: 100%;">Previous</button>
+            <button id="autoNextButton" style="width: 100%;">Auto Next</button>
+            <button id="nextButton" style="width: 100%;">Next</button>
         </div>
     </div>
 
@@ -193,13 +232,22 @@
     </div>
 
     <script>
-        const artContainer = document.querySelector('.artplayer-app');
+        const videoPlayer = videojs('videoPlayer', {
+            autoplay: true,
+            controls: true,
+            preload: 'auto',
+            fluid: true,
+        });
+
         const subbedButton = document.getElementById('subbedButton');
         const dubbedButton = document.getElementById('dubbedButton');
+        const previousButton = document.getElementById('previousButton');
+        const nextButton = document.getElementById('nextButton');
+        const autoNextButton = document.getElementById('autoNextButton');
         const currentLanguageSpan = document.getElementById('currentLanguage');
         const episodeListContainer = document.querySelector('.episode-list');
         const apiUrlBase = 'https://better-anime.vercel.app';
-        const proxyUrl = 'https://better-anime-proxy.vercel.app/m3u8-proxy?url=';
+        const proxyUrl = 'https://another-m3u8-proxy.vercel.app/m3u8-proxy?url=';
         const proxyHeaders = '&headers={"referer":"https://megacloud.club/"}';
 
         const urlParams = new URLSearchParams(window.location.search);
@@ -207,7 +255,6 @@
         let currentEpisodeId = null;
         let currentEpisodeTitle = null;
         let currentCategory = localStorage.getItem('preferredCategory') || 'sub';
-        let art;
         let hasSubbed = false;
         let hasDubbed = false;
         let episodesData = []; // Store the fetched episodes data
@@ -218,25 +265,14 @@
 
         function playM3u8(video, url) {
             if (Hls.isSupported()) {
-                if (art && art.hls) {
-                    art.hls.destroy();
-                    art.hls = null;
+                if (videoPlayer.hls) {
+                    videoPlayer.hls.destroy();
+                    videoPlayer.hls = null;
                 }
-                const hls = new Hls({
-                    xhrSetup: function(xhr, url) {
-                        xhr.withCredentials = false; // Ensure no CORS issues
-                        xhr.setRequestHeader('Referer', 'https://megacloud.club/'); // Add Referer header
-                    },
-                    debug: false, // Disable debugging for production
-                    startLevel: 0, // Start with the lowest quality level
-                    maxBufferLength: 3600, // Allow buffering of the entire video
-                    maxMaxBufferLength: 3600, // Ensure the buffer can hold the entire video
-                    maxBufferSize: 0, // Remove buffer size limit
-                    lowLatencyMode: false, // Disable low-latency mode for smoother playback
-                });
+                const hls = new Hls();
                 hls.loadSource(url);
                 hls.attachMedia(video);
-                art.hls = hls; // Store the Hls instance
+                videoPlayer.hls = hls; // Store the Hls instance
 
                 hls.on(Hls.Events.MANIFEST_PARSED, () => {
                     hls.currentLevel = 0; // Force the lowest quality (360p)
@@ -260,57 +296,15 @@
                     }
                 });
             } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                if (isMobile) {
-                    let retryCount = 0;
-                    const maxRetries = 3;
-
-                    const loadVideoWithRetry = () => {
-                        const xhr = new XMLHttpRequest();
-                        xhr.open('GET', url, true);
-                        xhr.responseType = 'blob';
-                        xhr.onload = function () {
-                            if (xhr.status === 200 && xhr.response.size > 0) {
-                                const blobUrl = URL.createObjectURL(xhr.response);
-                                video.src = blobUrl;
-                                video.setAttribute('playsinline', 'playsinline'); // Ensure inline playback on mobile
-                                video.setAttribute('webkit-playsinline', 'webkit-playsinline'); // For iOS Safari
-                                video.setAttribute('muted', 'muted'); // Ensure autoplay works on mobile
-                                video.addEventListener('loadedmetadata', () => {
-                                    video.play();
-                                });
-                            } else if (retryCount < maxRetries) {
-                                console.warn(`Retrying video load... (${retryCount + 1}/${maxRetries})`);
-                                retryCount++;
-                                loadVideoWithRetry();
-                            } else {
-                                console.error('Failed to load video after multiple retries.');
-                            }
-                        };
-                        xhr.onerror = function () {
-                            if (retryCount < maxRetries) {
-                                console.warn(`Retrying video load due to error... (${retryCount + 1}/${maxRetries})`);
-                                retryCount++;
-                                loadVideoWithRetry();
-                            } else {
-                                console.error('XHR error while loading video after multiple retries.');
-                            }
-                        };
-                        xhr.send();
-                    };
-
-                    loadVideoWithRetry();
-                } else {
-                    video.src = url;
-                    video.setAttribute('playsinline', 'playsinline'); // Ensure inline playback on mobile
-                    video.setAttribute('webkit-playsinline', 'webkit-playsinline'); // For iOS Safari
-                    video.setAttribute('muted', 'muted'); // Ensure autoplay works on mobile
-                    video.addEventListener('loadedmetadata', () => {
-                        video.play();
-                    });
-                }
+                video.src = url;
+                video.setAttribute('playsinline', 'playsinline'); // Ensure inline playback on mobile
+                video.setAttribute('webkit-playsinline', 'webkit-playsinline'); // For iOS Safari
+                video.setAttribute('muted', 'muted'); // Ensure autoplay works on mobile
+                video.addEventListener('loadedmetadata', () => {
+                    video.play();
+                });
             } else {
-                if (art) art.notice.show = 'Unsupported playback format: m3u8';
+                alert('Unsupported playback format: m3u8');
             }
         }
 
@@ -334,119 +328,43 @@
             }
         });
 
-        function initializeArtplayer(url) {
-            // Remove any existing video element or player instance
-            if (art) {
-                art.destroy(true);
-                art = null; // Ensure the reference is cleared
-            }
-            const existingVideoElement = artContainer.querySelector('video');
-            if (existingVideoElement) {
-                artContainer.removeChild(existingVideoElement);
-            }
-
-            // Create a new video element
-            const videoElement = document.createElement('video');
-            artContainer.appendChild(videoElement);
-            videoElement.setAttribute('playsinline', 'playsinline'); // Add playsinline attribute
-
-            // Initialize the Artplayer instance
-            art = new Artplayer({
-                container: '.artplayer-app',
-                url: url,
-                type: 'm3u8',
-                customType: {
-                    m3u8: playM3u8,
-                },
-                volume: 1,
-                autoplay: true,
-                autoSize: false,
-                screenshot: true,
-                loop: false,
-                fullscreen: true,
-                miniProgressBar: true,
-                theme: '#23ade5',
-                autoOrientation: true,
-                playsInline: true,
-                controls: [
-                    {
-                        name: 'previous',
-                        position: 'left',
-                        index: 10, // Place to the left of play
-                        html: '<span style="font-size: 1.7em;">◄</span>',
-                        click: () => {
-                            playPreviousEpisode();
-                        },
-                    },
-                    {
-                        name: 'next',
-                        position: 'left',
-                        index: 12, // Place to the right of play
-                        html: '<span style="font-size: 1.7em;">►</span>',
-                        click: () => {
-                            playNextEpisode();
-                        },
-                    },
-                ],
-                layers: [
-                    {
-                        html: '<img width="50" src="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA-Overlay.png" alt="Logo" />',
-                        style: {
-                            position: 'absolute',
-                            top: '20px',
-                            right: '20px',
-                            opacity: '.9',
-                        },
-                    },
-                ],
+        function initializeVideoPlayer(url) {
+            videoPlayer.src({
+                src: url,
+                type: 'application/x-mpegURL',
             });
 
-            // Prevent phone screen from turning off
-            if ('wakeLock' in navigator) {
-                let wakeLock = null;
+            videoPlayer.ready(() => {
+                videoPlayer.play();
+            });
 
-                const requestWakeLock = async () => {
-                    try {
-                        wakeLock = await navigator.wakeLock.request('screen');
-                    } catch (err) {
-                        console.error('Failed to acquire wake lock:', err);
-                    }
-                };
+            // Disable playback rate controls
+            videoPlayer.controlBar.removeChild('playbackRateMenuButton');
 
-                const releaseWakeLock = () => {
-                    if (wakeLock) {
-                        wakeLock.release().then(() => {
-                            wakeLock = null;
-                        });
-                    }
-                };
-
-                art.on('play', requestWakeLock);
-                art.on('pause', releaseWakeLock);
-                art.on('destroy', releaseWakeLock);
+            // Hide CC button on iOS and Android
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (isMobile) {
+                const ccButton = videoPlayer.controlBar.getChild('SubsCapsButton');
+                if (ccButton) {
+                    ccButton.hide();
+                }
             }
 
-            art.on('video:timeupdate', () => {
+            videoPlayer.on('timeupdate', () => {
                 if (currentEpisodeId && currentEpisodeTitle) {
-                    saveProgress(art.currentTime); // Save only the current time
+                    saveProgress(videoPlayer.currentTime()); // Save only the current time
                 }
             });
 
-            art.on('play', () => {
-                videoEnded = false;
-                isPlaying = true;
+            videoPlayer.on('ended', () => {
+                playNextEpisode();
+            });
+
+            videoPlayer.on('play', () => {
                 const savedTime = loadProgress();
-                if (savedTime > 0 && Math.abs(art.currentTime - savedTime) > 2) { // Prevent resetting if already near the saved time
-                    art.seek = savedTime;
+                if (savedTime > 0 && Math.abs(videoPlayer.currentTime() - savedTime) > 2) {
+                    videoPlayer.currentTime(savedTime);
                 }
-            });
-
-            art.on('pause', () => {
-                isPlaying = false;
-            });
-
-            art.on('destroy', () => {
-                isPlaying = false;
             });
         }
 
@@ -538,12 +456,8 @@
             try {
                 const sources = await fetchStreamingLinks(episodeId, category);
                 if (sources.length > 0) {
-                    const videoUrl = `${proxyUrl}${encodeURIComponent(sources[0].url)}${proxyHeaders}`; // Revert obfuscation
-                    initializeArtplayer(videoUrl);
-                    document.addEventListener('click', () => { // Wait for user interaction
-                        const savedTime = loadProgress();
-                        if (art) art.seek = savedTime; // Seek to the saved time after interaction
-                    }, { once: true });
+                    const videoUrl = `${proxyUrl}${encodeURIComponent(sources[0].url)}`; // Removed proxyHeaders
+                    initializeVideoPlayer(videoUrl);
                     currentLanguageSpan.textContent = category === 'sub' ? 'Subbed' : 'Dubbed';
                 } else {
                     alert(`No ${category} streams found for this episode.`);
@@ -624,8 +538,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            initializeArtplayer('');
-
             if (currentAnimeId) {
                 fetchAnimeEpisodes(currentAnimeId).then(() => {
                     const lastWatchedEpisodeId = localStorage.getItem('lastWatchedEpisodeId_' + currentAnimeId);
@@ -642,10 +554,6 @@
                             highlightCurrentEpisode(episodeButton);
                             loadEpisodeServers(lastWatchedEpisodeId, lastWatchedEpisodeTitle).then(() => {
                                 if (hasSubbed || hasDubbed) {
-                                    document.addEventListener('click', () => { // Wait for user interaction
-                                        const savedTime = loadProgress();
-                                        if (art) art.seek = savedTime; // Seek to the saved time after interaction
-                                    }, { once: true });
                                     loadStreamingLinks(lastWatchedEpisodeId, preferredCategory);
                                     currentCategory = preferredCategory;
                                     currentLanguageSpan.textContent = currentCategory.charAt(0).toUpperCase() + 'bed';
@@ -692,6 +600,31 @@
                 }
             });
         });
+
+        previousButton.addEventListener('click', () => {
+            playPreviousEpisode();
+        });
+
+        nextButton.addEventListener('click', () => {
+            playNextEpisode();
+        });
+        
+        autoNextButton.addEventListener('click', () => {
+            autoNext = !autoNext;
+            if (autoNext) {
+                autoNextButton.classList.add('active');
+            } else {
+                autoNextButton.classList.remove('active');
+            }
+        });
+
+        videoPlayer.on('ended', () => {
+            videoEnded = true;
+            if (autoNext) {
+                playNextEpisode();
+            }
+        });
+
     </script>
 </body>
 </html>
