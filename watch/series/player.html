@@ -210,7 +210,7 @@
         <div class="site-link-bar">
             <a href="https://thefarawaydev.github.io/better-anime/home" class="site-link">Better Anime</a>
         </div>
-        <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" playsinline webkit-playsinline></video>
+        <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" playsinline></video>
         <div class="controls-area">
             <button id="subbedButton">Subbed</button>
             <button id="dubbedButton">Dubbed</button>
@@ -341,12 +341,21 @@
             // Disable playback rate controls
             videoPlayer.controlBar.removeChild('playbackRateMenuButton');
 
+            // Explicitly disable text tracks and hide CC button
+            videoPlayer.textTracks().tracks_.forEach(track => {
+                track.mode = 'disabled';
+            });
+            const ccButton = videoPlayer.controlBar.getChild('SubsCapsButton');
+            if (ccButton) {
+                videoPlayer.controlBar.removeChild(ccButton);
+            }
+
             // Hide CC button on iOS and Android
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             if (isMobile) {
-                const ccButton = videoPlayer.controlBar.getChild('SubsCapsButton');
-                if (ccButton) {
-                    ccButton.hide();
+                const ccButtonMobile = videoPlayer.controlBar.getChild('SubsCapsButton');
+                if (ccButtonMobile) {
+                    ccButtonMobile.hide();
                 }
             }
 
