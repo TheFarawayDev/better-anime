@@ -865,9 +865,9 @@
     },
     {
         "title": "Wind Breaker",
-        "id": "wind_breaker",
-        "image_url": "https://imgs.search.brave.com/Rjjy2A4cfSHwNUeUan2Pa3bC1G-We1ktKkpRyNC4YGw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMxLmNicmltYWdl/cy5jb20vd29yZHBy/ZXNzL3dwLWNvbnRl/bnQvdXBsb2Fkcy9z/aGFyZWRpbWFnZXMv/MjAyNC8wNi93aW5k/LWJyZWFrZXItYW5p/bWUtcG9zdGVyLmpw/Zw",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=wind_breaker",
+        "id": "wind-breaker-19136",
+        "image_url": "https://m.media-amazon.com/images/M/MV5BOGE2NzkwNTctMGUzMS00ZDZiLWI4MTMtZmY1YjhjMjFlNjE3XkEyXkFqcGc@._V1_.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=wind-breaker-19136",
         "dub_count": "13",
         "sub_count": "13",
         "episodes": "13"
@@ -890,5 +890,14 @@
         "dub_count": "1",
         "sub_count": "1",
         "episodes": "1"
+    },
+    {
+        "title": "Your Lie In April",
+        "id": "your-lie-in-april-31",
+        "image_url": "https://m.media-amazon.com/images/M/MV5BZGMyYmFmNzgtMWQ4NS00MWE2LTg4YmEtZGY1MTBiODE0YmE5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=your-lie-in-april-31",
+        "dub_count": "22",
+        "sub_count": "22",
+        "episodes": "22"
     }
 ]
