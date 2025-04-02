@@ -209,39 +209,17 @@
   </footer>
 
   <script>
-    function loadContent(event, url) {
-      event.preventDefault();
-      fetch(url)
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector("main").innerHTML = data;
-        })
-        .catch(error => {
-          console.error("Error loading content:", error);
-          document.querySelector("main").innerHTML = "<p>Sorry, something went wrong. Please try again later.</p>";
-        });
-    }
-
     const jsonUrl = './anime-search-results.json';
-    fetch(`${jsonUrl}?t=${new Date().getTime()}`)
+    fetch(jsonUrl)
       .then(response => response.json())
       .then(data => {
-        console.log("Fetched Data:", data);
         const resultsContainer = document.getElementById("results");
         const resultsArray = Array.isArray(data) ? data : [];
         const params = new URLSearchParams(window.location.search);
         const query = params.get("query");
 
         if (query) {
-          const sanitizedQuery = query
-            .replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&") // Escape special characters
-            .toLowerCase(); // Convert to lowercase for case-insensitive comparison
-
-          const filteredResults = resultsArray.filter(result => {
-            const titleLowerCase = result.title.toLowerCase(); // Convert title to lowercase
-            return titleLowerCase.includes(sanitizedQuery);
-          });
-          console.log("Filtered Results:", filteredResults);
+          const filteredResults = resultsArray.filter(result => result.title.includes(query));
           if (filteredResults.length > 0) {
             filteredResults.forEach(result => {
               const resultItem = document.createElement("div");
