@@ -233,11 +233,14 @@
         const query = params.get("query");
 
         if (query) {
-          const sanitizedQuery = query.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"); // Escape special characters
-          document.title = `Results for "${query}"`;
-          const filteredResults = resultsArray.filter(result =>
-            result.title.toLowerCase().includes(sanitizedQuery.toLowerCase())
-          );
+          const sanitizedQuery = query
+            .replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&") // Escape special characters
+            .toLowerCase(); // Convert to lowercase for case-insensitive comparison
+
+          const filteredResults = resultsArray.filter(result => {
+            const titleLowerCase = result.title.toLowerCase(); // Convert title to lowercase
+            return titleLowerCase.includes(sanitizedQuery);
+          });
           console.log("Filtered Results:", filteredResults);
           if (filteredResults.length > 0) {
             filteredResults.forEach(result => {
