@@ -538,11 +538,19 @@
                 });
             }
 
+            // Restore autoNext state from local storage
+            const savedAutoNext = localStorage.getItem('autoNext');
+            if (savedAutoNext === 'true') {
+                autoNext = true;
+                autoNextButton.classList.add('active');
+            }
+
             subbedButton.addEventListener('click', () => {
                 if (currentEpisodeId && hasSubbed) {
                     currentCategory = 'sub';
                     localStorage.setItem('preferredCategory', currentCategory);
-                    currentLanguageSpan.textContent = 'Subbed';
+                    subbedButton.classList.add('active');
+                    dubbedButton.classList.remove('active');
                     loadEpisodeServers(currentEpisodeId, currentCategory);
                     Array.from(episodeListContainer.children).forEach((child, index) => {
                         child.style.transitionDelay = `${index * 50}ms`;
@@ -558,7 +566,8 @@
                 if (currentEpisodeId && hasDubbed) {
                     currentCategory = 'dub';
                     localStorage.setItem('preferredCategory', currentCategory);
-                    currentLanguageSpan.textContent = 'Dubbed';
+                    dubbedButton.classList.add('active');
+                    subbedButton.classList.remove('active');
                     loadEpisodeServers(currentEpisodeId, currentCategory);
                     Array.from(episodeListContainer.children).forEach((child, index) => {
                         child.style.transitionDelay = `${index * 50}ms`;
@@ -567,6 +576,16 @@
                             child.style.opacity = 1;
                         });
                     });
+                }
+            });
+
+            autoNextButton.addEventListener('click', () => {
+                autoNext = !autoNext;
+                localStorage.setItem('autoNext', autoNext); // Save autoNext state to local storage
+                if (autoNext) {
+                    autoNextButton.classList.add('active');
+                } else {
+                    autoNextButton.classList.remove('active');
                 }
             });
         });

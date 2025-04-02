@@ -233,9 +233,10 @@
         const query = params.get("query");
 
         if (query) {
+          const sanitizedQuery = query.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"); // Escape special characters
           document.title = `Results for "${query}"`;
           const filteredResults = resultsArray.filter(result =>
-            result.title.toLowerCase().includes(query.toLowerCase())
+            result.title.toLowerCase().includes(sanitizedQuery.toLowerCase())
           );
           console.log("Filtered Results:", filteredResults);
           if (filteredResults.length > 0) {
