@@ -83,6 +83,13 @@
         width: 98.8%;
     }
 
+    .data-transfer-section {
+        display: flex;
+        margin-top: 1rem;
+        justify-content: flex-end;
+        width: 98.8%;
+    }
+
     .continue-watching-section button {
         padding: 0.5rem 1rem;
         border: none;
@@ -94,7 +101,22 @@
         width: 100%;
     }
 
+    .data-transfer-section button {
+        padding: 0.5rem 1rem;
+        border: none;
+        background-color: var(--steel-blue);
+        color: var(--white);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
     .continue-watching-section button:hover {
+        background-color: var(--bleu-de-france);
+    }
+
+    .data-transfer-section button:hover {
         background-color: var(--bleu-de-france);
     }
 
@@ -197,7 +219,7 @@
             width: calc(50% - 1rem);
         }
 
-        .search, .continue-watching-section {
+        .search, .continue-watching-section, .data-transfer-section {
             width: 98.8%;
             justify-content: center;
         }
@@ -216,7 +238,7 @@
             width: 100%;
         }
 
-        .search, .continue-watching-section {
+        .search, .continue-watching-section, .data-transfer-section {
             width: 98.8%;
             justify-content: flex-start;
         }
@@ -266,6 +288,9 @@
         </div>
         <section class="continue-watching-section">
             <button id="contin-watching-btn" class="btn btn-primary">Continue Watching</button>
+        </section>
+        <section class="data-transfer-section">
+            <button id="data-transfer-btn" class="btn btn-primary">Transfer Data</button>
         </section>
         <hr style="width: 98.8%;">
         <section class="featured-section">
@@ -402,6 +427,10 @@
 
         document.getElementById("contin-watching-btn").addEventListener("click", function() {
             window.location.href = "https://thefarawaydev.github.io/better-anime/home/continue-watching";
+        });
+
+        document.getElementById("data-transfer-btn").addEventListener("click", function() {
+            window.location.href = "https://thefarawaydev.github.io/better-anime/home/data";
         });
     </script> 
 
