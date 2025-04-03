@@ -540,6 +540,24 @@
         "episodes": "13"
     },
     {
+        "title": "Real Girl",
+        "id": "real-girl-4517",
+        "image_url": "https://images.justwatch.com/poster/58593591/s718/real-girl.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=real-girl-4517",
+        "dub_count": "12",
+        "sub_count": "12",
+        "episodes": "12"
+    },
+    {
+        "title": "Real Girl: Season 2",
+        "id": "3d-kanojo-real-girl-2nd-season-1104",
+        "image_url": "https://images.justwatch.com/poster/102220438/s718/season-2.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=3d-kanojo-real-girl-2nd-season-1104",
+        "dub_count": "12",
+        "sub_count": "12",
+        "episodes": "12"
+    },
+    {
         "title": "Redo Of Healer",
         "id": "redo_of_healer",
         "image_url": "https://m.media-amazon.com/images/M/MV5BYzYzMDM3NGYtZTIwZS00N2UxLWExYzItYmQ1ZTRiOWNjMmYzXkEyXkFqcGc@._V1_.jpg",
@@ -952,7 +970,15 @@
         "dub_count": "13",
         "sub_count": "13",
         "episodes": "13"
-
+    },
+    {
+        "title": "Wind Breaker",
+        "id": "wind-breaker-season-2-19542",
+        "image_url": "https://a.storyblok.com/f/178900/1064x1506/f3ef268371/wind-breaker-season-2-key-visual-en.jpg/m/filters:quality(95)format(webp)",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=wind-breaker-season-2-19542",
+        "dub_count": "0",
+        "sub_count": "1",
+        "episodes": "12"
     },
     {
         "title": "Yamada-Kun And The Seven Witches",
