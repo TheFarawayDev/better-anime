@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Better Anime</title>
     <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.png">
     <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet">
     <style>
@@ -235,13 +234,13 @@
     </div>
 
     <script>
-        const videoPlayer = videojs('videoPlayer', {
+        const videoPlayer = videojs('videoPlayer', videojs.obj.merge({
             autoplay: true,
             controls: true,
             preload: 'auto',
             fluid: true,
             techOrder: ['html5'], // Ensure video.js uses its built-in HLS
-        });
+        }));
 
         const subbedButton = document.getElementById('subbedButton');
         const dubbedButton = document.getElementById('dubbedButton');
@@ -463,19 +462,30 @@
             if (!currentAnimeId || !currentEpisodeId || !currentEpisodeTitle) {
                 return;
             }
-            const progressKey = `watchProgress_${currentAnimeId}_${currentEpisodeId}_${currentEpisodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}_${currentCategory}`;
+
+            // Remove progress of the previous episode
+            const progressKeys = Object.keys(localStorage).filter(key =>
+                key.startsWith(`watchProgress_${currentAnimeId}_`)
+            );
+            progressKeys.forEach(key => localStorage.removeItem(key));
+
+            // Save progress for the current episode
+            const progressKey = `watchProgress_${currentAnimeId}_${currentEpisodeId}`;
             const progressData = {
                 lastTime: Math.round(currentTime), // Save rounded time
+                title: currentEpisodeTitle,
+                category: currentCategory
             };
-            localStorage.setItem(progressKey, JSON.stringify(progressData)); // Save as JSON
+            localStorage.setItem(progressKey, JSON.stringify(progressData));
             saveAllData(); // Ensure all data is saved after updating progress
         }
 
         function loadProgress() {
-            if (!currentAnimeId || !currentEpisodeId || !currentEpisodeTitle) {
+            if (!currentAnimeId || !currentEpisodeId) {
                 return 0;
             }
-            const progressKey = `watchProgress_${currentAnimeId}_${currentEpisodeId}_${currentEpisodeTitle.replace(/[^a-zA-Z0-9]/g, '_')}_${currentCategory}`;
+
+            const progressKey = `watchProgress_${currentAnimeId}_${currentEpisodeId}`;
             const savedData = localStorage.getItem(progressKey);
             if (savedData) {
                 const progressData = JSON.parse(savedData);
@@ -639,6 +649,7 @@
         // Toggle skip intro/outro button
         skipIntroButton.addEventListener('click', () => {
             skipIntroButton.classList.toggle('active');
+            localStorage.setItem('skipIntro', skipIntroButton.classList.contains('active')); // Save skip intro state
             saveAllData(); // Save the updated skip intro state
         });
 
@@ -646,28 +657,9 @@
         function saveAllData() {
             const allData = JSON.parse(localStorage.getItem('betterAnimeData')) || {};
 
-            // Merge existing data with new data to avoid overwriting
-            const continueWatching = JSON.parse(localStorage.getItem('continueWatching')) || [];
-            allData.continueWatching = [...new Set([...(allData.continueWatching || []), ...continueWatching])];
-
-            const episodeProgress = {};
-            for (let i = 0; i < localStorage.length; i++) {
-                const key = localStorage.key(i);
-                if (key.startsWith('watchProgress_')) {
-                    episodeProgress[key] = localStorage.getItem(key);
-                }
-            }
-            allData.episodeProgress = { ...allData.episodeProgress, ...episodeProgress };
-
-            const seriesProgress = {};
-            continueWatching.forEach(item => {
-                const seriesKey = `seriesProgress_${item.id}`;
-                seriesProgress[seriesKey] = localStorage.getItem(seriesKey) || null;
-            });
-            allData.seriesProgress = { ...allData.seriesProgress, ...seriesProgress };
-
-            // Save skip intro state
+            // Save only user preferences
             allData.skipIntro = skipIntroButton.classList.contains('active');
+            allData.autoNext = autoNext;
 
             localStorage.setItem('betterAnimeData', JSON.stringify(allData));
         }
@@ -676,57 +668,13 @@
         function loadAllData() {
             const allData = JSON.parse(localStorage.getItem('betterAnimeData')) || {};
 
-            // Restore continue watching
-            const continueWatching = allData.continueWatching || [];
-            localStorage.setItem('continueWatching', JSON.stringify(continueWatching));
-
-            // Restore episode progress
-            const episodeProgress = allData.episodeProgress || {};
-            Object.keys(episodeProgress).forEach(key => {
-                localStorage.setItem(key, episodeProgress[key]);
-            });
-
-            // Restore series progress
-            const seriesProgress = allData.seriesProgress || {};
-            Object.keys(seriesProgress).forEach(key => {
-                localStorage.setItem(key, seriesProgress[key]);
-            });
-
-            // Restore skip intro state
-            if (allData.skipIntro) {
-                skipIntroButton.classList.add('active');
+            // Restore user preferences
+            if (allData.skipIntro !== undefined) {
+                skipIntroButton.classList.toggle('active', allData.skipIntro);
             }
-        }
-
-        // Save series progress when navigating between episodes
-        function saveSeriesProgress(seriesId, lastWatchedEpisode) {
-            const seriesKey = `seriesProgress_${seriesId}`;
-            localStorage.setItem(seriesKey, JSON.stringify({ lastWatchedEpisode }));
-            saveAllData(); // Update the structured data
-        }
-
-        function loadAllData() {
-            const allData = JSON.parse(localStorage.getItem('betterAnimeData')) || {};
-
-            // Restore continue watching
-            const continueWatching = allData.continueWatching || [];
-            localStorage.setItem('continueWatching', JSON.stringify(continueWatching));
-
-            // Restore episode progress
-            const episodeProgress = allData.episodeProgress || {};
-            Object.keys(episodeProgress).forEach(key => {
-                localStorage.setItem(key, episodeProgress[key]);
-            });
-
-            // Restore series progress
-            const seriesProgress = allData.seriesProgress || {};
-            Object.keys(seriesProgress).forEach(key => {
-                localStorage.setItem(key, seriesProgress[key]);
-            });
-
-            // Restore skip intro state
-            if (allData.skipIntro) {
-                skipIntroButton.classList.add('active');
+            if (allData.autoNext !== undefined) {
+                autoNext = allData.autoNext;
+                autoNextButton.classList.toggle('active', autoNext);
             }
         }
 
@@ -741,6 +689,10 @@
             const savedAutoNext = localStorage.getItem('autoNext');
             autoNext = savedAutoNext === 'true';
             autoNextButton.classList.toggle('active', autoNext);
+
+            // Restore skipIntro state from local storage
+            const savedSkipIntro = localStorage.getItem('skipIntro');
+            skipIntroButton.classList.toggle('active', savedSkipIntro === 'true');
         });
 
         // Event listeners for navigation buttons
