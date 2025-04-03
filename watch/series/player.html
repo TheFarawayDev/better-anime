@@ -150,6 +150,18 @@
                 margin-bottom: 8px;
             }
         }
+
+        @media (max-width: 768px) and (orientation: landscape) {
+            .episode-list button {
+                font-size: 0.8em; /* Adjust font size for landscape mode */
+                padding: 8px; /* Adjust padding for consistency */
+            }
+
+            .controls-area button,
+            .episode-control-area button {
+                font-size: 0.9em; /* Ensure language options and navigation buttons are consistent */
+            }
+        }
     </style>
     <script>
         // Block developer tools
@@ -499,6 +511,15 @@
                 // Load language preference before fetching episodes
                 const preferredCategory = localStorage.getItem('preferredCategory') || 'sub';
                 currentCategory = preferredCategory;
+
+                // Set the preferred button as active
+                if (currentCategory === 'sub') {
+                    subbedButton.classList.add('active');
+                    dubbedButton.classList.remove('active');
+                } else if (currentCategory === 'dub') {
+                    dubbedButton.classList.add('active');
+                    subbedButton.classList.remove('active');
+                }
 
                 fetchAnimeEpisodes(currentAnimeId).then(() => {
                     const lastWatchedEpisodeId = localStorage.getItem('lastWatchedEpisodeId_' + currentAnimeId);
