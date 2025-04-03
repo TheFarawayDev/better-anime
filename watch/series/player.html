@@ -322,13 +322,6 @@
                 }
                 saveAllData(); // Save all data to the structured object
             });
-
-            videoPlayer.on('play', () => {
-                const savedTime = loadProgress();
-                if (savedTime > 0 && Math.abs(videoPlayer.currentTime() - savedTime) > 2) {
-                    videoPlayer.currentTime(savedTime);
-                }
-            });
         }
 
         async function fetchAnimeEpisodes(animeId) {
