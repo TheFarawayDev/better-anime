@@ -82,14 +82,8 @@
         .controls-area button {
             width: 100%;
         }
-        .language-bar {
-            width: 100%;
-            background-color: #2c2c2c;
-            padding: 8px;
-            text-align: center;
-            margin-top: 10px;
-            box-sizing: border-box;
-            font-size: 0.9em; /* Match the button text size */
+        .controls-area button.active {
+            background-color: #23ade5;
         }
         .episode-list-container {
             width: 80%;
@@ -214,9 +208,6 @@
             <button id="subbedButton">Subbed</button>
             <button id="dubbedButton">Dubbed</button>
         </div>
-        <div class="language-bar">
-            Current Language: <span id="currentLanguage">Subbed</span>
-        </div>
 
         <div class="episode-control-area">
             <button id="previousButton" style="width: 100%;">Previous</button>
@@ -285,6 +276,7 @@
             }
 
             localStorage.setItem('continueWatching', JSON.stringify(continueWatchingArray));
+            saveAllData(); // Ensure all data is saved after updating continue watching
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -328,6 +320,7 @@
                 if (currentEpisodeId && currentEpisodeTitle) {
                     saveProgress(videoPlayer.currentTime()); // Save only the current time
                 }
+                saveAllData(); // Save all data to the structured object
             });
 
             videoPlayer.on('play', () => {
@@ -386,6 +379,16 @@
             currentEpisodeTitle = episodeTitle;
             localStorage.setItem('lastWatchedEpisodeId_' + currentAnimeId, episodeId);
             localStorage.setItem('lastWatchedEpisodeTitle_' + currentAnimeId, episodeTitle);
+
+            // Load language first to save bandwidth
+            const sources = await fetchStreamingLinks(episodeId, currentCategory);
+            if (sources.length > 0) {
+                const videoUrl = `${proxyUrl}${encodeURIComponent(sources[0].url)}`;
+                initializeVideoPlayer(videoUrl);
+            } else {
+                alert(`No ${currentCategory} streams found for this episode.`);
+            }
+
             const subbedSources = await fetchStreamingLinks(episodeId, 'sub');
             const dubbedSources = await fetchStreamingLinks(episodeId, 'dub');
 
@@ -402,10 +405,7 @@
                     currentCategory = 'dub';
                 }
                 localStorage.setItem('preferredCategory', currentCategory);
-                currentLanguageSpan.textContent = currentCategory === 'sub' ? 'Subbed' : 'Dubbed';
             }
-
-            loadStreamingLinks(episodeId, currentCategory);
         }
 
         async function fetchStreamingLinks(episodeId, category) {
@@ -429,23 +429,17 @@
                     const videoUrl = `${proxyUrl}${encodeURIComponent(sources[0].url)}`; // Removed proxyHeaders
                     initializeVideoPlayer(videoUrl);
                     currentLanguageSpan.textContent = category === 'sub' ? 'Subbed' : 'Dubbed';
-                } else {
-                    alert(`No ${category} streams found for this episode.`);
-                    if (category === 'sub' && hasDubbed) {
-                        loadStreamingLinks(episodeId, 'dub');
-                        currentCategory = 'dub';
-                        localStorage.setItem('preferredCategory', currentCategory);
-                        currentLanguageSpan.textContent = 'Dubbed';
-                    } else if (category === 'dub' && hasSubbed) {
-                        loadStreamingLinks(episodeId, 'sub');
-                        currentCategory = 'sub';
-                        localStorage.setItem('preferredCategory', currentCategory);
-                        currentLanguageSpan.textContent = 'Subbed';
-                    }
+                } else if (category === 'sub' && hasDubbed) {
+                    currentCategory = 'dub';
+                    localStorage.setItem('preferredCategory', currentCategory);
+                    loadStreamingLinks(episodeId, 'dub');
+                } else if (category === 'dub' && hasSubbed) {
+                    currentCategory = 'sub';
+                    localStorage.setItem('preferredCategory', currentCategory);
+                    loadStreamingLinks(episodeId, 'sub');
                 }
             } catch (error) {
                 console.error(`Error loading ${category} stream:`, error);
-                alert(`Error loading ${category} stream.`);
             }
         }
 
@@ -509,10 +503,13 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             if (currentAnimeId) {
+                // Load language preference before fetching episodes
+                const preferredCategory = localStorage.getItem('preferredCategory') || 'sub';
+                currentCategory = preferredCategory;
+
                 fetchAnimeEpisodes(currentAnimeId).then(() => {
                     const lastWatchedEpisodeId = localStorage.getItem('lastWatchedEpisodeId_' + currentAnimeId);
                     const lastWatchedEpisodeTitle = localStorage.getItem('lastWatchedEpisodeTitle_' + currentAnimeId);
-                    const preferredCategory = localStorage.getItem('preferredCategory') || 'sub';
 
                     if (lastWatchedEpisodeId && lastWatchedEpisodeTitle) {
                         const episodeButton = Array.from(document.querySelectorAll('.episode-list button')).find(
@@ -524,9 +521,7 @@
                             highlightCurrentEpisode(episodeButton);
                             loadEpisodeServers(lastWatchedEpisodeId, lastWatchedEpisodeTitle).then(() => {
                                 if (hasSubbed || hasDubbed) {
-                                    loadStreamingLinks(lastWatchedEpisodeId, preferredCategory);
-                                    currentCategory = preferredCategory;
-                                    currentLanguageSpan.textContent = currentCategory.charAt(0).toUpperCase() + 'bed';
+                                    loadStreamingLinks(lastWatchedEpisodeId, currentCategory);
                                 }
                             });
                         } else if (document.querySelector('.episode-list button:first-child')) {
@@ -551,14 +546,7 @@
                     localStorage.setItem('preferredCategory', currentCategory);
                     subbedButton.classList.add('active');
                     dubbedButton.classList.remove('active');
-                    loadEpisodeServers(currentEpisodeId, currentCategory);
-                    Array.from(episodeListContainer.children).forEach((child, index) => {
-                        child.style.transitionDelay = `${index * 50}ms`;
-                        child.style.opacity = 0;
-                        requestAnimationFrame(() => {
-                            child.style.opacity = 1;
-                        });
-                    });
+                    loadStreamingLinks(currentEpisodeId, currentCategory);
                 }
             });
 
@@ -568,14 +556,7 @@
                     localStorage.setItem('preferredCategory', currentCategory);
                     dubbedButton.classList.add('active');
                     subbedButton.classList.remove('active');
-                    loadEpisodeServers(currentEpisodeId, currentCategory);
-                    Array.from(episodeListContainer.children).forEach((child, index) => {
-                        child.style.transitionDelay = `${index * 50}ms`;
-                        child.style.opacity = 0;
-                        requestAnimationFrame(() => {
-                            child.style.opacity = 1;
-                        });
-                    });
+                    loadStreamingLinks(currentEpisodeId, currentCategory);
                 }
             });
 
@@ -612,6 +593,65 @@
             if (autoNext) {
                 playNextEpisode();
             }
+        });
+
+        // Save all data to a single structured object in localStorage
+        function saveAllData() {
+            const allData = JSON.parse(localStorage.getItem('betterAnimeData')) || {};
+
+            // Save continue watching data
+            const continueWatching = JSON.parse(localStorage.getItem('continueWatching')) || [];
+            allData.continueWatching = continueWatching;
+
+            // Save episode progress
+            const episodeProgress = {};
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith('watchProgress_')) {
+                    episodeProgress[key] = localStorage.getItem(key);
+                }
+            }
+            allData.episodeProgress = episodeProgress;
+
+            // Save series progress
+            const seriesProgress = {};
+            continueWatching.forEach(item => {
+                const seriesKey = `seriesProgress_${item.id}`;
+                seriesProgress[seriesKey] = localStorage.getItem(seriesKey) || null;
+            });
+            allData.seriesProgress = seriesProgress;
+
+            // Save the structured data back to localStorage
+            localStorage.setItem('betterAnimeData', JSON.stringify(allData));
+        }
+
+        // Save series progress when navigating between episodes
+        function saveSeriesProgress(seriesId, lastWatchedEpisode) {
+            const seriesKey = `seriesProgress_${seriesId}`;
+            localStorage.setItem(seriesKey, JSON.stringify({ lastWatchedEpisode }));
+            saveAllData(); // Update the structured data
+        }
+
+        // Load all data on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAllData();
+            if (currentAnimeId) {
+                saveToContinueWatching(currentAnimeId);
+            }
+
+            // Restore autoNext state from local storage
+            const savedAutoNext = localStorage.getItem('autoNext');
+            autoNext = savedAutoNext === 'true';
+            autoNextButton.classList.toggle('active', autoNext);
+        });
+
+        // Event listeners for navigation buttons
+        previousButton.addEventListener('click', playPreviousEpisode);
+        nextButton.addEventListener('click', playNextEpisode);
+        autoNextButton.addEventListener('click', () => {
+            autoNext = !autoNext;
+            localStorage.setItem('autoNext', autoNext);
+            autoNextButton.classList.toggle('active', autoNext);
         });
 
     </script>

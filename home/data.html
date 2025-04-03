@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.png">
+    <title>Better Anime - Data Transfer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            height: 85%;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            width: 100%;
+            background-color: #1e1e1e;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            border-bottom: 1px solid #333;
+        }
+        .bar {
+            width: 100%;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+        .bottom-bar {
+            border-top: 1px solid #333;
+            border-bottom: none;
+        }
+        input[type="text"] {
+            flex: 1;
+            margin-right: 10px;
+            padding: 8px;
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .go-home {
+            margin: 10px 0;
+            width: 95%;
+        }
+        .footer {
+            width: 100%;
+            background-color: #1e1e1e;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 0.9em;
+            border-top: 1px solid #333;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header" style="margin: 10px ;">Data Transfering</div>
+
+        <div class="bar">
+            <input type="text" id="exportTextBar" placeholder="Export your data">
+            <button id="exportButton">Export as File</button>
+        </div>
+
+        <div class="bar bottom-bar">
+            <input type="text" id="importTextBar" placeholder="Paste or type your data">
+            <button id="importButton">Import</button>
+            <input type="file" id="fileInput" accept=".json">
+        </div>
+
+        <hr style="width: 100%; border: 1px solid #333; margin: 10px 0;"></hr>
+
+        <button class="go-home" style="width: 93.5%;" onclick="window.location.href='./'">Go Home</button>
+
+        <div class="footer">© 2025 Better Anime. All rights reserved.</div>
+    </div>
+
+    <script>
+        const exportTextBar = document.getElementById('exportTextBar');
+        const importTextBar = document.getElementById('importTextBar');
+        const exportButton = document.getElementById('exportButton');
+        const importButton = document.getElementById('importButton');
+        const fileInput = document.getElementById('fileInput');
+
+        // Generate compact representation of data
+        function generateCompactData(data) {
+            return btoa(JSON.stringify(data)); // Base64 encode the JSON string
+        }
+
+        // Parse compact data back to JSON
+        function parseCompactData(compactData) {
+            return JSON.parse(atob(compactData)); // Decode Base64 and parse JSON
+        }
+
+        // Display all local storage data in the export text bar
+        function displayData() {
+            const allData = JSON.parse(localStorage.getItem('betterAnimeData')) || {};
+            if (Object.keys(allData).length > 0) {
+                const compactData = generateCompactData(allData);
+                exportTextBar.value = compactData; // Automatically populate export bar with compact data
+            } else {
+                exportTextBar.value = ""; // Clear the export bar if no data
+            }
+        }
+
+        // Export data as a JSON file
+        exportButton.addEventListener('click', () => {
+            const compactData = exportTextBar.value.trim();
+            if (!compactData) {
+                alert('No data available to export.');
+                return;
+            }
+            try {
+                const decodedData = parseCompactData(compactData);
+                const dataStr = JSON.stringify(decodedData, null, 4);
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'better-anime-data.json';
+                a.click();
+                URL.revokeObjectURL(url);
+                alert('Data exported successfully!');
+            } catch (error) {
+                alert('Failed to export data. Please try again.');
+            }
+        });
+
+        // Import data from a JSON file or text input
+        importButton.addEventListener('click', () => {
+            const compactData = importTextBar.value.trim();
+            if (compactData) {
+                try {
+                    const importedData = parseCompactData(compactData);
+                    localStorage.setItem('betterAnimeData', JSON.stringify(importedData)); // Save imported data to betterAnimeData
+                    alert('Data imported successfully!');
+                    displayData();
+                } catch (error) {
+                    alert('Invalid data format. Please check your input.');
+                }
+            } else {
+                fileInput.click();
+            }
+        });
+
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const importedData = JSON.parse(e.target.result);
+                        localStorage.setItem('betterAnimeData', JSON.stringify(importedData)); // Save imported data to betterAnimeData
+                        alert('Data imported successfully!');
+                        displayData();
+                    } catch (error) {
+                        alert('Invalid file format. Please upload a valid JSON file.');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Initialize the page with current data
+        displayData();
+    </script>
+</body>
+</html>
