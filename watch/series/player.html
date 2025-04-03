@@ -224,6 +224,7 @@
         <div class="episode-control-area">
             <button id="previousButton" style="width: 100%;">Previous</button>
             <button id="autoNextButton" style="width: 100%;">Auto Next</button>
+            <button id="skipIntroButton" style="width: 100%;">Skip Intro</button>
             <button id="nextButton" style="width: 100%;">Next</button>
         </div>
     </div>
@@ -266,6 +267,12 @@
         let videoEnded = false; //track ended
         let isPlaying = false; // Track if video is playing
 
+        const skipIntroButton = document.getElementById('skipIntroButton');
+        let introStart = null;
+        let introEnd = null;
+        let outroStart = null;
+        let outroEnd = null;
+
         function playM3u8(video, url) {
             videoPlayer.src({
                 src: url,
@@ -304,6 +311,10 @@
             });
 
             videoPlayer.ready(() => {
+                const savedTime = loadProgress(); // Load saved progress
+                if (savedTime > 0) {
+                    videoPlayer.currentTime(savedTime); // Resume from saved time
+                }
                 videoPlayer.play();
             });
 
@@ -385,31 +396,31 @@
             localStorage.setItem('lastWatchedEpisodeId_' + currentAnimeId, episodeId);
             localStorage.setItem('lastWatchedEpisodeTitle_' + currentAnimeId, episodeTitle);
 
-            // Load language first to save bandwidth
-            const sources = await fetchStreamingLinks(episodeId, currentCategory);
-            if (sources.length > 0) {
-                const videoUrl = `${proxyUrl}${encodeURIComponent(sources[0].url)}`;
-                initializeVideoPlayer(videoUrl);
-            } else {
-                alert(`No ${currentCategory} streams found for this episode.`);
-            }
+            try {
+                const response = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-2&category=${currentCategory}`);
+                const data = await response.json();
 
-            const subbedSources = await fetchStreamingLinks(episodeId, 'sub');
-            const dubbedSources = await fetchStreamingLinks(episodeId, 'dub');
+                if (data.success && data.data) {
+                    const { intro, outro, sources } = data.data;
 
-            hasSubbed = subbedSources.length > 0;
-            hasDubbed = dubbedSources.length > 0;
+                    // Set intro and outro times
+                    introStart = intro?.start || null;
+                    introEnd = intro?.end || null;
+                    outroStart = outro?.start || null;
+                    outroEnd = outro?.end || null;
 
-            subbedButton.style.display = hasSubbed ? 'inline-block' : 'none';
-            dubbedButton.style.display = hasDubbed ? 'inline-block' : 'none';
-
-            if ((currentCategory === 'sub' && !hasSubbed) || (currentCategory === 'dub' && !hasDubbed)) {
-                if (hasSubbed) {
-                    currentCategory = 'sub';
-                } else if (hasDubbed) {
-                    currentCategory = 'dub';
+                    if (sources.length > 0) {
+                        const videoUrl = `${proxyUrl}${encodeURIComponent(sources[0].url)}`;
+                        initializeVideoPlayer(videoUrl);
+                    } else {
+                        alert(`No ${currentCategory} streams found for this episode.`);
+                    }
+                } else {
+                    alert('Could not load episode data.');
                 }
-                localStorage.setItem('preferredCategory', currentCategory);
+            } catch (error) {
+                console.error('Error loading episode servers:', error);
+                alert('Error loading episode data.');
             }
         }
 
@@ -457,6 +468,7 @@
                 lastTime: Math.round(currentTime), // Save rounded time
             };
             localStorage.setItem(progressKey, JSON.stringify(progressData)); // Save as JSON
+            saveAllData(); // Ensure all data is saved after updating progress
         }
 
         function loadProgress() {
@@ -609,15 +621,35 @@
             }
         });
 
+        // Skip intro and outro functionality
+        videoPlayer.on('timeupdate', () => {
+            const currentTime = videoPlayer.currentTime();
+
+            // Skip intro
+            if (introStart !== null && introEnd !== null && currentTime >= introStart && currentTime < introEnd && skipIntroButton.classList.contains('active')) {
+                videoPlayer.currentTime(introEnd);
+            }
+
+            // Skip outro
+            if (outroStart !== null && outroEnd !== null && currentTime >= outroStart && currentTime < outroEnd && skipIntroButton.classList.contains('active')) {
+                videoPlayer.currentTime(outroEnd);
+            }
+        });
+
+        // Toggle skip intro/outro button
+        skipIntroButton.addEventListener('click', () => {
+            skipIntroButton.classList.toggle('active');
+            saveAllData(); // Save the updated skip intro state
+        });
+
         // Save all data to a single structured object in localStorage
         function saveAllData() {
             const allData = JSON.parse(localStorage.getItem('betterAnimeData')) || {};
 
-            // Save continue watching data
+            // Merge existing data with new data to avoid overwriting
             const continueWatching = JSON.parse(localStorage.getItem('continueWatching')) || [];
-            allData.continueWatching = continueWatching;
+            allData.continueWatching = [...new Set([...(allData.continueWatching || []), ...continueWatching])];
 
-            // Save episode progress
             const episodeProgress = {};
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
@@ -625,18 +657,45 @@
                     episodeProgress[key] = localStorage.getItem(key);
                 }
             }
-            allData.episodeProgress = episodeProgress;
+            allData.episodeProgress = { ...allData.episodeProgress, ...episodeProgress };
 
-            // Save series progress
             const seriesProgress = {};
             continueWatching.forEach(item => {
                 const seriesKey = `seriesProgress_${item.id}`;
                 seriesProgress[seriesKey] = localStorage.getItem(seriesKey) || null;
             });
-            allData.seriesProgress = seriesProgress;
+            allData.seriesProgress = { ...allData.seriesProgress, ...seriesProgress };
 
-            // Save the structured data back to localStorage
+            // Save skip intro state
+            allData.skipIntro = skipIntroButton.classList.contains('active');
+
             localStorage.setItem('betterAnimeData', JSON.stringify(allData));
+        }
+
+        // Load all data on page load
+        function loadAllData() {
+            const allData = JSON.parse(localStorage.getItem('betterAnimeData')) || {};
+
+            // Restore continue watching
+            const continueWatching = allData.continueWatching || [];
+            localStorage.setItem('continueWatching', JSON.stringify(continueWatching));
+
+            // Restore episode progress
+            const episodeProgress = allData.episodeProgress || {};
+            Object.keys(episodeProgress).forEach(key => {
+                localStorage.setItem(key, episodeProgress[key]);
+            });
+
+            // Restore series progress
+            const seriesProgress = allData.seriesProgress || {};
+            Object.keys(seriesProgress).forEach(key => {
+                localStorage.setItem(key, seriesProgress[key]);
+            });
+
+            // Restore skip intro state
+            if (allData.skipIntro) {
+                skipIntroButton.classList.add('active');
+            }
         }
 
         // Save series progress when navigating between episodes
@@ -644,6 +703,31 @@
             const seriesKey = `seriesProgress_${seriesId}`;
             localStorage.setItem(seriesKey, JSON.stringify({ lastWatchedEpisode }));
             saveAllData(); // Update the structured data
+        }
+
+        function loadAllData() {
+            const allData = JSON.parse(localStorage.getItem('betterAnimeData')) || {};
+
+            // Restore continue watching
+            const continueWatching = allData.continueWatching || [];
+            localStorage.setItem('continueWatching', JSON.stringify(continueWatching));
+
+            // Restore episode progress
+            const episodeProgress = allData.episodeProgress || {};
+            Object.keys(episodeProgress).forEach(key => {
+                localStorage.setItem(key, episodeProgress[key]);
+            });
+
+            // Restore series progress
+            const seriesProgress = allData.seriesProgress || {};
+            Object.keys(seriesProgress).forEach(key => {
+                localStorage.setItem(key, seriesProgress[key]);
+            });
+
+            // Restore skip intro state
+            if (allData.skipIntro) {
+                skipIntroButton.classList.add('active');
+            }
         }
 
         // Load all data on page load
