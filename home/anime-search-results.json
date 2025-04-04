@@ -109,9 +109,9 @@
     },
     {
         "title": "Bleach",
-        "id": "bleach",
+        "id": "bleach-806",
         "image_url": "https://m.media-amazon.com/images/M/MV5BOWQwOWY5NTUtMjAyZi00YjQzLTkwODgtNmQwZjU1MGIzZDhjXkEyXkFqcGc@._V1_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=bleach",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=bleach-806",
         "dub_count": "366",
         "sub_count": "366",
         "episodes": "366"
@@ -119,7 +119,7 @@
     {
         "title": "Bleach: Thousand-Year Blood War",
         "id": "bleach_thousand_year_blood_war",
-        "image_url": "https://m.media-amazon.com/images/M/MV5BMDYyZDEzNzktNDVhNS00MjJiLWJlZjgtY2IzZDY0OTNjMDU3XkEyXkFqcGc@._V1_.jpg",
+        "image_url": "https://images.justwatch.com/poster/300543213/s332/bleach",
         "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=bleach_thousand_year_blood_war",
         "dub_count": "40",
         "sub_count": "40",
@@ -153,6 +153,33 @@
         "episodes": "12"
     },
     {
+        "title": "Clannad",
+        "id": "clannad-418",
+        "image_url": "https://images.justwatch.com/poster/178359935/s718/clannad-after-story.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=clannad-418",
+        "dub_count": "23",
+        "sub_count": "23",
+        "episodes": "23"
+    },
+    {
+        "title": "Clannad: After Story",
+        "id": "clannad-after-story-15",
+        "image_url": "https://images.justwatch.com/poster/247920672/s718/season-2.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=clannad-after-story-15",
+        "dub_count": "25",
+        "sub_count": "25",
+        "episodes": "25"
+    },
+    {
+        "title": "Clannad: The Motion Picture",
+        "id": "clannad-the-movie-2553",
+        "image_url": "https://images.justwatch.com/poster/48176101/s718/clannad-the-motion-picture.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=clannad-the-movie-2553",
+        "dub_count": "1",
+        "sub_count": "1",
+        "episodes": "1"
+    },
+    {
         "title": "Classroom Of The Elite",
         "id": "classroom_of_the_elite",
         "image_url": "https://m.media-amazon.com/images/M/MV5BMDg3MGVhNWUtYTQ2NS00ZDdiLTg5MTMtZmM5MjUzN2IxN2I4XkEyXkFqcGc@._V1_.jpg",
@@ -163,9 +190,9 @@
     },
     {
         "title": "Chainsaw Man",
-        "id": "chainsaw_man",
-        "image_url": "https://m.media-amazon.com/images/M/MV5BZGY2ZTM2MWMtNzA2OS00ZjJlLWIwZTMtMDBhN2EwYjZjZjEyXkEyXkFqcGc@._V1_.jpg",
-        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?series=chainsaw_man",
+        "id": "chainsaw-man-17406",
+        "image_url": "https://images.justwatch.com/poster/301084089/s718/chainsaw-man.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=chainsaw-man-17406",
         "dub_count": "12",
         "sub_count": "12",
         "episodes": "12"
