@@ -146,6 +146,8 @@
                 display: block;
                 width: 100%;
                 margin-bottom: 8px;
+                font-size: 0.8em; /* Slightly smaller font size */
+                padding: 8px; /* Adjust padding for smaller buttons */
             }
         }
 
@@ -212,6 +214,7 @@
     <div class="artplayer-app-container">
         <div class="site-link-bar">
             <a href="https://thefarawaydev.github.io/better-anime/home" class="site-link">Better Anime</a>
+            <span id="versionNumber" style="margin-left: auto; font-size: 0.9em; color: #aaa;">Ver. Error</span>
         </div>
         <video id="videoPlayer" controls preload="auto" playsinline webkit-playsinline x-webkit-airplay="allow"></video>
         <div class="controls-area">
@@ -631,6 +634,14 @@
             // Restore skipIntro state from local storage
             const savedSkipIntro = localStorage.getItem('skipIntro');
             skipIntroButton.classList.toggle('active', savedSkipIntro === 'true');
+
+            // Fetch and display version number
+            fetch('https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/series/version.json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('versionNumber').textContent = `v${data.version}`;
+                })
+                .catch(error => console.error('Error fetching version:', error));
         });
 
         // Event listeners for navigation buttons

@@ -225,6 +225,7 @@
 
   <footer>
     <p>&copy; 2025 Better Anime. All rights reserved. 3rd Party Sites Provide Access To Media.</p>
+    <p><strong id="versionNumber">Ver. Error</strong></p>
   </footer>
 
   <script>
@@ -300,6 +301,13 @@
       } else {
       continueWatchingContainer.innerHTML = "<p>No items found in your continue watching list.</p>";
       }
+
+      fetch('https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/series/version.json')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('versionNumber').textContent = `Version ${data.version}`;
+        })
+        .catch(error => console.error('Error fetching version:', error));
     });
   </script>
 </body>

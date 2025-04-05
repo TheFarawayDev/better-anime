@@ -480,7 +480,7 @@
     </main>
     <footer>
         <p>&copy; 2025 Better Anime. All rights reserved. 3rd Party Sites Provide Access To Media.</p>
-        <!--<a href="https://thefarawaydev.github.io/better-anime/watch/info/anime-list.md">List Of All The Anime Planned And On The Site</a>-->
+        <p><strong id="versionNumber">Ver. Error</strong></p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -581,6 +581,13 @@
 
         // Start live updates
         updateSchedulesLive();
+
+        fetch('https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/series/version.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('versionNumber').textContent = `Version ${data.version}`;
+            })
+            .catch(error => console.error('Error fetching version:', error));
     </script>
 </body>
 </html>

@@ -208,6 +208,7 @@
 
   <footer>
     <p>&copy; 2025 Better Anime. All rights reserved. 3rd Party Sites Provide Access To Media.</p>
+    <p><strong id="versionNumber">Ver. Error</strong></p>
   </footer>
 
   <script>
@@ -281,6 +282,13 @@
         console.error("Error fetching data:", error);
         document.getElementById("results").innerHTML = "<p>Sorry, something went wrong. Please try again later.</p>";
       });
+
+    fetch('https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/series/version.json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('versionNumber').textContent = `Version ${data.version}`;
+      })
+      .catch(error => console.error('Error fetching version:', error));
   </script>
 </body>
 </html>
