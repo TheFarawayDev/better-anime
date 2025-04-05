@@ -313,11 +313,22 @@
         let outroStart = null;
         let outroEnd = null;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            if (currentAnimeId) {
-                saveToContinueWatching(currentAnimeId);
+        function saveToContinueWatching(id) {
+            let continueWatchingArray = JSON.parse(localStorage.getItem('continueWatching')) || [];
+            const existingItemIndex = continueWatchingArray.findIndex(item => item.id === id);
+            const pageUrl = window.location.href;
+            const timestamp = new Date().toISOString(); // Get the current timestamp
+
+            if (existingItemIndex !== -1) {
+            continueWatchingArray[existingItemIndex].url = pageUrl;
+            continueWatchingArray[existingItemIndex].timestamp = timestamp; // Update the timestamp
+            } else {
+            continueWatchingArray.push({ id, url: pageUrl, timestamp }); // Add new entry with timestamp
             }
-        });
+
+            localStorage.setItem('continueWatching', JSON.stringify(continueWatchingArray));
+            saveAllData(); // Ensure all data is saved after updating continue watching
+        }
 
         async function fetchAnimeEpisodes(animeId) {
             try {
@@ -635,13 +646,34 @@
             const savedSkipIntro = localStorage.getItem('skipIntro');
             skipIntroButton.classList.toggle('active', savedSkipIntro === 'true');
 
-            // Fetch and display version number
-            fetch('https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/series/version.json')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('versionNumber').textContent = `v${data.version}`;
-                })
-                .catch(error => console.error('Error fetching version:', error));
+            // Fetch and display version number with retry logic
+            const fetchVersion = (retryCount = 3) => {
+                fetch('https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/series/version.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.version) {
+                            document.getElementById('versionNumber').textContent = `v${data.version}`;
+                        } else {
+                            document.getElementById('versionNumber').textContent = 'Version not found';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching version:', error);
+                        if (retryCount > 0) {
+                            console.log(`Retrying... (${3 - retryCount + 1})`);
+                            setTimeout(() => fetchVersion(retryCount - 1), 1000); // Retry after 1 second
+                        } else {
+                            document.getElementById('versionNumber').textContent = 'Failed to load version';
+                        }
+                    });
+            };
+
+            fetchVersion(); // Initial fetch
         });
 
         // Event listeners for navigation buttons
