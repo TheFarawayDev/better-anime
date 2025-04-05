@@ -245,7 +245,7 @@
     }
 
     function formatTitle(title) {
-      return title.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+      return title.replace(/_/g, ' ').replace(/\b[a-z]/g, char => char.toUpperCase());
     }
 
     document.addEventListener('DOMContentLoaded', () => {
