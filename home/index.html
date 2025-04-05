@@ -551,7 +551,7 @@
         function updateSchedulesLive() {
             const today = new Date().toISOString().split('T')[0];
             fetchSchedules(today);
-            setInterval(() => fetchSchedules(today), 60000); // Refresh every minute
+            setInterval(() => fetchSchedules(today), 1000); // Refresh every minute
         }
 
         // Start live updates
