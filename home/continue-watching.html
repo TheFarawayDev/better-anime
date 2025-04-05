@@ -253,54 +253,59 @@
       const continueWatchingContainer = document.getElementById("continue-watching");
       let continueWatchingArray = JSON.parse(localStorage.getItem('continueWatching')) || [];
 
+      // Remove duplicates based on the 'id' property
+      continueWatchingArray = continueWatchingArray.filter((item, index, self) =>
+        index === self.findIndex((t) => t.id === item.id)
+      );
+
       // Sort by timestamp (most recent first)
-      continueWatchingArray = continueWatchingArray.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+      continueWatchingArray.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 
       if (continueWatchingArray.length > 0) {
-        continueWatchingArray.forEach(async item => {
+        for (const item of continueWatchingArray) {
           const ids = Array.isArray(item.id) ? item.id : [item.id];
-          const animeDetailsArray = await getAnimeDetails(ids);
+          getAnimeDetails(ids).then(animeDetailsArray => {
+            animeDetailsArray.forEach(animeDetails => {
+              const itemElement = document.createElement("div");
+              itemElement.classList.add("anime-item");
+              itemElement.innerHTML = `
+                <img src="${animeDetails.image_url || 'default-image.jpg'}" alt="${formatTitle(animeDetails.title || item.title)}">
+                <div class="anime-info">
+                  <h3>${formatTitle(animeDetails.title || item.title)}</h3>
+                  <div class="tick ltr">
+                    <div class="tick-item tick-sub"><i class="fas fa-closed-captioning"></i> ${animeDetails.sub_count || '00'}</div>
+                    <div class="tick-item tick-dub"><i class="fas fa-microphone"></i> ${animeDetails.dub_count || '00'}</div>
+                    <div class="tick-item tick-eps">${animeDetails.episodes || '00'}</div>
+                  </div>
+                  <hr>
+                </div>
+              `;
 
-          animeDetailsArray.forEach(animeDetails => {
-            const itemElement = document.createElement("div");
-            itemElement.classList.add("anime-item");
-            itemElement.innerHTML = `
-              <img src="${animeDetails.image_url || 'default-image.jpg'}" alt="${formatTitle(animeDetails.title || item.title)}">
-              <div class="anime-info">
-              <h3>${formatTitle(animeDetails.title || item.title)}</h3>
-              <div class="tick ltr">
-                <div class="tick-item tick-sub"><i class="fas fa-closed-captioning"></i> ${animeDetails.sub_count || '00'}</div>
-                <div class="tick-item tick-dub"><i class="fas fa-microphone"></i> ${animeDetails.dub_count || '00'}</div>
-                <div class="tick-item tick-eps">${animeDetails.episodes || '00'}</div>
-              </div>
-              <hr>
-              </div>
-            `;
+              const continueLink = document.createElement("a");
+              continueLink.href = item.url;
+              continueLink.textContent = "Continue";
+              continueLink.addEventListener("click", function(event) {
+                event.preventDefault();
+                window.open(item.url, "_blank");
+              });
 
-            const continueLink = document.createElement("a");
-            continueLink.href = item.url;
-            continueLink.textContent = "Continue";
-            continueLink.addEventListener("click", function(event) {
-              event.preventDefault();
-              window.open(item.url, "_blank");
+              const deleteButton = document.createElement("button");
+              deleteButton.classList.add("btn-delete");
+              deleteButton.textContent = "Remove";
+              deleteButton.addEventListener("click", () => {
+                const updatedArray = continueWatchingArray.filter(entry => entry !== item);
+                localStorage.setItem('continueWatching', JSON.stringify(updatedArray));
+                itemElement.remove();
+              });
+
+              const animeInfoDiv = itemElement.querySelector(".anime-info");
+              animeInfoDiv.appendChild(continueLink);
+              animeInfoDiv.appendChild(deleteButton);
+
+              continueWatchingContainer.appendChild(itemElement);
             });
-
-            const deleteButton = document.createElement("button");
-            deleteButton.classList.add("btn-delete");
-            deleteButton.textContent = "Remove";
-            deleteButton.addEventListener("click", () => {
-              const updatedArray = continueWatchingArray.filter(entry => entry !== item);
-              localStorage.setItem('continueWatching', JSON.stringify(updatedArray));
-              itemElement.remove();
-            });
-
-            const animeInfoDiv = itemElement.querySelector(".anime-info");
-            animeInfoDiv.appendChild(continueLink);
-            animeInfoDiv.appendChild(deleteButton);
-
-            continueWatchingContainer.appendChild(itemElement);
           });
-        });
+        }
       } else {
         continueWatchingContainer.innerHTML = "<p>No items found in your continue watching list.</p>";
       }
