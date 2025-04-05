@@ -599,21 +599,8 @@
             autoNextButton.addEventListener('click', () => {
                 autoNext = !autoNext;
                 localStorage.setItem('autoNext', autoNext); // Save autoNext state to local storage
-                if (autoNext) {
-                    autoNextButton.classList.add('active');
-                } else {
-                    autoNextButton.classList.remove('active');
-                }
+                autoNextButton.classList.toggle('active', autoNext);
             });
-        });
-        
-        autoNextButton.addEventListener('click', () => {
-            autoNext = !autoNext;
-            if (autoNext) {
-                autoNextButton.classList.add('active');
-            } else {
-                autoNextButton.classList.remove('active');
-            }
         });
 
         videoPlayer.on('ended', () => {
