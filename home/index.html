@@ -228,15 +228,26 @@
         padding: 1rem;
         background-color: var(--light-gray);
         border-radius: 8px;
+        max-height: 400px; /* Limit height for scrollable list */
+        overflow-y: auto; /* Enable vertical scrolling */
     }
 
     .schedules-section h2 {
-        color: var(--bleu-de-france);
+        margin-bottom: 1rem;
         font-size: 1.5rem;
+        color: var(--bleu-de-france);
         font-weight: bold;
     }
 
+    .schedules-section::-webkit-scrollbar {
+        display: none; /* Hide scrollbar */
+    }
+
     .anime-schedule-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%; /* Stretch to full width */
         margin-bottom: 1rem;
         padding: 1rem;
         background-color: var(--white);
@@ -246,15 +257,29 @@
     }
 
     .anime-schedule-item h3 {
-        margin: 0 0 0.5rem;
+        margin: 0;
         font-size: 1.2rem;
         color: var(--charcoal);
+        flex: 2; /* Take up more space */
     }
 
     .anime-schedule-item p {
-        margin: 0.2rem 0;
+        margin: 0;
         font-size: 0.9rem;
         color: var(--charcoal);
+        text-align: right; /* Align text to the right */
+        flex: 1; /* Take up less space */
+    }
+
+    @media (max-width: 768px) {
+        .anime-schedule-item {
+            flex-direction: column; /* Stack items vertically on smaller screens */
+            align-items: flex-start;
+        }
+
+        .anime-schedule-item p {
+            text-align: left; /* Align text to the left */
+        }
     }
 
     @media (max-width: 768px) {
