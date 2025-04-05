@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Better Anime</title>
-    <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.png">
-    <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -49,7 +48,7 @@
             font-size: 1.5em;
             margin-bottom: 10px;
         }
-        .artplayer-app {
+        #videoPlayer {
             width: 100%;
             aspect-ratio: 16 / 9;
             background: black;
@@ -214,7 +213,7 @@
         <div class="site-link-bar">
             <a href="https://thefarawaydev.github.io/better-anime/home" class="site-link">Better Anime</a>
         </div>
-        <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" playsinline webkit-playsinline x-webkit-airplay="allow"></video>
+        <video id="videoPlayer" controls preload="auto" playsinline webkit-playsinline x-webkit-airplay="allow"></video>
         <div class="controls-area">
             <button id="subbedButton">Subbed</button>
             <button id="dubbedButton">Dubbed</button>
@@ -222,7 +221,6 @@
 
         <div class="episode-control-area">
             <button id="previousButton" style="width: 100%;">◄◄</button>
-            <button id="autoNextButton" style="width: 100%;">Auto Next</button>
             <button id="skipIntroButton" style="width: 100%;">Skip Intro</button>
             <button id="nextButton" style="width: 100%;">►►</button>
         </div>
@@ -234,19 +232,57 @@
     </div>
 
     <script>
-        const videoPlayer = videojs('videoPlayer', videojs.obj.merge({
-            autoplay: true,
-            controls: true,
-            preload: 'auto',
-            fluid: true,
-            techOrder: ['html5'], // Ensure video.js uses its built-in HLS
-        }));
+        const videoPlayer = document.getElementById('videoPlayer');
+        let hls;
+
+        function initializeVideoPlayer(url) {
+            if (Hls.isSupported()) {
+                if (hls) {
+                    hls.destroy(); // Destroy previous instance if exists
+                }
+                hls = new Hls();
+                hls.loadSource(url);
+                hls.attachMedia(videoPlayer);
+                hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                    const savedTime = loadProgress(); // Load saved progress
+                    if (savedTime > 0) {
+                        videoPlayer.currentTime = savedTime; // Resume from saved time
+                    }
+                    videoPlayer.play();
+                });
+            } else if (videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+                videoPlayer.src = url;
+                videoPlayer.addEventListener('loadedmetadata', () => {
+                    const savedTime = loadProgress(); // Load saved progress
+                    if (savedTime > 0) {
+                        videoPlayer.currentTime = savedTime; // Resume from saved time
+                    }
+                    videoPlayer.play();
+                });
+            } else {
+                alert('HLS is not supported in this browser.');
+            }
+
+            videoPlayer.addEventListener('timeupdate', () => {
+                if (currentEpisodeId && currentEpisodeTitle) {
+                    saveProgress(videoPlayer.currentTime); // Save only the current time
+                }
+                saveAllData(); // Save all data to the structured object
+            });
+
+            videoPlayer.addEventListener('ended', () => {
+                videoEnded = true;
+            });
+        }
+
+        function playM3u8(video, url) {
+            initializeVideoPlayer(url);
+        }
 
         const subbedButton = document.getElementById('subbedButton');
         const dubbedButton = document.getElementById('dubbedButton');
         const previousButton = document.getElementById('previousButton');
         const nextButton = document.getElementById('nextButton');
-        const autoNextButton = document.getElementById('autoNextButton');
         const currentLanguageSpan = document.getElementById('currentLanguage');
         const episodeListContainer = document.querySelector('.episode-list');
         const apiUrlBase = 'https://better-anime.vercel.app';
@@ -262,7 +298,6 @@
         let hasDubbed = false;
         let episodesData = []; // Store the fetched episodes data
         let currentEpisodeIndex = 0;
-        let autoNext = false; // Add autoNext state
         let videoEnded = false; //track ended
         let isPlaying = false; // Track if video is playing
 
@@ -272,79 +307,11 @@
         let outroStart = null;
         let outroEnd = null;
 
-        function playM3u8(video, url) {
-            videoPlayer.src({
-                src: url,
-                type: 'application/x-mpegURL',
-            });
-            videoPlayer.ready(() => {
-                video.play();
-            });
-        }
-
-        function saveToContinueWatching(id) {
-            let continueWatchingArray = JSON.parse(localStorage.getItem('continueWatching')) || [];
-            const existingItemIndex = continueWatchingArray.findIndex(item => item.id === id);
-            const pageUrl = window.location.href;
-
-            if (existingItemIndex !== -1) {
-                continueWatchingArray[existingItemIndex].url = pageUrl;
-            } else {
-                continueWatchingArray.push({ id, url: pageUrl });
-            }
-
-            localStorage.setItem('continueWatching', JSON.stringify(continueWatchingArray));
-            saveAllData(); // Ensure all data is saved after updating continue watching
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             if (currentAnimeId) {
                 saveToContinueWatching(currentAnimeId);
             }
         });
-
-        function initializeVideoPlayer(url) {
-            videoPlayer.src({
-                src: url,
-                type: 'application/x-mpegURL', // Use video.js's built-in HLS support
-            });
-
-            videoPlayer.ready(() => {
-                const savedTime = loadProgress(); // Load saved progress
-                if (savedTime > 0) {
-                    videoPlayer.currentTime(savedTime); // Resume from saved time
-                }
-                videoPlayer.play();
-            });
-
-            // Disable playback rate controls
-            videoPlayer.controlBar.removeChild('playbackRateMenuButton');
-
-            // Explicitly disable text tracks and hide CC button
-            videoPlayer.textTracks().tracks_.forEach(track => {
-                track.mode = 'disabled';
-            });
-            const ccButton = videoPlayer.controlBar.getChild('SubsCapsButton');
-            if (ccButton) {
-                videoPlayer.controlBar.removeChild(ccButton);
-            }
-
-            // Hide CC button on iOS and Android
-            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            if (isMobile) {
-                const ccButtonMobile = videoPlayer.controlBar.getChild('SubsCapsButton');
-                if (ccButtonMobile) {
-                    ccButtonMobile.hide();
-                }
-            }
-
-            videoPlayer.on('timeupdate', () => {
-                if (currentEpisodeId && currentEpisodeTitle) {
-                    saveProgress(videoPlayer.currentTime()); // Save only the current time
-                }
-                saveAllData(); // Save all data to the structured object
-            });
-        }
 
         async function fetchAnimeEpisodes(animeId) {
             try {
@@ -569,13 +536,6 @@
                 });
             }
 
-            // Restore autoNext state from local storage
-            const savedAutoNext = localStorage.getItem('autoNext');
-            if (savedAutoNext === 'true') {
-                autoNext = true;
-                autoNextButton.classList.add('active');
-            }
-
             subbedButton.addEventListener('click', () => {
                 if (currentEpisodeId && hasSubbed) {
                     currentCategory = 'sub';
@@ -595,33 +555,20 @@
                     loadStreamingLinks(currentEpisodeId, currentCategory);
                 }
             });
-
-            autoNextButton.addEventListener('click', () => {
-                autoNext = !autoNext;
-                localStorage.setItem('autoNext', autoNext); // Save autoNext state to local storage
-                autoNextButton.classList.toggle('active', autoNext);
-            });
-        });
-
-        videoPlayer.on('ended', () => {
-            videoEnded = true;
-            if (autoNext) {
-                playNextEpisode();
-            }
         });
 
         // Skip intro and outro functionality
-        videoPlayer.on('timeupdate', () => {
-            const currentTime = videoPlayer.currentTime();
+        videoPlayer.addEventListener('timeupdate', () => {
+            const currentTime = videoPlayer.currentTime;
 
             // Skip intro
             if (introStart !== null && introEnd !== null && currentTime >= introStart && currentTime < introEnd && skipIntroButton.classList.contains('active')) {
-                videoPlayer.currentTime(introEnd);
+                videoPlayer.currentTime = introEnd;
             }
 
             // Skip outro
             if (outroStart !== null && outroEnd !== null && currentTime >= outroStart && currentTime < outroEnd && skipIntroButton.classList.contains('active')) {
-                videoPlayer.currentTime(outroEnd);
+                videoPlayer.currentTime = outroEnd;
             }
         });
 
@@ -638,7 +585,6 @@
 
             // Save only user preferences
             allData.skipIntro = skipIntroButton.classList.contains('active');
-            allData.autoNext = autoNext;
 
             localStorage.setItem('betterAnimeData', JSON.stringify(allData));
         }
@@ -651,10 +597,6 @@
             if (allData.skipIntro !== undefined) {
                 skipIntroButton.classList.toggle('active', allData.skipIntro);
             }
-            if (allData.autoNext !== undefined) {
-                autoNext = allData.autoNext;
-                autoNextButton.classList.toggle('active', autoNext);
-            }
         }
 
         // Load all data on page load
@@ -664,11 +606,6 @@
                 saveToContinueWatching(currentAnimeId);
             }
 
-            // Restore autoNext state from local storage
-            const savedAutoNext = localStorage.getItem('autoNext');
-            autoNext = savedAutoNext === 'true';
-            autoNextButton.classList.toggle('active', autoNext);
-
             // Restore skipIntro state from local storage
             const savedSkipIntro = localStorage.getItem('skipIntro');
             skipIntroButton.classList.toggle('active', savedSkipIntro === 'true');
@@ -677,12 +614,6 @@
         // Event listeners for navigation buttons
         previousButton.addEventListener('click', playPreviousEpisode);
         nextButton.addEventListener('click', playNextEpisode);
-        autoNextButton.addEventListener('click', () => {
-            autoNext = !autoNext;
-            localStorage.setItem('autoNext', autoNext);
-            autoNextButton.classList.toggle('active', autoNext);
-        });
-
     </script>
 </body>
 </html>
