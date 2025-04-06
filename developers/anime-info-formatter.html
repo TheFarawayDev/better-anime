@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anime JSON Generator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #0a0a0a;
+      font-family: 'Segoe UI', sans-serif;
+      color: #eaeaea;
+      overflow-x: hidden;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .container {
+      max-width: 500px;
+      width: calc(100% - 32px);
+      margin: 2rem auto;
+      background: #121212;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00000099;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #00b2ff;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      margin-top: 1.2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      background: #00b2ff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    button:hover {
+      background: #0094db;
+      transform: scale(1.02);
+    }
+
+    pre {
+      margin-top: 1.5rem;
+      background-color: #1c1c1c;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 0.95rem;
+      color: #e1f8ff;
+      border: 1px solid #00b2ff33;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <div class="container">
+    <h1>Anime JSON Generator</h1>
+
+    <label>ID</label>
+    <input type="text" id="idInput" placeholder="e.g. akashic-records-of-bastard-magic-instructor-2674">
+
+    <label>Image URL</label>
+    <input type="text" id="imageUrl" placeholder="https://...">
+
+    <label>Dub Count</label>
+    <input type="number" id="dubCount" placeholder="12">
+
+    <label>Sub Count</label>
+    <input type="number" id="subCount" placeholder="12">
+
+    <label>Episodes</label>
+    <input type="number" id="episodes" placeholder="12">
+
+    <label>Season Number</label>
+    <input type="number" id="season" value="1">
+
+    <button onclick="generate()">Generate JSON</button>
+
+    <pre id="output">{}</pre>
+    <button onclick="copyToClipboard()">Copy JSON</button>
+  </div>
+
+  <script>
+    function formatTitleFromId(id, season) {
+      const base = id.replace(/-\d+$/, '');
+      const words = base.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1));
+      let title = words.join(' ');
+      if (season > 1) {
+        title += `: Season ${season}`;
+      }
+      return title;
+    }
+
+    function generate() {
+      const id = document.getElementById('idInput').value.trim();
+      const image_url = document.getElementById('imageUrl').value.trim();
+      const dub_count = document.getElementById('dubCount').value.trim();
+      const sub_count = document.getElementById('subCount').value.trim();
+      const episodes = document.getElementById('episodes').value.trim();
+      const season = parseInt(document.getElementById('season').value.trim(), 10);
+
+      if (!id || !image_url || !dub_count || !sub_count || !episodes || isNaN(season)) {
+        alert('Fill in all fields correctly.');
+        return;
+      }
+
+      const title = formatTitleFromId(id, season);
+      const url = `https://thefarawaydev.github.io/better-anime/watch/series/player?id=${id}`;
+
+      const jsonObj = {
+          title: title,
+          id: id,
+          image_url: image_url,
+          url: url,
+          dub_count: dub_count,
+          sub_count: sub_count,
+          episodes: episodes
+      };
+
+      const formatted = JSON.stringify(jsonObj, null, 4);
+      document.getElementById('output').textContent = formatted;
+    }
+
+    function copyToClipboard() {
+      const jsonText = document.getElementById('output').textContent;
+      navigator.clipboard.writeText(jsonText).then(() => {
+        alert('Copied to clipboard!');
+      }, () => {
+        alert('Failed to copy.');
+      });
+    }
+
+    // Background Cubes Animation
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+    let w, h, cols, rows, cubeSize = 25, grid = [];
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+      cols = Math.floor(w / cubeSize);
+      rows = Math.floor(h / cubeSize);
+      grid = [];
+      for (let y = 0; y < rows; y++) {
+        grid[y] = [];
+        for (let x = 0; x < cols; x++) {
+          grid[y][x] = Math.random();
+        }
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          let brightness = Math.floor(50 + 100 * Math.abs(Math.sin(Date.now() / 1000 + grid[y][x] * 10)));
+          ctx.fillStyle = `rgb(${brightness * 0.3}, ${brightness * 0.5}, ${brightness})`;
+          ctx.fillRect(x * cubeSize, y * cubeSize, cubeSize - 1, cubeSize - 1);
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    draw();
+  </script>
+</body>
+</html>
