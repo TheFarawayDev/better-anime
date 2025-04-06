@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anime JSON Generator</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 12px;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      border: none;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.75rem;
+      width: 100%;
+      font-weight: bold;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    pre {
+      background-color: #2c2c2c;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-top: 2rem;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <h1>Anime JSON Generator</h1>
+  <label>ID
+    <input type="text" id="idInput">
+  </label>
+  <label>Image URL
+    <input type="text" id="imageUrl">
+  </label>
+  <label>Dub Count
+    <input type="number" id="dubCount">
+  </label>
+  <label>Sub Count
+    <input type="number" id="subCount">
+  </label>
+  <label>Episodes
+    <input type="number" id="episodes">
+  </label>
+  <label>Season Number
+    <input type="number" id="season" value="1">
+  </label>
+  <button onclick="generate()">Generate JSON</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    function formatTitleFromId(id, season) {
+      const base = id.replace(/-\d+$/, ''); // remove trailing number
+      const words = base.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1));
+      let title = words.join(' ');
+      if (season > 1) {
+        title += `: Season ${season}`;
+      }
+      return title;
+    }
+
+    function generate() {
+      const id = document.getElementById('idInput').value.trim();
+      const image_url = document.getElementById('imageUrl').value.trim();
+      const dub_count = document.getElementById('dubCount').value.trim();
+      const sub_count = document.getElementById('subCount').value.trim();
+      const episodes = document.getElementById('episodes').value.trim();
+      const season = parseInt(document.getElementById('season').value.trim(), 10);
+
+      if (!id || !image_url || !dub_count || !sub_count || !episodes || isNaN(season)) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      const title = formatTitleFromId(id, season);
+      const url = `https://thefarawaydev.github.io/better-anime/watch/series/player?id=${id}`;
+
+      const output = {
+        title: title,
+        id: id,
+        image_url: image_url,
+        url: url,
+        dub_count: dub_count,
+        sub_count: sub_count,
+        episodes: episodes
+      };
+
+      document.getElementById('output').textContent = JSON.stringify(output, null, 4);
+    }
+  </script>
+</body>
+</html>
