@@ -126,14 +126,13 @@
   </div>
 
   <script>
-    function formatTitleFromId(id, season) {
-      const base = id.replace(/-\d+$/, '');
-      const words = base.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1));
-      let title = words.join(' ');
-      if (season > 1) {
-        title += `: Season ${season}`;
-      }
-      return title;
+    function formatTitleFromId(id) {
+      let base = id.replace(/-\d+$/, ''); // remove numeric ID suffix
+      base = base
+        .replace(/-(season|s)?-?(ii|iii|iv|v|vi|vii|viii|ix|x|\d{1,2})$/i, '') // remove season indicators
+        .replace(/-/g, ' ')
+        .replace(/\b\w/g, l => l.toUpperCase());
+      return base.trim();
     }
 
     function generate() {
