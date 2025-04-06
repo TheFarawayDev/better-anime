@@ -243,6 +243,15 @@
         "episodes": "11"
     },
     {
+        "title": "Date A Live",
+        "id": "date-a-live-2508",
+        "image_url": "https://images.justwatch.com/poster/327533078/s718/season-1.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=date-a-live-2508",
+        "dub_count": "12",
+        "sub_count": "12",
+        "episodes": "12"
+    },
+    {
         "title": "Death Note",
         "id": "death_note",
         "image_url": "https://m.media-amazon.com/images/M/MV5BYTgyZDhmMTEtZDFhNi00MTc4LTg3NjUtYWJlNGE5Mzk2NzMxXkEyXkFqcGc@._V1_.jpg",
