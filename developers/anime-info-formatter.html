@@ -126,15 +126,20 @@
   </div>
 
   <script>
-    function formatTitleFromId(id) {
-      let base = id.replace(/-\d+$/, ''); // remove numeric ID suffix
+    function formatTitleFromId(id, season) {
+      let base = id.replace(/-\d+$/, ''); // Remove numeric ID suffix
       base = base
-        .replace(/-(season|s)?-?(ii|iii|iv|v|vi|vii|viii|ix|x|\d{1,2})$/i, '') // remove season indicators
-        .replace(/-/g, ' ')
-        .replace(/\b\w/g, l => l.toUpperCase());
-      return base.trim();
+        .replace(/-(season|s)?-?(ii|iii|iv|v|vi|vii|viii|ix|x|\d{1,2})$/i, '') // Remove season indicators
+        .replace(/-/g, ' ') // Replace dashes with spaces
+        .replace(/\b\w/g, l => l.toUpperCase()); // Capitalize words
+      let title = base.trim();
+      // Add season info if season > 1
+      if (season > 1) {
+        title += `: Season ${season}`;
+      }
+      return title;
     }
-
+  
     function generate() {
       const id = document.getElementById('idInput').value.trim();
       const image_url = document.getElementById('imageUrl').value.trim();
@@ -142,15 +147,15 @@
       const sub_count = document.getElementById('subCount').value.trim();
       const episodes = document.getElementById('episodes').value.trim();
       const season = parseInt(document.getElementById('season').value.trim(), 10);
-
+  
       if (!id || !image_url || !dub_count || !sub_count || !episodes || isNaN(season)) {
         alert('Fill in all fields correctly.');
         return;
       }
-
+  
       const title = formatTitleFromId(id, season);
       const url = `https://thefarawaydev.github.io/better-anime/watch/series/player?id=${id}`;
-
+  
       const jsonObj = {
           title: title,
           id: id,
@@ -160,7 +165,7 @@
           sub_count: sub_count,
           episodes: episodes
       };
-
+  
       const formatted = JSON.stringify(jsonObj, null, 4);
       document.getElementById('output').textContent = formatted;
     }
