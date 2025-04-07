@@ -98,6 +98,15 @@
                 const hasAccess = repos.some(repo => repo.full_name === 'TheFarawayDev/better-anime');
 
                 if (hasAccess) {
+                    const userResponse = await fetch('https://api.github.com/user', {
+                        headers: {
+                            Authorization: `token ${localStorage.getItem('github_token')}`
+                        }
+                    });
+                    if (userResponse.ok) {
+                        const user = await userResponse.json();
+                        localStorage.setItem('github_username', user.login);
+                    }
                     window.location.href = redirectUri;
                 } else {
                     alert('Access denied. You are not part of the required repository.');
@@ -107,13 +116,6 @@
                 alert('An error occurred while verifying access. Please try again later or contact support if the issue persists.');
             }
         }
-
-        window.onload = () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('code')) {
-                checkDeveloperAccess();
-            }
-        };
     </script>
 </body>
 </html>
