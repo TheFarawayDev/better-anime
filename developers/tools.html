@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Tools</title>
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #24292e;
+            color: #fff;
+        }
+        h1 {
+            font-size: 36px;
+            color: #fff;
+        }
+        .tools-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .tool-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            color: #24292e;
+            border: 2px solid #3b3d3e;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: 200px;
+        }
+        .tool-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Developer Tools</h1>
+    <div class="tools-section">
+        <button class="tool-button" onclick="alert('Tool 1 activated!')">Tool 1</button>
+        <button class="tool-button" onclick="alert('Tool 2 activated!')">Tool 2</button>
+        <button class="tool-button" onclick="alert('Tool 3 activated!')">Tool 3</button>
+    </div>
+</body>
+</html>
