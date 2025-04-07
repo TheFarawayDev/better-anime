@@ -315,6 +315,15 @@
         "episodes": "63"
     },
     {
+        "title": "Devil May Cry",
+        "id": "devil-may-cry-19641",
+        "image_url": "https://images.justwatch.com/poster/324990612/s718/devil-may-cry.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=devil-may-cry-19641",
+        "dub_count": "8",
+        "sub_count": "8",
+        "episodes": "8"
+    },
+    {
         "title": "D-Frag!",
         "id": "d_frag",
         "image_url": "https://m.media-amazon.com/images/M/MV5BOTg5YzgzNDItMDM2Yy00OGIxLWJmNzItZGU2MDVkMDZhNTk2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
@@ -718,6 +727,15 @@
         "dub_count": "12",
         "sub_count": "12",
         "episodes": "12"
+    },
+    {
+        "title": "Soul Eater",
+        "id": "soul-eater-655",
+        "image_url": "https://images.justwatch.com/poster/210042613/s718/soul-eater.jpg",
+        "url": "https://thefarawaydev.github.io/better-anime/watch/series/player?id=soul-eater-655",
+        "dub_count": "51",
+        "sub_count": "51",
+        "episodes": "51"
     },
     {
         "title": "My Teen Romantic Comedy: SNAFU",
