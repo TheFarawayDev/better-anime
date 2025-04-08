@@ -23,11 +23,12 @@
         }
         #login-section {
             display: flex;
+            flex-direction: column; /* Align buttons vertically */
             justify-content: center;
             align-items: center;
-            height: 10vh;
+            height: 20vh; /* Adjusted height for better spacing */
         }
-        #login-button {
+        #login-button, #code-login-button {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -40,11 +41,13 @@
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px 0; /* Add vertical spacing between buttons */
+            width: 65%;
         }
-        #login-button:hover {
+        #login-button:hover, #code-login-button:hover {
             transform: scale(1.05);
         }
-        #login-button img {
+        #login-button img, #code-login-button img {
             width: 30px;
             height: 30px;
             margin-right: 10px;
@@ -67,6 +70,38 @@
         .tools button:hover {
             background-color: #0056b3;
         }
+        #code-input-box {
+            display: none;
+            position: relative;
+            margin-top: 10px;
+            width: 65%;
+            background-color: #fff;
+            border: 2px solid #3b3d3e;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: slide-down 0.3s ease-out;
+        }
+        @keyframes slide-down {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slide-up {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -75,6 +110,13 @@
             <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo">
             Login with GitHub
         </button>
+        <button id="code-login-button">
+            <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Key Icon" style="width: 30px; height: 30px; margin-right: 10px;">
+            Login with Code
+        </button>
+        <div id="code-input-box">
+            <input type="text" id="code-input" placeholder="Enter your access code" style="width: 90%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 5px;">
+        </div>
     </div>
 
     <script>
@@ -84,6 +126,33 @@
         document.getElementById('login-button').addEventListener('click', () => {
             const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=repo`;
             window.location.href = githubAuthUrl;
+        });
+
+        const codeLoginButton = document.getElementById('code-login-button');
+        const codeInputBox = document.getElementById('code-input-box');
+        const codeInput = document.getElementById('code-input');
+
+        codeLoginButton.addEventListener('click', () => {
+            if (codeInputBox.style.display === 'none' || codeInputBox.style.display === '') {
+                codeInputBox.style.display = 'block';
+            } else {
+                codeInputBox.style.display = 'none';
+            }
+        });
+
+        codeInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                const code = codeInput.value.trim();
+                if (code === '122024') {
+                    codeInputBox.style.animation = 'slide-up 0.3s ease-in';
+                    setTimeout(() => {
+                        codeInputBox.style.display = 'none';
+                        window.location.href = redirectUri; // Redirect after successful code entry
+                    }, 300);
+                } else {
+                    alert('Invalid code. Access denied.');
+                }
+            }
         });
 
         async function checkDeveloperAccess() {
