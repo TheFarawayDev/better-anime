@@ -380,7 +380,7 @@
             localStorage.setItem('lastWatchedEpisodeTitle_' + currentAnimeId, episodeTitle);
 
             try {
-                const response = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-2&category=${currentCategory}`);
+                const response = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-1&category=${currentCategory}`);
                 const data = await response.json();
 
                 if (data.success && data.data) {
