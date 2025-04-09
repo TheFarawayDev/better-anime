@@ -163,52 +163,6 @@
             }
         }
     </style>
-    <script>
-        // Block developer tools
-        (function() {
-            const devtools = /./;
-            devtools.toString = function() {
-                this.opened = true;
-                alert('Developer tools are blocked for security reasons.');
-            };
-            Object.defineProperty(window, 'devtools', {
-                get: function() {
-                    return devtools;
-                }
-            });
-            setInterval(() => {
-                if (devtools.opened) {
-                    window.location.reload();
-                }
-            }, 1000);
-        })();
-
-        // Disable right-click, key combinations for dev tools, and "More Tools" options
-        document.addEventListener('contextmenu', (e) => e.preventDefault());
-        document.addEventListener('keydown', (e) => {
-            if (
-                e.ctrlKey && 
-                (e.key === 'u' || e.key === 's' || e.key === 'i' || e.key === 'j' || e.key === 'c') || 
-                (e.ctrlKey && e.shiftKey && e.key === 'I') // Block Ctrl+Shift+I
-            ) {
-                e.preventDefault();
-                alert('This action is disabled for security reasons.');
-            }
-        });
-
-        // Disable "More Tools" options in browsers
-        const disableMoreTools = () => {
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            document.body.appendChild(iframe);
-            iframe.contentWindow.eval(`
-                Object.defineProperty(navigator, 'webdriver', { get: () => true });
-            `);
-            document.body.removeChild(iframe);
-        };
-
-        document.addEventListener('DOMContentLoaded', disableMoreTools);
-    </script>
 </head>
 <body>
     <div class="artplayer-app-container">
@@ -412,6 +366,12 @@
                 const response = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-2&category=${category}`);
                 const data = await response.json();
                 if (data.success && data.data && data.data.sources) {
+                    // Update language availability flags
+                    if (category === 'sub') {
+                        hasSubbed = data.data.sources.length > 0;
+                    } else if (category === 'dub') {
+                        hasDubbed = data.data.sources.length > 0;
+                    }
                     return data.data.sources;
                 }
                 return [];
@@ -554,7 +514,7 @@
             }
 
             subbedButton.addEventListener('click', () => {
-                if (currentEpisodeId && hasSubbed) {
+                if (currentEpisodeId) {
                     currentCategory = 'sub';
                     localStorage.setItem('preferredCategory', currentCategory);
                     subbedButton.classList.add('active');
@@ -564,7 +524,7 @@
             });
 
             dubbedButton.addEventListener('click', () => {
-                if (currentEpisodeId && hasDubbed) {
+                if (currentEpisodeId) {
                     currentCategory = 'dub';
                     localStorage.setItem('preferredCategory', currentCategory);
                     dubbedButton.classList.add('active');
