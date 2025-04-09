@@ -292,7 +292,7 @@
         const currentLanguageSpan = document.getElementById('currentLanguage');
         const episodeListContainer = document.querySelector('.episode-list');
         const apiUrlBase = 'https://better-anime.vercel.app';
-        const proxyUrl = 'https://another-bad-proxy.vercel.app/api/v1/streamingProxy?url=';
+        const proxyUrl = 'https://another-bad-proxy-v2.vercel.app/m3u8-proxy?url=';
 
         const urlParams = new URLSearchParams(window.location.search);
         const currentAnimeId = urlParams.get('id');
@@ -380,7 +380,7 @@
             localStorage.setItem('lastWatchedEpisodeTitle_' + currentAnimeId, episodeTitle);
 
             try {
-                const response = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-1&category=${currentCategory}`);
+                const response = await fetch(`${apiUrlBase}/api/v2/hianime/episode/sources?animeEpisodeId=${episodeId}&server=hd-2&category=${currentCategory}`);
                 const data = await response.json();
 
                 if (data.success && data.data) {
