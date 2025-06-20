@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Better Anime</title>
+    <script src="https://cdn.jsdelivr.net/npm/artplayer@5/dist/artplayer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.png">
+    <link rel="icon" type="image/x-icon"
+        href="https://raw.githubusercontent.com/TheFarawayDev/better-anime/refs/heads/main/watch/other/BA.png">
     <style>
         body {
             display: flex;
@@ -17,6 +20,7 @@
             font-family: sans-serif;
             color: #fff;
         }
+
         .artplayer-app-container {
             width: 80%;
             max-width: 800px;
@@ -25,6 +29,7 @@
             flex-direction: column;
             align-items: center;
         }
+
         .site-link-bar {
             width: 100%;
             background-color: #1e1e1e;
@@ -35,12 +40,14 @@
             box-sizing: border-box;
             margin-bottom: 10px;
         }
+
         .site-link {
             font-weight: bold;
             color: #fff;
             text-decoration: none;
             font-size: 1.2em;
         }
+
         .player-header {
             width: 100%;
             text-align: center;
@@ -48,11 +55,56 @@
             font-size: 1.5em;
             margin-bottom: 10px;
         }
+
         #videoPlayer {
             width: 100%;
             aspect-ratio: 16 / 9;
             background: black;
+            border-radius: 8px;
+            overflow: hidden;
         }
+
+        /* ArtPlayer theme customization */
+        .art-video-player[data-theme] {
+            --art-theme: #2196F3;
+        }
+
+        .art-control-progress-inner {
+            background-color: #2196F3 !important;
+        }
+
+        .art-control-progress-loaded {
+            background-color: rgba(33, 150, 243, 0.3) !important;
+        }
+
+        .art-control .art-control-progress .art-control-progress-inner .art-progress-indicator {
+            background-color: #2196F3 !important;
+        }
+
+        .art-control .art-control-progress .art-control-progress-inner .art-progress-tip {
+            background-color: #2196F3 !important;
+        }
+
+        .art-bottom .art-progress .art-progress-loaded {
+            background-color: rgba(33, 150, 243, 0.5) !important;
+        }
+
+        .art-bottom .art-progress .art-progress-played {
+            background-color: #2196F3 !important;
+        }
+
+        .art-control-progress .art-control-progress-inner {
+            background-color: #2196F3 !important;
+        }
+
+        .art-progress-indicator {
+            background-color: #2196F3 !important;
+        }
+
+        .art-control-selector .art-control-selector-inner .art-selector-item:hover {
+            background-color: rgba(33, 150, 243, 0.2) !important;
+        }
+
         .controls-area {
             width: 100%;
             background-color: #1e1e1e;
@@ -74,15 +126,19 @@
             box-sizing: border-box;
             margin-top: 10px;
         }
+
         .episode-control-area button.active {
-            background-color: #23ade5;
+            background-color: #2196F3;
         }
+
         .controls-area button {
             width: 100%;
         }
+
         .controls-area button.active {
-            background-color: #23ade5;
+            background-color: #2196F3;
         }
+
         .episode-list-container {
             width: 80%;
             max-width: 800px;
@@ -92,18 +148,24 @@
             border-radius: 5px;
             box-sizing: border-box;
             overflow-y: auto;
-            scrollbar-width: none; /* For Firefox */
-            -ms-overflow-style: none; /* For Internet Explorer and Edge */
+            scrollbar-width: none;
+            /* For Firefox */
+            -ms-overflow-style: none;
+            /* For Internet Explorer and Edge */
         }
+
         .episode-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 8px;
             width: 100%;
         }
+
         .episode-list-container::-webkit-scrollbar {
-            display: none; /* For Chrome, Safari, and Opera */
+            display: none;
+            /* For Chrome, Safari, and Opera */
         }
+
         .episode-list button {
             background-color: #333;
             color: #fff;
@@ -118,59 +180,94 @@
             text-overflow: ellipsis;
             font-size: 0.9em;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.3s ease-in-out, background-color 0.2s ease;
         }
+
+        .episode-list button:hover {
+            background-color: #1976D2;
+        }
+
         .episode-list button.active {
-            background-color: #23ade5;
+            background-color: #2196F3;
         }
+
+        .controls-area button,
+        .episode-control-area button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+            font-weight: 500;
+        }
+
+        .controls-area button:hover,
+        .episode-control-area button:hover {
+            background-color: #1976D2;
+        }
+
         button {
             background-color: #333;
             color: #fff;
             border: none;
             padding: 8px 15px;
             cursor: pointer;
-            border-radius: 3px;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
         }
+
         button:hover {
-            background-color: #555;
+            background-color: #1976D2;
         }
+
         @media (max-width: 768px) {
             .episode-list-container {
                 overflow-y: scroll;
                 max-height: 300px;
             }
+
             .episode-list {
-                display: block; /* Change to block for vertical scrolling */
+                display: block;
+                /* Change to block for vertical scrolling */
             }
+
             .episode-list button {
                 display: block;
                 width: 100%;
                 margin-bottom: 8px;
-                font-size: 0.8em; /* Slightly smaller font size */
-                padding: 8px; /* Adjust padding for smaller buttons */
+                font-size: 0.8em;
+                /* Slightly smaller font size */
+                padding: 8px;
+                /* Adjust padding for smaller buttons */
             }
         }
 
         @media (max-width: 768px) and (orientation: landscape) {
             .episode-list button {
-                font-size: 0.8em; /* Adjust font size for landscape mode */
-                padding: 8px; /* Adjust padding for consistency */
+                font-size: 0.8em;
+                /* Adjust font size for landscape mode */
+                padding: 8px;
+                /* Adjust padding for consistency */
             }
 
             .controls-area button,
             .episode-control-area button {
-                font-size: 0.9em; /* Ensure language options and navigation buttons are consistent */
+                font-size: 0.9em;
+                /* Ensure language options and navigation buttons are consistent */
             }
         }
     </style>
 </head>
+
 <body>
     <div class="artplayer-app-container">
         <div class="site-link-bar">
             <a href="https://thefarawaydev.github.io/better-anime/home" class="site-link">Better Anime</a>
             <span id="versionNumber" style="margin-left: auto; font-size: 0.9em; color: #aaa;">Ver. Error</span>
         </div>
-        <video id="videoPlayer" controls preload="auto" playsinline webkit-playsinline x-webkit-airplay="allow"></video>
+        <div id="videoPlayer"></div>
         <div class="controls-area">
             <button id="subbedButton">Subbed</button>
             <button id="dubbedButton">Dubbed</button>
@@ -190,49 +287,113 @@
     </div>
 
     <script>
-        const videoPlayer = document.getElementById('videoPlayer');
+        const videoPlayerContainer = document.getElementById('videoPlayer');
+        let artPlayer = null;
         let hls;
 
         function initializeVideoPlayer(url) {
-            if (Hls.isSupported()) {
-                if (hls) {
-                    hls.destroy(); // Destroy previous instance if exists
-                }
-                hls = new Hls();
-                hls.loadSource(url);
-                hls.attachMedia(videoPlayer);
-                hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                    const savedTime = loadProgress(); // Load saved progress
-                    if (savedTime > 0) {
-                        videoPlayer.currentTime = savedTime; // Resume from saved time
-                    }
-                    videoPlayer.play();
-                });
-            } else if (videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
-                videoPlayer.src = url;
-                videoPlayer.addEventListener('loadedmetadata', () => {
-                    const savedTime = loadProgress(); // Load saved progress
-                    if (savedTime > 0) {
-                        videoPlayer.currentTime = savedTime; // Resume from saved time
-                    }
-                    videoPlayer.play();
-                });
-            } else {
-                alert('HLS is not supported in this browser.');
+            // Destroy existing player if it exists
+            if (artPlayer) {
+                artPlayer.destroy();
+                artPlayer = null;
             }
 
-            videoPlayer.addEventListener('timeupdate', () => {
-                if (currentEpisodeId && currentEpisodeTitle) {
-                    saveProgress(videoPlayer.currentTime); // Save only the current time
+            // Create new ArtPlayer instance
+            artPlayer = new Artplayer({
+                container: videoPlayerContainer,
+                url: url,
+                volume: 0.5,
+                muted: false,
+                autoplay: false,
+                pip: true,
+                autoSize: true,
+                autoMini: true,
+                screenshot: true,
+                setting: true,
+                loop: false,
+                flip: true,
+                playbackRate: true,
+                aspectRatio: true,
+                fullscreen: true,
+                fullscreenWeb: true,
+                subtitleOffset: true,
+                miniProgressBar: true,
+                mutex: true,
+                backdrop: true,
+                playsInline: true,
+                autoPlayback: true,
+                airplay: true,
+                theme: '#2196F3',
+                lang: navigator.language.toLowerCase(),
+                whitelist: ['*'],
+                moreVideoAttr: {
+                    'webkit-playsinline': '',
+                    'playsinline': ''
+                },
+                customType: {
+                    m3u8: function(video, url) {
+                        if (Hls.isSupported()) {
+                            if (hls) {
+                                hls.destroy();
+                            }
+                            hls = new Hls({
+                                debug: false,
+                                enableWorker: false,
+                                lowLatencyMode: true,
+                                backBufferLength: 90
+                            });
+                            hls.loadSource(url);
+                            hls.attachMedia(video);
+                            hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                                const savedTime = loadProgress();
+                                if (savedTime > 0) {
+                                    video.currentTime = savedTime;
+                                }
+                            });
+                        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                            video.src = url;
+                            video.addEventListener('loadedmetadata', () => {
+                                const savedTime = loadProgress();
+                                if (savedTime > 0) {
+                                    video.currentTime = savedTime;
+                                }
+                            });
+                        }
+                    }
                 }
-                saveAllData(); // Save all data to the structured object
             });
 
-            videoPlayer.addEventListener('ended', () => {
+            // Add event listeners
+            artPlayer.on('video:timeupdate', () => {
+                if (currentEpisodeId && currentEpisodeTitle) {
+                    saveProgress(artPlayer.currentTime);
+                }
+                saveAllData();
+                
+                // Skip intro/outro functionality
+                const currentTime = artPlayer.currentTime;
+                if (introStart !== null && introEnd !== null && currentTime >= introStart && currentTime < introEnd && skipIntroButton.classList.contains('active')) {
+                    artPlayer.currentTime = introEnd;
+                }
+                if (outroStart !== null && outroEnd !== null && currentTime >= outroStart && currentTime < outroEnd && skipIntroButton.classList.contains('active')) {
+                    artPlayer.currentTime = outroEnd;
+                }
+            });
+
+            artPlayer.on('video:ended', () => {
                 if (autoNext) {
                     playNextEpisode();
                 }
             });
+
+            artPlayer.on('ready', () => {
+                const savedTime = loadProgress();
+                if (savedTime > 0) {
+                    artPlayer.currentTime = savedTime;
+                }
+            });
+
+            return artPlayer;
         }
 
         function playM3u8(video, url) {
@@ -245,7 +406,7 @@
         const nextButton = document.getElementById('nextButton');
         const currentLanguageSpan = document.getElementById('currentLanguage');
         const episodeListContainer = document.querySelector('.episode-list');
-        const apiUrlBase = 'https://better-anime.vercel.app';
+        const apiUrlBase = 'aniwatch-api-livid-ten.vercel.app';
         const proxyUrl = 'https://another-bad-proxy-v2.vercel.app/m3u8-proxy?url=';
 
         const urlParams = new URLSearchParams(window.location.search);
@@ -274,10 +435,10 @@
             const timestamp = new Date().toISOString(); // Get the current timestamp
 
             if (existingItemIndex !== -1) {
-            continueWatchingArray[existingItemIndex].url = pageUrl;
-            continueWatchingArray[existingItemIndex].timestamp = timestamp; // Update the timestamp
+                continueWatchingArray[existingItemIndex].url = pageUrl;
+                continueWatchingArray[existingItemIndex].timestamp = timestamp; // Update the timestamp
             } else {
-            continueWatchingArray.push({ id, url: pageUrl, timestamp }); // Add new entry with timestamp
+                continueWatchingArray.push({ id, url: pageUrl, timestamp }); // Add new entry with timestamp
             }
 
             localStorage.setItem('continueWatching', JSON.stringify(continueWatchingArray));
@@ -539,20 +700,7 @@
             autoNextButton.classList.toggle('active', autoNext);
         });
 
-        // Skip intro and outro functionality
-        videoPlayer.addEventListener('timeupdate', () => {
-            const currentTime = videoPlayer.currentTime;
-
-            // Skip intro
-            if (introStart !== null && introEnd !== null && currentTime >= introStart && currentTime < introEnd && skipIntroButton.classList.contains('active')) {
-                videoPlayer.currentTime = introEnd;
-            }
-
-            // Skip outro
-            if (outroStart !== null && outroEnd !== null && currentTime >= outroStart && currentTime < outroEnd && skipIntroButton.classList.contains('active')) {
-                videoPlayer.currentTime = outroEnd;
-            }
-        });
+        // Skip intro and outro functionality is now handled in the artPlayer timeupdate event
 
         // Toggle skip intro/outro button
         skipIntroButton.addEventListener('click', () => {
@@ -641,4 +789,5 @@
         nextButton.addEventListener('click', playNextEpisode);
     </script>
 </body>
+
 </html>
